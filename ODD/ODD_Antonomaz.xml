@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title type="short">ODD ANTONOMAZ</title>
+                <title>ODD by Example customization for ANTONOMAZ project</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Work in progress</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Derived from <ref
+                        target="https://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml"/>
+                    base odd</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <xi:include href="../Documentation/documentation.xml"/>
+            <div type="schemas">
+                <schemaSpec ident="ANTONOMAZ_ed" start="TEI">
+                    <moduleRef key="tei"/>
+                    <moduleRef key="header"
+                        include="teiHeader fileDesc titleStmt respStmt sourceDesc publicationStmt availability licence  encodingDesc profileDesc"/>
+                    <moduleRef key="core"
+                        include="persName affiliation roleName orgName editor resp date biblStruct monogr imprint bibl p title author pubPlace publisher note head date name ref"/>
+                    <moduleRef key="textstructure" include="text body"/>
+                    <moduleRef key="core" include="head p lb l lg note hi corr sic"/>
+                    <moduleRef key="transcr" include="fw"/>
+                    <!-- Rules for the header -->
+                    <elementSpec ident="teiHeader" mode="change">
+                        <constraintSpec ident="xmlid" scheme="schematron">
+                            <constraint>
+                                <!-- À reprendre une fois qu'on aura défini un schéma définitif de nommage des fichiers -->
+                                <sch:rule context="tei:teiHeader">
+                                    <sch:let name="fileName"
+                                        value="tokenize(document-uri(/), '/')[last()]"/>
+                                    <sch:assert
+                                        test="string(@xml:id) = substring-before($fileName, '.xml')"
+                                        role="error"> The xml:id of the TEI element should be equal
+                                        to the name of the file, without the file extension.
+                                        Currently the value of xml:id is "<sch:value-of
+                                            select="@xml:id"/>" whilst the file name is
+                                            "<sch:value-of select="$fileName"/>" </sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="xml:id" mode="change" usage="rec"/>
+                        </attList>
+                    </elementSpec>
+                    <!-- fileDesc-->
+                    <elementSpec ident="fileDesc" mode="change">
+                        <content>
+                            <elementRef key="titleStmt"/>
+                            <elementRef key="respStmt"/>
+                            <elementRef key="publicationStmt"/>
+                            <elementRef key="sourceDesc"/>
+                        </content>
+                    </elementSpec>
+                    <!-- Rules for the text's part -->
+                    <!-- titleStmt -->
+                    <elementSpec ident="titleStmt" mode="change">
+                        <content>
+                            <elementRef key="title" minOccurs="2" maxOccurs="2"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="title" mode="change">
+                        <constraintSpec ident="titleType" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:titleStmt/tei:title">
+                                    <sch:assert test="@type" role="error">Please add a @type
+                                        attribute (value 'main' or 'sub')</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="editionType" scheme="schematron">
+                            <constraint>
+                                <sch:rule
+                                    context="tei:titleStmt/tei:title/@type[contains(., 'sub')]">
+                                    <sch:assert test="../contains(.,'ANTONOMAZ édition')"
+                                        role="error">The content of the element "title" @type='sub'
+                                        must be "ANTONOMAZ édition"</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="main"/>
+                                    <valItem ident="sub"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <!--respStmt-->
+                    <elementSpec ident="respStmt" mode="change">
+                        <content>
+                            <elementRef key="resp"/>
+                            <elementRef key="persName"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="persName" mode="change">
+                        <attList>
+                            <attDef ident="role" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="publicationStmt" mode="change">
+                        <content>
+                            <elementRef key="publisher"/>
+                            <elementRef key="date"/>
+                            <elementRef key="availability"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="date" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req"/>
+                            <attDef ident="when" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="availability" mode="change">
+                        <attList>
+                            <attDef ident="status" mode="change" usage="req"/>
+                            <attDef ident="n" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="licence" mode="change">
+                        <attList>
+                            <attDef ident="target" mode="change" usage="rec"/>
+                        </attList>
+                    </elementSpec>
+                    <!-- sourceDesc-->
+                    <elementSpec ident="sourceDesc" mode="change">
+                        <content>
+                            <elementRef key="biblStruct"/>
+                            <elementRef key="msDesc"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="biblStruct" mode="change">
+                        <content>
+                            <elementRef key="monogr"/>
+                            <elementRef key="imprint"/>
+                            <elementRef key="note"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="monogr" mode="change">
+                        <content>
+                            <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="title"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="title" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="replace" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="main"/>
+                                    <valItem ident="sub"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="imprint" mode="change">
+                        <content>
+                            <elementRef key="pubPlace" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="date"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="date" mode="change">
+                        <attList>
+                            <attDef ident="when" mode="change" usage="req"> </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="note" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="identifier_Moreau"/>
+                                    <valItem ident="BM_identifier"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="msDesc" mode="change">
+                        <content>
+                            <elementRef key="msIdentifier"/>
+                            <elementRef key="msContents"/>
+                            <elementRef key="physDesc"/>
+                            <elementRef key="history"/>
+                            <elementRef key="additional"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="msIdentifier" mode="change">
+                        <content>
+                            <elementRef key="settlement"/>
+                            <elementRef key="institution"/>
+                            <elementRef key="repository"/>
+                            <elementRef key="idno"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="idno" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="cote"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="additional" mode="change">
+                        <content>
+                            <elementRef key="surrogates"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="surrogates" mode="change">
+                        <content>
+                            <elementRef key="bibl"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="bibl" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="mazarinum"/>
+                                    <valItem ident="gallica"/>
+                                    <valItem ident="google_books"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <!-- encodingDesc-->
+                    <elementSpec ident="encodingDesc" mode="change">
+                        <content>
+                            <elementRef key="projectDesc"/>
+                            <elementRef key="editorialDecl"/>
+                        </content>
+                    </elementSpec>
+                    <!-- profileDesc-->
+                    <elementSpec ident="profileDesc" mode="change">
+                        <content>
+                            <elementRef key="langUsage"/>
+                            <elementRef key="abstract"/>
+                            <elementRef key="textClass"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="textClass" mode="change">
+                        <content>
+                            <elementRef key="keywords"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="keywords" mode="change">
+                        <content>
+                            <elementRef key="term"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="term" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="forme"/>
+                                    <valItem ident="genre"/>
+                                    <valItem ident="registre"/>
+                                    <valItem ident="subject"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <!-- Rules for text's part -->
+                    <elementSpec ident="pb" mode="change">
+                        <attList>
+                            <attDef ident="n" mode="change" usage="req"/>
+                            <attDef ident="facs" mode="change" usage="rec"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="ref" mode="change">
+                        <attList>
+                            <attDef ident="target" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="fw" mode="change">
+                        <attList>
+                            <attDef ident="place" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="right"/>
+                                    <valItem ident="left"/>
+                                    <valItem ident="center"/>
+                                    <valItem ident="top-left"/>
+                                    <valItem ident="top-right"/>
+                                    <valItem ident="top-center"/>
+                                    <valItem ident="bot-left"/>
+                                    <valItem ident="bot-right"/>
+                                    <valItem ident="bot-center"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="pageNum"/>
+                                    <valItem ident="catch"/>
+                                    <valItem ident="sig"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="l" mode="change">
+                        <attList>
+                            <attDef ident="rend" mode="change" usage="opt"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="p" mode="change">
+                        <attList>
+                            <attDef ident="rend" mode="change" usage="opt"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="lb" mode="change">
+                        <attList>
+                            <attDef ident="break" mode="change">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="yes"/>
+                                    <valItem ident="no"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="rend" mode="change">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="¬"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="foreign" mode="change">
+                        <attList>
+                            <attDef ident="xml:lang" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>
+                </schemaSpec>
+            </div>
+        </body>
+    </text>
+</TEI>

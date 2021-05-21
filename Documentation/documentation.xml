@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div type="documentation">
+    <div>
+        <head>The corpus</head>
+        <p>The project ANTONOMAZ, in collaboration with the Bibliothèque Mazarine, aims to encode
+            the Mazarinades's corpus in order to integrate it to a database usable by different
+            audiences (researchers, students...) and to allow it to be studied. The Mazarinades are
+            a serie of textual sources of different genres (pamphlets, poems, letters, etc.)
+            published during the Fronde (1648 - 1653) mostly against the Cardinal Jules Mazarin. The
+            project uses the works of Célestin Moreau (Bibliographie des Mazarinades) and of Hubert
+            Carrier (Presses de la Fronde). We encoded fac-similes from these digital libraries: <list>
+                <item>Gallica (Bibliothèque Nationale de France)</item>
+                <item>Mazarinum (Bibliothèque Mazarine)</item>
+                <item>Google Books</item>
+            </list></p>
+    </div>
+    <div>
+        <head>Document identifiers</head>
+        <div>
+            <head>Identifying the document</head>
+            <p>One of our priorities is to clearly identify the text once encoded. We chose to give
+                to each document an unique identifier consisting of the name of the digital library
+                where the document was founded and its digital permanent identifier. So, for a
+                gallica's one, it will be<code>GALL_bpt6k95984c</code>. The filename will match with
+                the xml:id. This is going to be modified in the future. Here is the list for the
+                different possibilities in naming documents: <list>
+                    <item>mazarinum: MAZ_1234</item>
+                    <item>gallica: GALL_1234</item>
+                    <item>Google Books: GBOOKS_1234</item>
+                </list></p>
+            <p>In addition, each document will get a <att>type</att> inside the <gi>TEI</gi>
+                declaration which corresponds to the corpus it belongs. For example, if the text is
+                a burlesque mazarinade, write "Mazarinade_burlesque".</p>
+        </div>
+        <div>
+            <head>The encoding</head>
+            <div>
+                <head>Headers encoding</head>
+                <p>The header contains: a <gi>fileDesc</gi>, an <gi>encodingDesc</gi> and a
+                        <gi>profileDesc</gi>.</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <!-- Camille : à changer pour mettre un lien vers nos propres exemples -->
+                    <teiHeader>
+                        <fileDesc>
+                            <!-- information about the encoded document -->
+                        </fileDesc>
+                        <encodingDesc>
+                            <!-- Some general informations about the encoding's choices -->
+                        </encodingDesc>
+                        <profileDesc>
+                            <!-- Contains general informations about the encoded document: the language in which it's written, its genre, etc. -->
+                        </profileDesc>
+                    </teiHeader>
+                </egXML>
+                <div>
+                    <head>The <gi>fileDesc</gi></head>
+                    <p>This part of the header contains four parts : <list>
+                            <item>the <gi>titleStmt</gi></item>
+                            <item>the <gi>respStmt</gi></item>
+                            <item>the <gi>publicationStmt</gi></item>
+                            <item>the <gi>sourceDesc</gi></item>
+                        </list></p>
+                    <div>
+                        <head>The <gi>titleStmt</gi></head>
+                        <p>This part is essential for the presentation of the encoded document. It
+                            has to contain two <gi>titles</gi> : a main <gi>title</gi> (title of the
+                            work) and a sub <gi>title</gi> (ANTONOMAZ édition).</p>
+                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                            <titleStmt>
+                                <title type="main">Visions astrologiques de Michel Nostradamus sur
+                                    toutes les affaires de ce temps, et la confusion de Mazarin. En
+                                    vers burlesques</title>
+                                <title type="sub">ANTONOMAZ édition</title>
+                            </titleStmt>
+                        </egXML>
+                    </div>
+                    <div>
+                        <head>The <gi>respStmt</gi></head>
+                        <p>This part contains the list of persons having worked on the document's
+                            encoding. It is necessary to indicate a <gi>persName</gi> with a
+                                <att>role</att> attribute and an <gi>affiliation</gi> and the ORCID
+                            (if there is one) for each person.</p>
+                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                            <persName role="Chef_projet">
+                                <forename>Karine</forename>
+                                <surname>Abiven</surname>
+                                <idno>0000-0001-9518-1040</idno>
+                                <affiliation>
+                                    <roleName type="profession">Maîtresse de conférences</roleName>
+                                    <roleName type="status">Cheffe de projet</roleName>
+                                    <orgName>Projet ANTONOMAZ / Sorbonne Université</orgName>
+                                </affiliation>
+                            </persName>
+                        </egXML>
+                    </div>
+                    <div>
+                        <head>The <gi>publicationStmt</gi></head>
+                        <p>This part contains always the <gi>publisher</gi>, a <gi>ref</gi> and the
+                                <gi>availibility</gi> which contains the <gi>licence</gi>. In our
+                            project, this part is always the same.</p>
+                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                            <publicationStmt>
+                                <publisher>Projet ANTONOMAZ / Sorbonne Université</publisher>
+                                <ref target="https://github.com/e-ditiones"/>
+                                <!-- github à faire -->
+                                <availability status="restricted" n="cc-by">
+                                    <licence target="https://creativecommons.org/licenses/by/4.0"/>
+                                </availability>
+                            </publicationStmt>
+                        </egXML>
+                    </div>
+                    <div>
+                        <head>The <gi>sourceDesc</gi></head>
+                        <p>This part contains two main elements: <gi>monogr</gi> and
+                                <gi>imprint</gi>. The first one contains the elements <gi>title</gi>
+                            and <gi>author</gi>. The second one contains the elements
+                                <gi>pubPlace</gi>,<gi>publisher</gi>, <gi>date</gi> and
+                                <gi>note</gi></p>
+                        <p>Specifications about the element <gi>author</gi>, if the author is not
+                            certain, add:</p>
+                        <list>
+                            <item>@type:"auteur_présumé"</item>
+                            <item>@source: "Name of the attributor (a person, an
+                                institution...)"</item>
+                        </list>
+                        <p>About the element <gi>date</gi>: if someone dated the document -the date
+                            was not inscribed on the original document - give the identity of the
+                            attributor like this: @source:"Name of the attributor"</p>
+                        <p>About the element <gi>note</gi>: there is three @type: <list>
+                                <item>"nombre_pages": number or pages of the document as indicated
+                                    in Bibliographie des Mazarinades</item>
+                                <item>"identifier_Moreau": each document has an unique Moreau
+                                    number. If we say "3600", it means it's the 3600th document in
+                                    the Bibliographie.</item>
+                                <item>"BM_identifier" : identifier from mazarinum (the Bibliothèque
+                                    Mazarine's digital library)</item>
+                            </list></p>
+                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                            <sourceDesc>
+                                <bibl>
+                                    <monogr>
+                                        <title>Visions astrologiques de Michel Nostradamus sur
+                                            toutes les affaires de ce temps, et la confusion de
+                                            Mazarin. En vers burlesques</title>
+                                        <author ref="isni:0000000083395220">Nostradamus</author>
+                                    </monogr>
+                                    <imprint>
+                                        <pubPlace ref="geonames:2988507">Paris</pubPlace>
+                                        <publisher ref="isni:0000000011194155">
+                                            <forename>Veuve d'André</forename>
+                                            <surname>Musnier</surname>
+                                        </publisher>
+                                        <date when="1649-01">Janvier 1649</date>
+                                        <note type="nombre_pages">11</note>
+                                    </imprint>
+                                    <note type="identifier_Moreau">1073</note>
+                                    <note type="BM_identifier"/>
+                                </bibl>
+                            </sourceDesc>
+                        </egXML>
+                    </div>
+                    <div>
+                        <head>The <gi>msDesc</gi></head>
+                        <p>Even if the Mazarinades are, for the most part, printed documents, the
+                                <gi>msDesc</gi> was useful to us. To ensure a good encoding,
+                            severals elements are recommanded : <list>
+                                <item><p><gi>msIdentifier</gi> which contains information used to
+                                        properly identify the manuscript</p><egXML
+                                        xmlns="http://www.tei-c.org/ns/Examples">
+                                        <msIdentifier>
+                                            <settlement>Paris</settlement>
+                                            <institution>Bibliothèque Nationale de
+                                                France</institution>
+                                            <repository>Réserve des livres rares</repository>
+                                            <idno type="cote">YE-4819</idno>
+                                        </msIdentifier>
+                                    </egXML>
+                                </item>
+                                <item><gi>msContent</gi> which contains information about the
+                                    intellectual content of the manuscript</item>
+                                <item><p><gi>physDesc</gi>which contains information about the
+                                        physical description of the document such as the
+                                            <gi>objectDesc</gi> or the <gi>bindingDesc</gi>.</p>
+                                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                                        <msContents>
+                                            <p source="notes_BM"> En vers, les "visions" sont en
+                                                quatrains d'alexandrins, "La confusion de Mazarin",
+                                                en dizains d'octosyllabes. Texte paru en janvier
+                                                1649 d’après Hubert Carrier (Bibliothèque Mazarine,
+                                                Ms 4682-2, f. 406v). </p>
+                                            <p source="notes_Gallica"/>
+                                        </msContents>
+                                        <physDesc>
+                                            <objectDesc>
+                                                <supportDesc>
+                                                  <collation>
+                                                  <dimensions>
+                                                  <dim type="format">in-4</dim>
+                                                  </dimensions>
+                                                  </collation>
+                                                </supportDesc>
+                                            </objectDesc>
+                                        </physDesc>
+                                    </egXML>
+                                </item>
+                                <item><gi>history</gi> which contains information about the history
+                                    of the manuscript. We used it to report the presence or absence
+                                    of a stamp with a boolean (true or false).</item>
+                                <item><p><gi>additional</gi>which contains more information about
+                                        the document, such as <gi>surrogates</gi> or bibliographical
+                                        information (<gi>bibl</gi>). It was used to point towards
+                                        digital editions from gallica and mazarinum. </p><egXML
+                                        xmlns="http://www.tei-c.org/ns/Examples">
+                                        <history>
+                                            <provenance>
+                                                <stamp>False</stamp>
+                                            </provenance>
+                                        </history>
+                                        <additional>
+                                            <surrogates>
+                                                <bibl type="gallica">
+                                                  <ref
+                                                  target="https://gallica.bnf.fr/ark:/12148/bpt6k118539m"
+                                                  />
+                                                </bibl>
+                                                <bibl type="Manifest_IIIF">
+                                                  <ref
+                                                  target="https://gallica.bnf.fr/iiif/ark:/12148/bpt6k118539m/manifest.json"
+                                                  />
+                                                </bibl>
+                                            </surrogates>
+                                        </additional>
+                                    </egXML>
+                                </item>
+                            </list></p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <head>The <gi>encodingDesc</gi></head>
+                <p>This part contains some general informations about the project and the documents'
+                    encoding. It uses the following elements: <list>
+                        <item><gi>projectDesc</gi></item>
+                        <item><gi>editorialDecl</gi></item>
+                    </list></p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <encodingDesc>
+                        <projectDesc>
+                            <p> Cette édition a été réalisée dans le cadre du projet ANTONOMAZ. Son
+                                objectif principal est de fournir un texte destiné à l'exploration
+                                avec des outils électroniques. De ce fait, ce n'est ni une édition
+                                philologique, ni une édition pédagogique ou de redécouverte d'un
+                                auteur oublié. </p>
+                            <p> Les textes encodés dans le cadre du projet ANTONOMAZ sont issus de
+                                numérisations de bibliothèques numériques publiques et de Google
+                                livres. </p>
+                            <p> L'édition présentée ici est issue d'un processus d'OCRisation
+                                réalisé avec Kraken. </p>
+                        </projectDesc>
+                        <editorialDecl>
+                            <correction>
+                                <p> Les erreurs typographiques ont été signalées à l'aide des
+                                    éléments sic et corr </p>
+                            </correction>
+                            <normalization>
+                                <p> La transcription est la plus diplomatique possible.</p>
+                                <p>Les graphie et orthographe d'origine ont été respectées, y
+                                    compris lettres non dissimilées : ij/uv,'s' longs, et
+                                    abréviations. </p>
+                            </normalization>
+                            <hyphenation>
+                                <p> Les vers ont été représentés à l'aide des éléments l et lb. Les
+                                    strophes ont été représentées à l'aide de l'élément lg. </p>
+                                <p> Les textes en prose ont été redécoupés à l'aide de l'élément lb.
+                                    Les paragraphes ont été signalés à l'aide de l'élément p. </p>
+                                <p> La division des mots en fin de ligne respecte le fac-similé
+                                    original. Elle est signalée par l'attribut "break" et "¬". </p>
+                            </hyphenation>
+                            <punctuation>
+                                <p> La ponctuation d'origine a été respectée, y compris quand elle
+                                    paraissait fautive, alors signalée à l'aide des éléments sic et
+                                    corr </p>
+                            </punctuation>
+                        </editorialDecl>
+                    </encodingDesc>
+                </egXML>
+            </div>
+            <div>
+                <head>The <gi>profileDesc</gi></head>
+                <p>This part describes non bibliographical informations.</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <profileDesc>
+                        <langUsage>
+                            <language ident="fr">Document en français</language>
+                        </langUsage>
+                        <abstract>
+                            <p>Mazarinade burlesque</p>
+                        </abstract>
+                        <textClass>
+                            <keywords>
+                                <term type="forme">vers</term>
+                                <term type="genre">poésie</term>
+                                <term type="registre">burlesque</term>
+                                <term type="registre">satirique</term>
+                                <term type="sujet"/>
+                            </keywords>
+                        </textClass>
+                    </profileDesc>
+                </egXML>
+            </div>
+        </div>
+        <div>
+            <div>
+                <head>Text encoding</head>
+                <p>First, at all levels our edition must contain a <gi>text</gi> element with the
+                    following namespace : @xmlns="http://www.tei-c.org/ns/1.0". It checks the
+                    validation of the TEI schema.</p>
+                <p>Then, we use the element <gi>body</gi> with: <list>
+                        <item><gi>head</gi>: contains the elements <gi>pb</gi> for page beginning
+                            with a link pointing towards the right page on the fac-simile,
+                                <gi>title</gi> for the title on the front page, <gi>ref</gi> which
+                            contains a link to the printer mark and <gi>note</gi> for edition's
+                            informations.</item>
+                        <item><gi>pb</gi> for page beginning.</item>
+                        <item><gi>fw</gi> : has three <att>types</att> : "pageNum" for page numbers,
+                            "catch" for catches", "sig" for signatures.</item>
+                        <item><gi>p</gi> for prose parts.</item>
+                        <item><gi>l</gi> for versified parts</item>
+                        <item><gi>lg</gi> for stanzas</item>
+                        <item><gi>lb</gi> for line beginning. It can be employed both for poetry and
+                            text inside a <gi>p</gi>. It can get two attributes : <att>rend</att>
+                            and <att>break</att> used for cut words. </item>
+                        <item><gi>hi</gi> is used for any graphic distinction</item>
+                        <item><gi>sic</gi> reports an error in the original text.</item>
+                        <item><gi>corr</gi> indicates a correction made by the editor of the encoded
+                            text.</item>
+                        <item><gi>foreign</gi> is used to indicate a word or a word group in a
+                            language different from the original one. It gets one attribute
+                                <att>xml:lang</att></item>
+                        <item><gi>note</gi> to encode any note in the original text. Its location on
+                            the page should be indicated with a <att>place</att>. </item>
+                    </list></p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <text>
+                        <body>
+                            <head>
+                                <pb n="1"
+                                    facs="https://gallica.bnf.fr/ark:/12148/bpt6k118539m/f1.item.r=bpt6k118539m"/>
+                                <pb n="2"
+                                    facs="https://gallica.bnf.fr/ark:/12148/bpt6k118539m/f2.item.r=bpt6k118539m"/>
+                                <title type="main"> VISIONS
+                                    <lb/> ASTROLOGIQVES
+                                    <lb/> DE MICHEL
+                                    <lb/> NOSTRADAMVS
+                                    <lb/> ſur toutes les affaires de ce Temps.
+                                    <lb/> ET
+                                    <lb/> LA CONFVSION
+                                    <lb/> DE MAZARIN
+                                    <lb/> En Vers Burleſques. </title>
+                                <ref target="#GALL_bpt6k118539m_1.png">[Marque
+                                    imprimeur-libraire]</ref>
+                                <note type="edition"> A PARIS,
+                                    <lb/> Chez la veſue A. MVSNIER, au mont ſainct Hilaire,
+                                    <lb/> en la Court d'Albret.
+                                    <lb/> M. DC. XLIX.
+                                    <lb/>
+                                    <hi rend="it">AVEC PERMISSION.</hi>
+                                </note>
+                            </head>
+                            <p>
+                                <pb n="3"
+                                    facs="https://gallica.bnf.fr/ark:/12148/bpt6k118539m/f3.item.r=bpt6k118539m"/>
+                                <title type="secondary"> LES VISIONS <l>
+                                        <lb/> DE MICHEL </l>
+                                    <l>
+                                        <lb/> NOSTRADAMVS </l>
+                                    <l>
+                                        <lb/> ſur les affaires du temps preſent. </l>
+                                </title>
+                            </p>
+                            <lg>
+                                <l>
+                                    <lb/>
+                                    <ref target="#GALL_bpt6k118539m_2.png">[Lettrine]</ref> Vrieux
+                                    qui voulez voir les choſes eſtranges </l>
+                                <l>
+                                    <lb/> Qui me ſont aparus dedans mes viſions, </l>
+                                <l>
+                                    <lb/> Si vous n'entendez bien le langage des Anges, </l>
+                                <l>
+                                    <lb/> Vous trouuerez icy bien des deciſions. </l>
+                            </lg>
+                            <lg>
+                                <l>
+                                    <lb/> Le Ciel ce preparant à receuoir les ombres, </l>
+                                <l>
+                                    <lb/> Et le iour declinant faiſant place à la nuict, </l>
+                                <l>
+                                    <lb/> Ce para de ces feux accouſtumez en nombre, </l>
+                                <l>
+                                    <lb/> Ou parmy s’aparut ce qu’icy deſſous ſuit. </l>
+                            </lg>
+                            <lg>
+                                <l>
+                                    <lb/> Ie vis premierement vne grande iſle verte </l>
+                                <l>
+                                    <lb/> Belle &amp; fertille autant, qu’on puiſſe ſouhaitter </l>
+                                <l>
+                                    <lb/> Qui d’vn lys ſeulement ſembloit eſtre couuerte </l>
+                                <l>
+                                    <lb/> Que pluſieurs animaux vouloient venir gaſter. </l>
+                            </lg>
+                            <lg>
+                                <l>
+                                    <lb/> Entre iceux animaux eſtoit vne grenouille </l>
+                                <l>
+                                    <lb/> Que ie vis accoupler auec vn gras crapaud, </l>
+                                <l>
+                                    <lb/> Qui ſembloient empeſcher que l'iſle l’on ne ſouille: </l>
+                                <l>
+                                    <lb/> Mais ie vis bien apres qu’il eſtoient du trouppeau. </l>
+                            </lg>
+                            <pb n="4"
+                                facs="https://gallica.bnf.fr/ark:/12148/bpt6k118539m/f4.item.r=bpt6k118539m"/>
+                            <lg>
+                                <fw place="top-center" type="pageNum">4</fw>
+                                <l>
+                                    <lb/> le les vis approcher de pluſieurs belles ruſches </l>
+                                <l>
+                                    <lb/> Leſquelles enuenimerent &amp; mangerent le miel, </l>
+                            </lg>
+                        </body>
+                    </text>
+                </egXML>
+            </div>
+        </div>
+    </div>
+</div>
