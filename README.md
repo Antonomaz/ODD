@@ -10,19 +10,19 @@ Il se trouve dans le dossier [Schéma](https://github.com/Antonomaz/ODD/blob/mas
 Pour s'assurer de ladite conformité de chaque fichier XML encodé, il convient d'y lier le schéma RNG produit :
 * soit en téléchargeant le schéma localement, on ajoutera alors ces deux lignes en tête de chaque fichier :
 ```xml
-<?xml-model href="/chemin/vers/lODD.rng"
+<?xml-model href="/chemin/vers/ODD_Antonomaz.rng"
             type="application/xml"
             schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="/chemin/vers/lODD.rng"
+<?xml-model href="/chemin/vers/ODD_Antonomaz.rng"
             type="application/xml"
             schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ``` 
 * soit en faisant directement référence au schéma accessible en ligne (une connexion internet est alors nécessaire pour valider le fichier), en précisant :
 ```xml
-<?xml-model href="https://raw.githubusercontent.com/Antonomaz/ODD/master/Schema/ODD-Antonomaz.rng"
+<?xml-model href="https://raw.githubusercontent.com/Antonomaz/ODD/master/Schema/ODD_Antonomaz.rng"
             type="application/xml"
             schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="https://raw.githubusercontent.com/Antonomaz/ODD/master/Schema/ODD-Antonomaz.rng"
+<?xml-model href="https://raw.githubusercontent.com/Antonomaz/ODD/master/Schema/ODD_Antonomaz.rng"
             type="application/xml"
             schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
