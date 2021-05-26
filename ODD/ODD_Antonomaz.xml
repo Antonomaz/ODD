@@ -44,13 +44,13 @@
                         teiHeader textClass titleStmt"/>
                     <moduleRef key="textstructure" include="body TEI text"/>
                     <moduleRef key="core"
-                        include="author bibl biblStruct corr date editor head hi imprint l lb lg measure monogr 
-                        name note p pb publisher pubPlace ref resp respStmt sic term title"/>
+                        include="author bibl biblStruct cb corr date editor foreign head hi imprint l lb lg measure monogr 
+                        name note p pb publisher pubPlace ref resp respStmt sic term title unclear"/>
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
                     <moduleRef key="transcr" include="fw"/>
                     <moduleRef key="namesdates"
-                        include="affiliation orgName persName roleName settlement"/>
+                        include="affiliation forename orgName persName roleName settlement surname"/>
                     <!-- Règles d'encodage à appliquer au corpus -->
                     <elementSpec ident="TEI" mode="change">
                         <constraintSpec ident="xmlid" scheme="schematron">
@@ -91,7 +91,8 @@
                         <constraintSpec ident="titleType" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:titleStmt/tei:title">
-                                    <sch:assert test="@type" role="error">Ajouter un attribut @type (valeur 'main' ou 'sub')</sch:assert>
+                                    <sch:assert test="@type" role="error">Ajouter un attribut @type (valeur 'main' ou 'sub')
+                                    </sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -119,11 +120,6 @@
                             <elementRef key="persName" minOccurs="1" maxOccurs="unbounded"/>
                         </content>
                     </elementSpec>
-                    <elementSpec ident="persName" mode="change">
-                        <attList>
-                            <attDef ident="role" mode="change" usage="req"/>
-                        </attList>
-                    </elementSpec>
                     <!-- publicationStmt -->
                     <elementSpec ident="publicationStmt" mode="change">
                         <content>
@@ -135,7 +131,7 @@
                     <elementSpec ident="date" mode="change">
                         <attList>
                             <attDef ident="type" mode="change" usage="rec"/>
-                            <attDef ident="when" mode="change" usage="req"/>
+                            <attDef ident="when" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="availability" mode="change">
@@ -160,13 +156,14 @@
                         <content>
                             <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="editor" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="title" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="pubPlace" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="extent" minOccurs="1" maxOccurs="1"/>
                             <elementRef key="note" minOccurs="1" maxOccurs="unbounded"/>
-                            <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="ref" minOccurs="0"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="author" mode="change">
@@ -177,7 +174,7 @@
                             <constraint>
                                 <sch:rule
                                     context="tei:author[@ref]">
-                                    <sch:assert test="../starts-with(.,'isni:')"
+                                    <sch:assert test="./@ref/starts-with(.,'isni:')"
                                         role="error">Ajouter un identifiant isni.</sch:assert>
                                 </sch:rule>
                             </constraint>
@@ -191,7 +188,7 @@
                             <constraint>
                                 <sch:rule
                                     context="tei:publisher[@ref]">
-                                    <sch:assert test="../starts-with(.,'isni:')"
+                                    <sch:assert test="./@ref/starts-with(.,'isni:')"
                                         role="error">Ajouter un identifiant isni.</sch:assert>
                                 </sch:rule>
                             </constraint>
@@ -205,7 +202,7 @@
                             <constraint>
                                 <sch:rule
                                     context="tei:pubPlace[@ref]">
-                                    <sch:assert test="../starts-with(.,'geonames:')"
+                                    <sch:assert test="./@ref/starts-with(.,'geonames:')"
                                         role="error">Ajouter un identifiant geonames.</sch:assert>
                                 </sch:rule>
                             </constraint>
@@ -230,6 +227,7 @@
                                     <valItem ident="BM_identifier"/>
                                     <valItem ident="format"/>
                                     <valItem ident="edition"/>
+                                    <valItem ident="marginal"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -311,7 +309,7 @@
                     <elementSpec ident="pb" mode="change">
                         <attList>
                             <attDef ident="n" mode="change" usage="req"/>
-                            <attDef ident="facs" mode="change" usage="req"/>
+                            <attDef ident="facs" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="ref" mode="change">
@@ -334,7 +332,7 @@
                                     <valItem ident="bot-center"/>
                                 </valList>
                             </attDef>
-                            <attDef ident="type" mode="change" usage="req">
+                            <attDef ident="type" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="pageNum"/>
                                     <valItem ident="catch"/>
