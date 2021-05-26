@@ -7,76 +7,91 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title type="short">ODD ANTONOMAZ</title>
-                <title>ODD by Example customization for ANTONOMAZ project</title>
+                <title>ODD ANTONOMAZ</title>
+                <author>
+                    <name>Camille Roblin</name>
+                </author>
+                <author>
+                    <name>Alexandre Bartz</name>
+                    <idno type="ORCID" n="0000-0003-0850-8266"/>
+                </author>
             </titleStmt>
             <publicationStmt>
-                <p>Work in progress</p>
+                <publisher>Projet ANTONOMAZ / Sorbonne Université</publisher>
+                <availability status="restricted" n="cc-by">
+                    <licence target="https://creativecommons.org/licenses/by/4.0"/>
+                </availability>
             </publicationStmt>
             <sourceDesc>
-                <p>Derived from <ref
-                        target="https://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml"/>
-                    base odd</p>
+                <p>Créé en <date when="2021-04">avril 2021</date> par <name>Camille
+                    Roblin</name></p>
             </sourceDesc>
         </fileDesc>
+        <revisionDesc>
+            <change when="2021-05-25" who="orcid:0000-0003-0850-8266">Reprise du travail de
+                    <name>Camille Roblin</name>, ajout de contraintes schematron.</change>
+        </revisionDesc>
     </teiHeader>
     <text>
         <body>
             <xi:include href="../Documentation/documentation.xml"/>
             <div type="schemas">
-                <schemaSpec ident="ANTONOMAZ_ed" start="TEI">
+                <schemaSpec ident="ANTONOMAZ" start="TEI">
                     <moduleRef key="tei"/>
                     <moduleRef key="header"
-                        include="teiHeader fileDesc titleStmt respStmt sourceDesc publicationStmt availability licence  encodingDesc profileDesc"/>
+                        include="abstract availability editorialDecl encodingDesc extent fileDesc idno 
+                        keywords language langUsage licence profileDesc projectDesc publicationStmt sourceDesc 
+                        teiHeader textClass titleStmt"/>
+                    <moduleRef key="textstructure" include="body TEI text"/>
                     <moduleRef key="core"
-                        include="persName affiliation roleName orgName editor resp date biblStruct monogr imprint bibl p title author pubPlace publisher note head date name ref"/>
-                    <moduleRef key="textstructure" include="text body"/>
-                    <moduleRef key="core" include="head p lb l lg note hi corr sic"/>
+                        include="author bibl biblStruct corr date editor head hi imprint l lb lg measure monogr 
+                        name note p pb publisher pubPlace ref resp respStmt sic term title"/>
+                    <moduleRef key="msdescription"
+                        include="history institution msDesc msIdentifier provenance repository stamp"/>
                     <moduleRef key="transcr" include="fw"/>
-                    <!-- Rules for the header -->
-                    <elementSpec ident="teiHeader" mode="change">
+                    <moduleRef key="namesdates"
+                        include="affiliation orgName persName roleName settlement"/>
+                    <!-- Règles d'encodage à appliquer au corpus -->
+                    <elementSpec ident="TEI" mode="change">
                         <constraintSpec ident="xmlid" scheme="schematron">
                             <constraint>
-                                <!-- À reprendre une fois qu'on aura défini un schéma définitif de nommage des fichiers -->
-                                <sch:rule context="tei:teiHeader">
+                                <sch:rule context="tei:TEI">
                                     <sch:let name="fileName"
                                         value="tokenize(document-uri(/), '/')[last()]"/>
                                     <sch:assert
                                         test="string(@xml:id) = substring-before($fileName, '.xml')"
-                                        role="error"> The xml:id of the TEI element should be equal
-                                        to the name of the file, without the file extension.
-                                        Currently the value of xml:id is "<sch:value-of
-                                            select="@xml:id"/>" whilst the file name is
-                                            "<sch:value-of select="$fileName"/>" </sch:assert>
+                                        role="error">L'identifiant du document et le nom du fichier
+                                        doivent être les mêmes. Actuellement @xml:id est
+                                            "<sch:value-of select="@xml:id"/>" alors que le nom du
+                                        fichier est "<sch:value-of select="$fileName"/>"
+                                    </sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <attList>
-                            <attDef ident="xml:id" mode="change" usage="rec"/>
+                            <attDef ident="xml:id" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
-                    <!-- fileDesc-->
+                    <!-- Règles concernant le header -->
                     <elementSpec ident="fileDesc" mode="change">
                         <content>
                             <elementRef key="titleStmt"/>
-                            <elementRef key="respStmt"/>
                             <elementRef key="publicationStmt"/>
                             <elementRef key="sourceDesc"/>
                         </content>
                     </elementSpec>
-                    <!-- Rules for the text's part -->
                     <!-- titleStmt -->
                     <elementSpec ident="titleStmt" mode="change">
                         <content>
                             <elementRef key="title" minOccurs="2" maxOccurs="2"/>
+                            <elementRef key="respStmt"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="title" mode="change">
                         <constraintSpec ident="titleType" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:titleStmt/tei:title">
-                                    <sch:assert test="@type" role="error">Please add a @type
-                                        attribute (value 'main' or 'sub')</sch:assert>
+                                    <sch:assert test="@type" role="error">Ajouter un attribut @type (valeur 'main' ou 'sub')</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -85,13 +100,12 @@
                                 <sch:rule
                                     context="tei:titleStmt/tei:title/@type[contains(., 'sub')]">
                                     <sch:assert test="../contains(.,'ANTONOMAZ édition')"
-                                        role="error">The content of the element "title" @type='sub'
-                                        must be "ANTONOMAZ édition"</sch:assert>
+                                        role="error">Le texte doit être "ANTONOMAZ édition"</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <attList>
-                            <attDef ident="type" mode="change" usage="req">
+                            <attDef ident="type" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="main"/>
                                     <valItem ident="sub"/>
@@ -99,11 +113,10 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    <!--respStmt-->
                     <elementSpec ident="respStmt" mode="change">
                         <content>
                             <elementRef key="resp"/>
-                            <elementRef key="persName"/>
+                            <elementRef key="persName" minOccurs="1" maxOccurs="unbounded"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="persName" mode="change">
@@ -111,16 +124,17 @@
                             <attDef ident="role" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
+                    <!-- publicationStmt -->
                     <elementSpec ident="publicationStmt" mode="change">
                         <content>
-                            <elementRef key="publisher"/>
-                            <elementRef key="date"/>
+                            <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="availability"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="date" mode="change">
                         <attList>
-                            <attDef ident="type" mode="change" usage="req"/>
+                            <attDef ident="type" mode="change" usage="rec"/>
                             <attDef ident="when" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
@@ -132,57 +146,90 @@
                     </elementSpec>
                     <elementSpec ident="licence" mode="change">
                         <attList>
-                            <attDef ident="target" mode="change" usage="rec"/>
+                            <attDef ident="target" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
-                    <!-- sourceDesc-->
+                    <!-- sourceDesc -->
                     <elementSpec ident="sourceDesc" mode="change">
                         <content>
-                            <elementRef key="biblStruct"/>
+                            <elementRef key="bibl"/>
                             <elementRef key="msDesc"/>
                         </content>
                     </elementSpec>
-                    <elementSpec ident="biblStruct" mode="change">
+                    <elementSpec ident="bibl" mode="change">
                         <content>
-                            <elementRef key="monogr"/>
-                            <elementRef key="imprint"/>
-                            <elementRef key="note"/>
-                        </content>
-                    </elementSpec>
-                    <elementSpec ident="monogr" mode="change">
-                        <content>
+                            <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
-                            <elementRef key="title"/>
-                        </content>
-                    </elementSpec>
-                    <elementSpec ident="title" mode="change">
-                        <attList>
-                            <attDef ident="type" mode="replace" usage="req">
-                                <valList mode="add" type="closed">
-                                    <valItem ident="main"/>
-                                    <valItem ident="sub"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="imprint" mode="change">
-                        <content>
+                            <elementRef key="title" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="pubPlace" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
-                            <elementRef key="date"/>
+                            <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="extent" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="note" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                         </content>
                     </elementSpec>
-                    <elementSpec ident="date" mode="change">
+                    <elementSpec ident="author" mode="change">
                         <attList>
-                            <attDef ident="when" mode="change" usage="req"> </attDef>
+                            <attDef ident="ref" mode="change" usage="rec"/>
+                        </attList>
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule
+                                    context="tei:author[@ref]">
+                                    <sch:assert test="../starts-with(.,'isni:')"
+                                        role="error">Ajouter un identifiant isni.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    <elementSpec ident="publisher" mode="change">
+                        <attList>
+                            <attDef ident="ref" mode="change" usage="rec"/>
+                        </attList>
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule
+                                    context="tei:publisher[@ref]">
+                                    <sch:assert test="../starts-with(.,'isni:')"
+                                        role="error">Ajouter un identifiant isni.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    <elementSpec ident="pubPlace" mode="change">
+                        <attList>
+                            <attDef ident="ref" mode="change" usage="rec"/>
+                        </attList>
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule
+                                    context="tei:pubPlace[@ref]">
+                                    <sch:assert test="../starts-with(.,'geonames:')"
+                                        role="error">Ajouter un identifiant geonames.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    <elementSpec ident="measure" mode="change">
+                        <attList>
+                            <attDef ident="unit" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="page"/>
+                                    <valItem ident="word"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="quantity" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="note" mode="change">
                         <attList>
                             <attDef ident="type" mode="change" usage="req">
                                 <valList mode="add" type="closed">
-                                    <valItem ident="identifier_Moreau"/>
+                                    <valItem ident="Moreau_identifier"/>
                                     <valItem ident="BM_identifier"/>
+                                    <valItem ident="format"/>
+                                    <valItem ident="edition"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -223,17 +270,6 @@
                             <elementRef key="bibl"/>
                         </content>
                     </elementSpec>
-                    <elementSpec ident="bibl" mode="change">
-                        <attList>
-                            <attDef ident="type" mode="change" usage="req">
-                                <valList mode="add" type="closed">
-                                    <valItem ident="mazarinum"/>
-                                    <valItem ident="gallica"/>
-                                    <valItem ident="google_books"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
                     <!-- encodingDesc-->
                     <elementSpec ident="encodingDesc" mode="change">
                         <content>
@@ -256,26 +292,26 @@
                     </elementSpec>
                     <elementSpec ident="keywords" mode="change">
                         <content>
-                            <elementRef key="term"/>
+                            <elementRef key="term" maxOccurs="unbounded"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="term" mode="change">
                         <attList>
                             <attDef ident="type" mode="change" usage="req">
                                 <valList mode="add" type="closed">
-                                    <valItem ident="forme"/>
+                                    <valItem ident="form"/>
                                     <valItem ident="genre"/>
-                                    <valItem ident="registre"/>
+                                    <valItem ident="subgenre"/>
                                     <valItem ident="subject"/>
                                 </valList>
                             </attDef>
                         </attList>
                     </elementSpec>
-                    <!-- Rules for text's part -->
+                    <!-- Règles concernant le texte -->
                     <elementSpec ident="pb" mode="change">
                         <attList>
                             <attDef ident="n" mode="change" usage="req"/>
-                            <attDef ident="facs" mode="change" usage="rec"/>
+                            <attDef ident="facs" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="ref" mode="change">
@@ -305,16 +341,6 @@
                                     <valItem ident="sig"/>
                                 </valList>
                             </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="l" mode="change">
-                        <attList>
-                            <attDef ident="rend" mode="change" usage="opt"/>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="p" mode="change">
-                        <attList>
-                            <attDef ident="rend" mode="change" usage="opt"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="lb" mode="change">
