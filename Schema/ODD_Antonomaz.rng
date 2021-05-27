@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-05-26T15:24:41Z. .
+Schema generated from ODD source 2021-05-27T07:51:39Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -2016,11 +2016,8 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(language) indicates the language of the element content using a tag generated according to <a xmlns="http://www.w3.org/1999/xhtml"
                   href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.</a:documentation>
             <choice>
-               <data type="language"/>
-               <choice>
-                  <value/>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               </choice>
+               <value>la</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             </choice>
          </attribute>
          <empty/>
@@ -2299,21 +2296,21 @@ Measures]</a:documentation>
          <ref name="att.typed.attribute.subtype"/>
          <ref name="att.written.attributes"/>
          <ref name="att.anchoring.attributes"/>
-         <attribute name="type">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
-            <choice>
-               <value>Moreau_identifier</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>BM_identifier</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>format</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>edition</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>marginal</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-            </choice>
-         </attribute>
+         <optional>
+            <attribute name="type">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
+               <choice>
+                  <value>Moreau_identifier</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>BM_identifier</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>format</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                  <value>edition</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               </choice>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -2600,8 +2597,8 @@ Elements]</a:documentation>
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:titleStmt/tei:title">
-                                    <sch:assert test="@type" role="error">Ajouter un attribut @type (valeur 'main' ou 'sub')
-                                    </sch:assert>
+                                    <sch:assert test="@type" role="error">Ajouter un attribut @type
+                                        (valeur 'main' ou 'sub') </sch:assert>
                                 </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -2611,7 +2608,8 @@ Elements]</a:documentation>
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:titleStmt/tei:title/@type[contains(., 'sub')]">
-                                    <sch:assert test="../contains(.,'ANTONOMAZ édition')" role="error">Le texte doit être "ANTONOMAZ édition"</sch:assert>
+                                    <sch:assert test="../contains(.,'ANTONOMAZ édition')" role="error">Le texte doit être "ANTONOMAZ
+                                        édition"</sch:assert>
                                 </sch:rule>
          </pattern>
          <ref name="att.global.attributes"/>
