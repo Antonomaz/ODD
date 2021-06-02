@@ -23,8 +23,8 @@
                 </availability>
             </publicationStmt>
             <sourceDesc>
-                <p>Créé en
-                    <date when="2021-04">avril 2021</date> par <name>Camille Roblin</name></p>
+                <p>Créé en <date when="2021-04">avril 2021</date> par <name>Camille
+                    Roblin</name></p>
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
@@ -316,7 +316,7 @@
                     </elementSpec>
                     <elementSpec ident="fw" mode="change">
                         <attList>
-                            <attDef ident="place" mode="change" usage="req">
+                            <attDef ident="place" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="right"/>
                                     <valItem ident="left"/>
@@ -349,9 +349,17 @@
                             <attDef ident="rend" mode="change">
                                 <valList mode="add" type="closed">
                                     <valItem ident="¬"/>
+                                    <valItem ident="indent"/>
+                                    <valItem ident="hyphen"/>
                                 </valList>
                             </attDef>
                         </attList>
+                    </elementSpec>
+                    <elementSpec ident="choice" mode="change">
+                        <content>
+                            <elementRef key="sic"/>
+                            <elementRef key="corr"/>
+                        </content>
                     </elementSpec>
                     <elementSpec ident="foreign" mode="change">
                         <attList>
