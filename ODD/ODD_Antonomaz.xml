@@ -222,6 +222,8 @@
                             <attDef ident="type" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="Moreau_identifier"/>
+                                    <valItem ident="Labadie_identifier"/>
+                                    <valItem ident="Socard_identifier"/>
                                     <valItem ident="BM_identifier"/>
                                     <valItem ident="format"/>
                                     <valItem ident="edition"/>
@@ -347,7 +349,7 @@
                                 </valList>
                             </attDef>
                             <attDef ident="rend" mode="change">
-                                <valList mode="add" type="closed">
+                                <valList mode="add">
                                     <valItem ident="¬"/>
                                     <valItem ident="indent"/>
                                     <valItem ident="hyphen"/>
