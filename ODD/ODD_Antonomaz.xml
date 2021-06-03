@@ -23,8 +23,8 @@
                 </availability>
             </publicationStmt>
             <sourceDesc>
-                <p>Créé en <date when="2021-04">avril 2021</date> par <name>Camille
-                    Roblin</name></p>
+                <p>Créé en
+                    <date when="2021-04">avril 2021</date> par <name>Camille Roblin</name></p>
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
@@ -93,6 +93,14 @@
                                 <sch:rule context="tei:titleStmt/tei:title">
                                     <sch:assert test="@type" role="error">Ajouter un attribut @type
                                         (valeur 'main' ou 'sub') </sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="guillemet" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:titleStmt/tei:title">
+                                    <sch:assert test="not(./starts-with(., '&quot;'))" role="error">Le
+                                        titre ne peut commencer par un guillement</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
