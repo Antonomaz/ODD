@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-06-03T13:05:33Z. .
+Schema generated from ODD source 2021-06-03T13:50:43Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -2407,9 +2407,12 @@ Elements 7.2.5. Speech Contents]</a:documentation>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(rendition) indicates how the element in question was rendered or presented in the source text.</a:documentation>
                <list>
                   <oneOrMore>
-                     <data type="token">
-                        <param name="pattern">[^\p{C}\p{Z}]+</param>
-                     </data>
+                     <choice>
+                        <value>¬</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>indent</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
                   </oneOrMore>
                </list>
             </attribute>
@@ -2566,18 +2569,6 @@ Elements]</a:documentation>
                                     <sch:assert test="./@ref/starts-with(.,'isni:')" role="error">Ajouter un identifiant isni.</sch:assert>
                                 </sch:rule>
          </pattern>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-author-good_ref-constraint-rule-10">
-            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:xi="http://www.w3.org/2001/XInclude"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:author/tei:persName">
-                                    <sch:assert test="./tei:persName[@ref]" role="error">L'attribut
-                                        @ref doit être sur l'élément publisher et non
-                                        persName.</sch:assert>
-                                </sch:rule>
-         </pattern>
          <ref name="att.global.attributes"/>
          <ref name="att.naming.attribute.role"/>
          <ref name="att.naming.attribute.nymRef"/>
@@ -2633,7 +2624,7 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(title) contains a title for any kind of work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement]</a:documentation>
          <ref name="macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-title-titleType-constraint-rule-11">
+                  id="ANTONOMAZ-title-titleType-constraint-rule-10">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2644,7 +2635,7 @@ Elements]</a:documentation>
                                 </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-title-guillemet-constraint-rule-12">
+                  id="ANTONOMAZ-title-guillemet-constraint-rule-11">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2654,7 +2645,7 @@ Elements]</a:documentation>
                                 </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-title-editionType-constraint-rule-13">
+                  id="ANTONOMAZ-title-editionType-constraint-rule-12">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2742,25 +2733,13 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publisher) provides the name of the organization responsible for the publication or distribution of a bibliographic item. [3.12.2.4. Imprint, Size of a Document, and Reprint Information 2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-publisher-ref-constraint-rule-14">
+                  id="ANTONOMAZ-publisher-ref-constraint-rule-13">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@ref]">
                                     <sch:assert test="./@ref/starts-with(.,'isni:')" role="error">Ajouter un identifiant isni.</sch:assert>
-                                </sch:rule>
-         </pattern>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-publisher-good_ref-constraint-rule-15">
-            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:xi="http://www.w3.org/2001/XInclude"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:publisher/tei:persName">
-                                    <sch:assert test="./tei:persName[@ref]" role="error">L'attribut
-                                        @ref doit être sur l'élément publisher et non
-                                        persName.</sch:assert>
                                 </sch:rule>
          </pattern>
          <ref name="att.global.attributes"/>
@@ -2783,7 +2762,7 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publication place) contains the name of the place where a bibliographic item was published. [3.12.2.4. Imprint, Size of a Document, and Reprint Information]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-pubPlace-ref-constraint-rule-16">
+                  id="ANTONOMAZ-pubPlace-ref-constraint-rule-14">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2947,7 +2926,7 @@ Elements]</a:documentation>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-lg-atleast1oflggapl-constraint-assert-13">
+                  id="ANTONOMAZ-lg-atleast1oflggapl-constraint-assert-11">
             <rule context="tei:lg">
                <sch:assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -3273,7 +3252,7 @@ Elements]</a:documentation>
             </choice>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-17">
+                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-15">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"

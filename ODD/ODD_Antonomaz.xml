@@ -192,15 +192,6 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
-                        <constraintSpec ident="good_ref" scheme="schematron">
-                            <constraint>
-                                <sch:rule context="tei:author/tei:persName">
-                                    <sch:assert test="./tei:persName[@ref]" role="error">L'attribut
-                                        @ref doit être sur l'élément publisher et non
-                                        persName.</sch:assert>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
                     </elementSpec>
                     <elementSpec ident="publisher" mode="change">
                         <attList>
@@ -211,15 +202,6 @@
                                 <sch:rule context="tei:publisher[@ref]">
                                     <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
                                         >Ajouter un identifiant isni.</sch:assert>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
-                        <constraintSpec ident="good_ref" scheme="schematron">
-                            <constraint>
-                                <sch:rule context="tei:publisher/tei:persName">
-                                    <sch:assert test="./tei:persName[@ref]" role="error">L'attribut
-                                        @ref doit être sur l'élément publisher et non
-                                        persName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -380,7 +362,7 @@
                                 </valList>
                             </attDef>
                             <attDef ident="rend" mode="change">
-                                <valList mode="add">
+                                <valList mode="add" type="closed">
                                     <valItem ident="¬"/>
                                     <valItem ident="indent"/>
                                 </valList>
