@@ -32,6 +32,11 @@
                     <name>Camille Roblin</name>, ajout de contraintes schematron.</change>
         </revisionDesc>
     </teiHeader>
+    <!--
+        Changement futurs à ajouter :
+            - prévoir un @type pour date et pubPlace qui permet de différencier les informations contenues sur le document des 
+            informations ajoutées par le projet (faux lieux de publication, date plus précise trouvée, etc.)
+            -->
     <text>
         <body>
             <xi:include href="../Documentation/documentation.xml"/>
@@ -99,8 +104,8 @@
                         <constraintSpec ident="guillemet" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:titleStmt/tei:title">
-                                    <sch:assert test="not(./starts-with(., '&quot;'))" role="error">Le
-                                        titre ne peut commencer par un guillement</sch:assert>
+                                    <sch:assert test="not(./starts-with(., '&quot;'))" role="error"
+                                        >Le titre ne peut commencer par un guillement</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -187,6 +192,15 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="good_ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:author/tei:persName">
+                                    <sch:assert test="./tei:persName[@ref]" role="error">L'attribut
+                                        @ref doit être sur l'élément publisher et non
+                                        persName.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                     </elementSpec>
                     <elementSpec ident="publisher" mode="change">
                         <attList>
@@ -197,6 +211,15 @@
                                 <sch:rule context="tei:publisher[@ref]">
                                     <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
                                         >Ajouter un identifiant isni.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="good_ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher/tei:persName">
+                                    <sch:assert test="./tei:persName[@ref]" role="error">L'attribut
+                                        @ref doit être sur l'élément publisher et non
+                                        persName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -360,7 +383,6 @@
                                 <valList mode="add">
                                     <valItem ident="¬"/>
                                     <valItem ident="indent"/>
-                                    <valItem ident="hyphen"/>
                                 </valList>
                             </attDef>
                         </attList>
