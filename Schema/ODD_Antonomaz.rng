@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-06-03T13:50:43Z. .
+Schema generated from ODD source 2021-06-09T12:05:25Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -4017,7 +4017,11 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(surname) contains a family (inherited) name, as opposed to a given, baptismal, or nick name. [13.2.1. Personal Names]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <ref name="att.global.attributes"/>
-         <ref name="att.personal.attributes"/>
+         <ref name="att.personal.attribute.full"/>
+         <ref name="att.personal.attribute.sort"/>
+         <ref name="att.naming.attribute.role"/>
+         <ref name="att.naming.attribute.nymRef"/>
+         <ref name="att.canonical.attribute.key"/>
          <ref name="att.typed.attributes"/>
          <empty/>
       </element>
@@ -4027,7 +4031,11 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(forename) contains a forename, given or baptismal name. [13.2.1. Personal Names]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <ref name="att.global.attributes"/>
-         <ref name="att.personal.attributes"/>
+         <ref name="att.personal.attribute.full"/>
+         <ref name="att.personal.attribute.sort"/>
+         <ref name="att.naming.attribute.role"/>
+         <ref name="att.naming.attribute.nymRef"/>
+         <ref name="att.canonical.attribute.key"/>
          <ref name="att.typed.attributes"/>
          <empty/>
       </element>
