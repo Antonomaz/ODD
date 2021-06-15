@@ -49,7 +49,7 @@
                         teiHeader textClass titleStmt"/>
                     <moduleRef key="textstructure" include="body TEI text"/>
                     <moduleRef key="core"
-                        include="author bibl biblStruct cb choice corr date editor foreign head hi imprint l lb lg measure monogr 
+                        include="author persName bibl biblStruct cb choice corr date editor foreign head hi imprint l lb lg measure monogr 
                         name note p pb publisher pubPlace ref resp respStmt sic term title unclear"/>
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
@@ -170,6 +170,7 @@
                         <content>
                             <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="persName" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="editor" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="title" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="pubPlace" minOccurs="1" maxOccurs="unbounded"/>
@@ -187,6 +188,19 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
+                                    <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
+                                        >Ajouter un identifiant isni.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
+                    <elementSpec ident="persName" mode="change">
+                        <attList>
+                            <attDef ident="role" mode="change" usage="rec"/>
+                        </attList>
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:persName[@ref]">
                                     <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
                                         >Ajouter un identifiant isni.</sch:assert>
                                 </sch:rule>
