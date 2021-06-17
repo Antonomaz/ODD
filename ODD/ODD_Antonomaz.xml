@@ -49,7 +49,7 @@
                         teiHeader textClass titleStmt"/>
                     <moduleRef key="textstructure" include="body TEI text"/>
                     <moduleRef key="core"
-                        include="author persName bibl biblStruct cb choice corr date editor foreign head hi imprint l lb lg measure monogr 
+                        include="author bibl biblStruct cb choice corr date editor foreign head hi imprint l lb lg measure monogr 
                         name note p pb publisher pubPlace ref resp respStmt sic term title unclear"/>
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
