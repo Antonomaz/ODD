@@ -199,14 +199,6 @@
                             <attDef ident="role" mode="change" usage="rec"/>
                             <attDef ident="ref" mode="change" usage="rec"/>
                         </attList>
-                        <constraintSpec ident="ref" scheme="schematron">
-                            <constraint>
-                                <sch:rule context="tei:persName[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
-                                        >Ajouter un identifiant isni.</sch:assert>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
                     </elementSpec>
                     <elementSpec ident="publisher" mode="change">
                         <attList>
