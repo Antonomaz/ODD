@@ -314,6 +314,7 @@
                             <elementRef key="langUsage"/>
                             <elementRef key="abstract"/>
                             <elementRef key="textClass"/>
+                            <elementRef key="settingDesc" minOccurs="0" maxOccurs="1"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="textClass" mode="change">
