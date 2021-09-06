@@ -30,6 +30,9 @@
         <revisionDesc>
             <change when="2021-05-25" who="orcid:0000-0003-0850-8266">Reprise du travail de
                     <name>Camille Roblin</name>, ajout de contraintes schematron.</change>
+            <change when="2021-09-06" who="orcid:0000-0003-0850-8266">Ajout d'un
+                    <gi>settingDesc</gi> pour encoder les évènements auxquels font référence les
+                mazarinades (un <gi>setting</gi> par évènement).</change>
         </revisionDesc>
     </teiHeader>
     <!--
@@ -56,6 +59,7 @@
                     <moduleRef key="transcr" include="fw space"/>
                     <moduleRef key="namesdates"
                         include="affiliation forename orgName persName roleName settlement surname"/>
+                    <moduleRef key="corpus" include="setting settingDesc"></moduleRef>
                     <!-- Règles d'encodage à appliquer au corpus -->
                     <elementSpec ident="TEI" mode="change">
                         <constraintSpec ident="xmlid" scheme="schematron">
@@ -332,6 +336,21 @@
                                     <valItem ident="subject"/>
                                 </valList>
                             </attDef>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="settingDesc" mode="change">
+                        <content>
+                            <elementRef key="setting" minOccurs="1" maxOccurs="unbounded"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="setting" mode="change">
+                        <content>
+                            <elementRef key="p" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="date" minOccurs="1" maxOccurs="1"/>
+                        </content>
+                        <attList>
+                            <attDef ident="source" mode="change" usage="req"/>
+                            <attDef ident="xml:id" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
                     <!-- Règles concernant le texte -->
