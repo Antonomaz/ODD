@@ -142,6 +142,7 @@
                     <elementSpec ident="publicationStmt" mode="change">
                         <content>
                             <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
+                            <elementRef key="ref" minOccurs="1" maxOccurs="1"/>
                             <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="availability"/>
                         </content>
