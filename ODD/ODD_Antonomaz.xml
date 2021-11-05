@@ -373,20 +373,6 @@
                         </attList>
                     </elementSpec>
                     <!-- Règles concernant le texte -->
-                    <elementSpec ident="body" mode="change">
-                        <content>
-                            <elementRef key="p"/>
-                            <elementRef key="l"/>
-                            <elementRef key="lg"/>
-                            <elementRef key="imprimatur"/>
-                            <elementRef key="fw"/>
-                            <elementRef key="pb"/>
-                            <elementRef key="choice"/>
-                            <elementRef key="sic"/>
-                            <elementRef key="corr"/>
-                            <elementRef key="foreign"/>
-                        </content>
-                    </elementSpec>
                     <elementSpec ident="pb" mode="change">
                         <attList>
                             <attDef ident="n" mode="change" usage="req"/>

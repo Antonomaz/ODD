@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-11-05T16:02:06Z. .
+Schema generated from ODD source 2021-11-05T16:04:26Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -1259,6 +1259,21 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
    <define name="tei_model.egLike">
       <notAllowed/>
    </define>
+   <define name="tei_model.egLike_alternation">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.egLike_sequence">
+      <empty/>
+   </define>
+   <define name="tei_model.egLike_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="tei_model.egLike_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="tei_model.egLike_sequenceRepeatable">
+      <notAllowed/>
+   </define>
    <define name="tei_model.graphicLike">
       <notAllowed/>
    </define>
@@ -1396,6 +1411,21 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
    <define name="tei_model.oddDecl">
       <notAllowed/>
    </define>
+   <define name="tei_model.oddDecl_alternation">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.oddDecl_sequence">
+      <empty/>
+   </define>
+   <define name="tei_model.oddDecl_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="tei_model.oddDecl_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="tei_model.oddDecl_sequenceRepeatable">
+      <notAllowed/>
+   </define>
    <define name="tei_model.phrase.xml">
       <notAllowed/>
    </define>
@@ -1408,6 +1438,51 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_biblStruct"/>
          <ref name="tei_msDesc"/>
       </choice>
+   </define>
+   <define name="tei_model.biblLike_alternation">
+      <choice>
+         <ref name="tei_bibl"/>
+         <ref name="tei_biblStruct"/>
+         <ref name="tei_msDesc"/>
+      </choice>
+   </define>
+   <define name="tei_model.biblLike_sequence">
+      <ref name="tei_bibl"/>
+      <ref name="tei_biblStruct"/>
+      <ref name="tei_msDesc"/>
+   </define>
+   <define name="tei_model.biblLike_sequenceOptional">
+      <optional>
+         <ref name="tei_bibl"/>
+      </optional>
+      <optional>
+         <ref name="tei_biblStruct"/>
+      </optional>
+      <optional>
+         <ref name="tei_msDesc"/>
+      </optional>
+   </define>
+   <define name="tei_model.biblLike_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="tei_bibl"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_biblStruct"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="tei_msDesc"/>
+      </zeroOrMore>
+   </define>
+   <define name="tei_model.biblLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tei_bibl"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_biblStruct"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_msDesc"/>
+      </oneOrMore>
    </define>
    <define name="tei_model.headLike">
       <choice>
@@ -1440,7 +1515,37 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
    <define name="tei_model.labelLike">
       <notAllowed/>
    </define>
+   <define name="tei_model.labelLike_alternation">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.labelLike_sequence">
+      <empty/>
+   </define>
+   <define name="tei_model.labelLike_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="tei_model.labelLike_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="tei_model.labelLike_sequenceRepeatable">
+      <notAllowed/>
+   </define>
    <define name="tei_model.listLike">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.listLike_alternation">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.listLike_sequence">
+      <empty/>
+   </define>
+   <define name="tei_model.listLike_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="tei_model.listLike_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="tei_model.listLike_sequenceRepeatable">
       <notAllowed/>
    </define>
    <define name="tei_model.noteLike">
@@ -1453,12 +1558,73 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_l"/>
       </choice>
    </define>
+   <define name="tei_model.lLike_alternation">
+      <choice>
+         <ref name="tei_l"/>
+      </choice>
+   </define>
+   <define name="tei_model.lLike_sequence">
+      <ref name="tei_l"/>
+   </define>
+   <define name="tei_model.lLike_sequenceOptional">
+      <optional>
+         <ref name="tei_l"/>
+      </optional>
+   </define>
+   <define name="tei_model.lLike_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="tei_l"/>
+      </zeroOrMore>
+   </define>
+   <define name="tei_model.lLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tei_l"/>
+      </oneOrMore>
+   </define>
    <define name="tei_model.pLike">
       <choice>
          <ref name="tei_p"/>
       </choice>
    </define>
+   <define name="tei_model.pLike_alternation">
+      <choice>
+         <ref name="tei_p"/>
+      </choice>
+   </define>
+   <define name="tei_model.pLike_sequence">
+      <ref name="tei_p"/>
+   </define>
+   <define name="tei_model.pLike_sequenceOptional">
+      <optional>
+         <ref name="tei_p"/>
+      </optional>
+   </define>
+   <define name="tei_model.pLike_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="tei_p"/>
+      </zeroOrMore>
+   </define>
+   <define name="tei_model.pLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tei_p"/>
+      </oneOrMore>
+   </define>
    <define name="tei_model.stageLike">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.stageLike_alternation">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.stageLike_sequence">
+      <empty/>
+   </define>
+   <define name="tei_model.stageLike_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="tei_model.stageLike_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="tei_model.stageLike_sequenceRepeatable">
       <notAllowed/>
    </define>
    <define name="tei_model.global.edit">
@@ -1562,6 +1728,29 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       <choice>
          <ref name="tei_model.quoteLike"/>
       </choice>
+   </define>
+   <define name="tei_model.attributable_alternation">
+      <choice>
+         <ref name="tei_model.quoteLike_alternation"/>
+      </choice>
+   </define>
+   <define name="tei_model.attributable_sequence">
+      <ref name="tei_model.quoteLike_sequence"/>
+   </define>
+   <define name="tei_model.attributable_sequenceOptional">
+      <optional>
+         <ref name="tei_model.quoteLike_sequenceOptional"/>
+      </optional>
+   </define>
+   <define name="tei_model.attributable_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="tei_model.quoteLike_sequenceOptionalRepeatable"/>
+      </zeroOrMore>
+   </define>
+   <define name="tei_model.attributable_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tei_model.quoteLike_sequenceRepeatable"/>
+      </oneOrMore>
    </define>
    <define name="tei_model.divWrapper">
       <notAllowed/>
@@ -1723,6 +1912,12 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_model.attributable"/>
       </choice>
    </define>
+   <define name="tei_model.common">
+      <choice>
+         <ref name="tei_model.divPart"/>
+         <ref name="tei_model.inter"/>
+      </choice>
+   </define>
    <define name="tei_model.phrase">
       <choice>
          <ref name="tei_model.segLike"/>
@@ -1747,6 +1942,15 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_model.phrase.xml"/>
          <ref name="tei_model.pPart.data"/>
       </choice>
+   </define>
+   <define name="tei_model.divLike">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.divGenLike">
+      <notAllowed/>
+   </define>
+   <define name="tei_model.div1Like">
+      <notAllowed/>
    </define>
    <define name="tei_model.teiHeaderPart">
       <choice>
@@ -3163,26 +3367,166 @@ Elements]</a:documentation>
    <define name="tei_body">
       <element name="body">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(text body) contains the whole body of a single unitary text, excluding any front or back matter. [4. Default Text Structure]</a:documentation>
-         <ref name="tei_p"/>
-         <ref name="tei_l"/>
-         <ref name="tei_lg"/>
-         <ref name="tei_imprimatur"/>
-         <ref name="tei_fw"/>
-         <ref name="tei_pb"/>
-         <ref name="tei_choice"/>
-         <ref name="tei_sic"/>
-         <ref name="tei_corr"/>
-         <ref name="tei_foreign"/>
+         <group>
+      
+      
+            <zeroOrMore>
+               <ref name="tei_model.global"/>
+            </zeroOrMore>
+      
+      
+      
+            <optional>
+               <group>
+          
+                  <ref name="tei_model.divTop"/>
+          
+          
+                  <zeroOrMore>
+                     <choice>
+                        <ref name="tei_model.global"/>
+                        <ref name="tei_model.divTop"/>
+                     </choice>
+                  </zeroOrMore>
+          
+               </group>
+            </optional>
+      
+      
+      
+            <optional>
+               <group>
+          
+                  <ref name="tei_model.divGenLike"/>
+          
+          
+                  <zeroOrMore>
+                     <choice>
+                        <ref name="tei_model.global"/>
+                        <ref name="tei_model.divGenLike"/>
+                     </choice>
+                  </zeroOrMore>
+          
+               </group>
+            </optional>
+      
+      
+        
+            <choice>
+          
+          
+               <oneOrMore>
+                  <group>
+              
+                     <ref name="tei_model.divLike"/>
+              
+              
+                     <zeroOrMore>
+                        <choice>
+                           <ref name="tei_model.global"/>
+                           <ref name="tei_model.divGenLike"/>
+                        </choice>
+                     </zeroOrMore>
+              
+                  </group>
+               </oneOrMore>
+          
+          
+          
+               <oneOrMore>
+                  <group>
+              
+                     <ref name="tei_model.div1Like"/>
+              
+              
+                     <zeroOrMore>
+                        <choice>
+                           <ref name="tei_model.global"/>
+                           <ref name="tei_model.divGenLike"/>
+                        </choice>
+                     </zeroOrMore>
+              
+                  </group>
+               </oneOrMore>
+          
+          
+               <group>
+                  <oneOrMore>
+                     <group>
+              
+                        <ref name="tei_model.common"/>
+              
+              
+                        <zeroOrMore>
+                           <ref name="tei_model.global"/>
+                        </zeroOrMore>
+              
+                     </group>
+                  </oneOrMore>
+            
+                  <optional>
+                     <choice>
+                
+                
+                        <oneOrMore>
+                           <group>
+                    
+                              <ref name="tei_model.divLike"/>
+                    
+                    
+                              <zeroOrMore>
+                                 <choice>
+                                    <ref name="tei_model.global"/>
+                                    <ref name="tei_model.divGenLike"/>
+                                 </choice>
+                              </zeroOrMore>
+                    
+                           </group>
+                        </oneOrMore>
+                
+                
+                
+                        <oneOrMore>
+                           <group>
+                    
+                              <ref name="tei_model.div1Like"/>
+                    
+                    
+                              <zeroOrMore>
+                                 <choice>
+                                    <ref name="tei_model.global"/>
+                                    <ref name="tei_model.divGenLike"/>
+                                 </choice>
+                              </zeroOrMore>
+                    
+                           </group>
+                        </oneOrMore>
+                
+                     </choice>
+                  </optional>
+            
+               </group>
+            </choice>
+        
+      
+      
+      
+            <zeroOrMore>
+               <group>
+          
+                  <ref name="tei_model.divBottom"/>
+          
+          
+                  <zeroOrMore>
+                     <ref name="tei_model.global"/>
+                  </zeroOrMore>
+          
+               </group>
+            </zeroOrMore>
+      
+         </group>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declaring.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tei_imprimatur">
-      <element name="imprimatur">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(imprimatur) contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso. [4.6. Title Pages]</a:documentation>
-         <ref name="tei_macro.paraContent"/>
-         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>
