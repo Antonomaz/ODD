@@ -46,7 +46,7 @@
         <body>
             <xi:include href="../Documentation/documentation.xml"/>
             <div type="schemas">
-                <schemaSpec ident="ANTONOMAZ" start="TEI">
+                <schemaSpec ident="ANTONOMAZ" start="TEI" prefix="tei_">
                     <moduleRef key="tei"/>
                     <moduleRef key="header"
                         include="abstract availability editorialDecl encodingDesc extent fileDesc idno 
@@ -374,7 +374,7 @@
                     </elementSpec>
                     <!-- Règles concernant le texte -->
                     <elementSpec ident="imprimatur" mode="change">
-                        <classes>
+                        <classes mode="change">
                             <memberOf key="model.pLike"/>
                         </classes>
                     </elementSpec>
