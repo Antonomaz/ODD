@@ -372,7 +372,7 @@
                             <attDef ident="xml:id" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
-                    <!-- Règles concernant le texte -->
+                    <!-- Règles concernant le texte 
                     <elementSpec ident="body" mode="change">
                         <content>
                             <elementRef key="p"/>
@@ -386,14 +386,13 @@
                             <elementRef key="corr"/>
                             <elementRef key="foreign"/>
                         </content>
-                    </elementSpec>
+                    </elementSpec>-->
                     <elementSpec ident="pb" mode="change">
                         <attList>
                             <attDef ident="n" mode="change" usage="req"/>
                             <attDef ident="facs" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
-                    <elementSpec ident="imprimatur" mode="add"></elementSpec>
                     <elementSpec ident="fw" mode="change">
                         <attList>
                             <attDef ident="place" mode="change" usage="rec">
