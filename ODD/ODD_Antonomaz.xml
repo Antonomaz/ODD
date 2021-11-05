@@ -373,11 +373,6 @@
                         </attList>
                     </elementSpec>
                     <!-- Règles concernant le texte -->
-                    <elementSpec ident="imprimatur" mode="change">
-                        <classes mode="change">
-                            <memberOf key="model.pLike"/>
-                        </classes>
-                    </elementSpec>
                     <elementSpec ident="body" mode="change">
                         <content>
                             <elementRef key="p"/>
