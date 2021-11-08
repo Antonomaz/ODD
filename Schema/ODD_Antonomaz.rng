@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-11-05T16:04:26Z. .
+Schema generated from ODD source 2021-11-08T08:53:56Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -1999,7 +1999,30 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
    <define name="tei_p">
       <element name="p">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
-         <ref name="tei_macro.paraContent"/>
+         <group>
+            <zeroOrMore>
+               <ref name="tei_lb"/>
+            </zeroOrMore>
+            <text/>
+            <zeroOrMore>
+               <ref name="tei_imprimatur"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_pb"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_choice"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_corr"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_sic"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_fw"/>
+            </zeroOrMore>
+         </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="ANTONOMAZ-p-abstractModel-structure-p-constraint-report-5">
             <rule context="tei:p">
@@ -2050,7 +2073,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47</a>.</a:documentation>
             <choice>
                <value>la</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Latin</a:documentation>
             </choice>
          </attribute>
          <empty/>
@@ -2225,7 +2248,18 @@ Measures]</a:documentation>
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
-         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.attribute.xmlbase"/>
+         <ref name="tei_att.global.attribute.xmlspace"/>
+         <ref name="tei_att.global.rendition.attribute.rend"/>
+         <ref name="tei_att.global.rendition.attribute.style"/>
+         <ref name="tei_att.global.rendition.attribute.rendition"/>
+         <ref name="tei_att.global.facs.attribute.facs"/>
+         <ref name="tei_att.global.change.attribute.change"/>
+         <ref name="tei_att.global.responsibility.attribute.cert"/>
+         <ref name="tei_att.global.responsibility.attribute.resp"/>
          <ref name="tei_att.canonical.attributes"/>
          <ref name="tei_att.datable.attribute.calendar"/>
          <ref name="tei_att.datable.attribute.period"/>
@@ -2247,7 +2281,22 @@ Measures]</a:documentation>
          <ref name="tei_att.datable.custom.attribute.datingMethod"/>
          <ref name="tei_att.editLike.attributes"/>
          <ref name="tei_att.dimensions.attributes"/>
-         <ref name="tei_att.typed.attribute.subtype"/>
+         <ref name="tei_att.typed.attributes"/>
+         <optional>
+            <attribute name="source">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>Moreau</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>Carrier</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="when">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the value of the date or time in a standard form, e.g. yyyy-mm-dd.</a:documentation>
@@ -2261,14 +2310,6 @@ Measures]</a:documentation>
                   <data type="time"/>
                   <data type="dateTime"/>
                </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="type">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
-               <data type="token">
-                  <param name="pattern">[^\p{C}\p{Z}]+</param>
-               </data>
             </attribute>
          </optional>
          <empty/>
@@ -2870,15 +2911,30 @@ Elements]</a:documentation>
    <define name="tei_l">
       <element name="l">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(verse line) contains a single, possibly incomplete, line of verse. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.5. Speech Contents]</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tei_model.gLike"/>
-               <ref name="tei_model.phrase"/>
-               <ref name="tei_model.inter"/>
-               <ref name="tei_model.global"/>
-            </choice>
-         </zeroOrMore>
+         <group>
+            <zeroOrMore>
+               <ref name="tei_lb"/>
+            </zeroOrMore>
+            <text/>
+            <zeroOrMore>
+               <ref name="tei_imprimatur"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_pb"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_choice"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_corr"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_sic"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="tei_fw"/>
+            </zeroOrMore>
+         </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-8">
             <rule context="tei:l">
@@ -3527,6 +3583,14 @@ Elements]</a:documentation>
          </group>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declaring.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_imprimatur">
+      <element name="imprimatur">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(imprimatur) contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso. [4.6. Title Pages]</a:documentation>
+         <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>

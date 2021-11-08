@@ -151,7 +151,12 @@
                     </elementSpec>
                     <elementSpec ident="date" mode="change">
                         <attList>
-                            <attDef ident="type" mode="change" usage="rec"/>
+                            <attDef ident="source" mode="change" usage="rec">
+                                <valList mode="change" type="closed">
+                                    <valItem ident="Moreau"/>
+                                    <valItem ident="Carrier"></valItem>
+                                </valList>
+                            </attDef>
                             <attDef ident="when" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
@@ -379,6 +384,34 @@
                             <attDef ident="facs" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
+                    <elementSpec ident="p" mode="change">
+                        <content>
+                            <sequence preserveOrder="false">
+                                <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
+                                <textNode/>
+                                <elementRef key="imprimatur" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="choice" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="sic" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
+                            </sequence>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="l" mode="change">
+                        <content>
+                            <sequence preserveOrder="false">
+                                <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
+                                <textNode/>
+                                <elementRef key="imprimatur" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="choice" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="sic" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
+                            </sequence>
+                        </content>
+                    </elementSpec>
                     <elementSpec ident="fw" mode="change">
                         <attList>
                             <attDef ident="place" mode="change" usage="rec">
@@ -429,7 +462,9 @@
                         <attList>
                             <attDef ident="xml:lang" mode="change" usage="req">
                                 <valList mode="add" type="closed">
-                                    <valItem ident="la">Latin</valItem>
+                                    <valItem ident="la">
+                                        <desc>Latin</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                         </attList>
