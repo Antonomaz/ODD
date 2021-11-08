@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-11-08T08:53:56Z. .
+Schema generated from ODD source 2021-11-08T09:12:29Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -3030,7 +3030,9 @@ Elements]</a:documentation>
             <zeroOrMore>
                <ref name="tei_model.teiHeaderPart"/>
             </zeroOrMore>
-      
+            <optional>
+               <ref name="tei_revisionDesc"/>
+            </optional>
          </group>
          <ref name="tei_att.global.attributes"/>
          <empty/>
@@ -3304,6 +3306,86 @@ Elements]</a:documentation>
             <attribute name="scheme">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the controlled vocabulary within which the set of keywords concerned is defined, for example by a <code xmlns="http://www.w3.org/1999/xhtml">&lt;taxonomy&gt;</code> element, or by some other resource.</a:documentation>
                <data type="anyURI"/>
+            </attribute>
+         </optional>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_revisionDesc">
+      <element name="revisionDesc">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(revision description) summarizes the revision history for a file. [2.6. The Revision Description 2.1.1. The TEI Header and Its Components]</a:documentation>
+         <zeroOrMore>
+            <ref name="tei_change"/>
+         </zeroOrMore>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.docStatus.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_change">
+      <element name="change">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(change) documents a change or set of changes made during the production of a source document, or during the revision of an electronic file. [2.6. The Revision Description 2.4.1. Creation 11.7. Identifying Changes and Revisions]</a:documentation>
+         <ref name="tei_macro.specialPara"/>
+         <ref name="tei_att.datable.attribute.calendar"/>
+         <ref name="tei_att.datable.attribute.period"/>
+         <ref name="tei_att.datable.w3c.attribute.notBefore"/>
+         <ref name="tei_att.datable.w3c.attribute.notAfter"/>
+         <ref name="tei_att.datable.w3c.attribute.from"/>
+         <ref name="tei_att.datable.w3c.attribute.to"/>
+         <ref name="tei_att.datable.iso.attribute.when-iso"/>
+         <ref name="tei_att.datable.iso.attribute.notBefore-iso"/>
+         <ref name="tei_att.datable.iso.attribute.notAfter-iso"/>
+         <ref name="tei_att.datable.iso.attribute.from-iso"/>
+         <ref name="tei_att.datable.iso.attribute.to-iso"/>
+         <ref name="tei_att.datable.custom.attribute.when-custom"/>
+         <ref name="tei_att.datable.custom.attribute.notBefore-custom"/>
+         <ref name="tei_att.datable.custom.attribute.notAfter-custom"/>
+         <ref name="tei_att.datable.custom.attribute.from-custom"/>
+         <ref name="tei_att.datable.custom.attribute.to-custom"/>
+         <ref name="tei_att.datable.custom.attribute.datingPoint"/>
+         <ref name="tei_att.datable.custom.attribute.datingMethod"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <attribute name="who">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the person, or group of people, to whom the element content is ascribed.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="anyURI"/>
+               </oneOrMore>
+            </list>
+         </attribute>
+         <attribute name="when">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">supplies the value of the date or time in a standard form, e.g. yyyy-mm-dd.</a:documentation>
+            <choice>
+               <data type="date"/>
+               <data type="gYear"/>
+               <data type="gMonth"/>
+               <data type="gDay"/>
+               <data type="gYearMonth"/>
+               <data type="gMonthDay"/>
+               <data type="time"/>
+               <data type="dateTime"/>
+            </choice>
+         </attribute>
+         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                    name="status"
+                    a:defaultValue="draft">
+            <a:documentation>describes the status of a document either currently or, when associated with a dated element, at the time indicated.</a:documentation>
+            <choice>
+               <value>not_correted</value>
+               <a:documentation/>
+               <value>corrected</value>
+               <a:documentation/>
+            </choice>
+         </attribute>
+         <optional>
+            <attribute name="target">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(target) points to one or more elements that belong to this change.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="anyURI"/>
+                  </oneOrMore>
+               </list>
             </attribute>
          </optional>
          <empty/>

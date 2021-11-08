@@ -33,8 +33,8 @@
             <change when="2021-09-06" who="orcid:0000-0003-0850-8266">Ajout d'un
                     <gi>settingDesc</gi> pour encoder les évènements auxquels font référence les
                 mazarinades (un <gi>setting</gi> par évènement).</change>
-            <change when="2021-11-05" who="orcid:0000-0003-0850-8266">Ajout de
-                <gi>imprimatur</gi> pour encoder les autorisations d'impression.</change>
+            <change when="2021-11-05" who="orcid:0000-0003-0850-8266">Ajout de <gi>imprimatur</gi>
+                pour encoder les autorisations d'impression.</change>
         </revisionDesc>
     </teiHeader>
     <!--
@@ -49,8 +49,8 @@
                 <schemaSpec ident="ANTONOMAZ" start="TEI" prefix="tei_">
                     <moduleRef key="tei"/>
                     <moduleRef key="header"
-                        include="abstract availability editorialDecl encodingDesc extent fileDesc idno 
-                        keywords language langUsage licence profileDesc projectDesc publicationStmt sourceDesc 
+                        include="abstract availability change editorialDecl encodingDesc extent fileDesc idno 
+                        keywords language langUsage licence profileDesc projectDesc publicationStmt revisionDesc sourceDesc 
                         teiHeader textClass titleStmt"/>
                     <moduleRef key="textstructure" include="body TEI text imprimatur"/>
                     <moduleRef key="core"
@@ -61,7 +61,7 @@
                     <moduleRef key="transcr" include="fw space"/>
                     <moduleRef key="namesdates"
                         include="affiliation forename orgName persName roleName settlement surname"/>
-                    <moduleRef key="corpus" include="setting settingDesc"></moduleRef>
+                    <moduleRef key="corpus" include="setting settingDesc"/>
                     <!-- Règles d'encodage à appliquer au corpus -->
                     <elementSpec ident="TEI" mode="change">
                         <constraintSpec ident="xmlid" scheme="schematron">
@@ -154,7 +154,7 @@
                             <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="change" type="closed">
                                     <valItem ident="Moreau"/>
-                                    <valItem ident="Carrier"></valItem>
+                                    <valItem ident="Carrier"/>
                                 </valList>
                             </attDef>
                             <attDef ident="when" mode="change" usage="rec"/>
@@ -375,6 +375,23 @@
                         <attList>
                             <attDef ident="source" mode="change" usage="req"/>
                             <attDef ident="xml:id" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="revisionDesc" mode="change">
+                        <content>
+                            <elementRef key="change" minOccurs="0" maxOccurs="unbounded"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="change" mode="change">
+                        <attList>
+                            <attDef ident="status" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="not_correted"/>
+                                    <valItem ident="corrected"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="when" mode="change" usage="req"/>
+                            <attDef ident="who" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
                     <!-- Règles concernant le texte -->
