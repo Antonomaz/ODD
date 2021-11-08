@@ -151,7 +151,7 @@
                     </elementSpec>
                     <elementSpec ident="date" mode="change">
                         <attList>
-                            <attDef ident="source" mode="change" usage="rec">
+                            <attDef ident="source" mode="change" usage="req">
                                 <valList mode="change" type="closed">
                                     <valItem ident="Moreau"/>
                                     <valItem ident="Carrier"/>
