@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2021-11-08T09:12:29Z. .
+Schema generated from ODD source 2021-11-08T09:14:43Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -3372,9 +3372,35 @@ Elements]</a:documentation>
                     a:defaultValue="draft">
             <a:documentation>describes the status of a document either currently or, when associated with a dated element, at the time indicated.</a:documentation>
             <choice>
-               <value>not_correted</value>
+               <value>approved</value>
                <a:documentation/>
-               <value>corrected</value>
+               <value>candidate</value>
+               <a:documentation/>
+               <value>cleared</value>
+               <a:documentation/>
+               <value>deprecated</value>
+               <a:documentation/>
+               <value>draft</value>
+               <a:documentation/>
+               <value>embargoed</value>
+               <a:documentation/>
+               <value>expired</value>
+               <a:documentation/>
+               <value>frozen</value>
+               <a:documentation/>
+               <value>galley</value>
+               <a:documentation/>
+               <value>proposed</value>
+               <a:documentation/>
+               <value>published</value>
+               <a:documentation/>
+               <value>recommendation</value>
+               <a:documentation/>
+               <value>submitted</value>
+               <a:documentation/>
+               <value>unfinished</value>
+               <a:documentation/>
+               <value>withdrawn</value>
                <a:documentation/>
             </choice>
          </attribute>

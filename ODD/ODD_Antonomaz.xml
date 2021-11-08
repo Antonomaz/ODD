@@ -385,8 +385,8 @@
                     <elementSpec ident="change" mode="change">
                         <attList>
                             <attDef ident="status" mode="change" usage="req">
-                                <valList mode="add" type="closed">
-                                    <valItem ident="not_correted"/>
+                                <valList mode="change" type="closed">
+                                    <valItem ident="not_corrected"/>
                                     <valItem ident="corrected"/>
                                 </valList>
                             </attDef>
