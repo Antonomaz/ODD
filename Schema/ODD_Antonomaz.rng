@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-09T15:36:54Z. .
+Schema generated from ODD source 2022-03-09T15:42:21Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2008,33 +2008,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
    <define name="tei_p">
       <element name="p">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
-         <group>
-            <zeroOrMore>
-               <ref name="tei_lb"/>
-            </zeroOrMore>
-            <text/>
-            <zeroOrMore>
-               <ref name="tei_imprimatur"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_figure"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_pb"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_choice"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_corr"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_sic"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_fw"/>
-            </zeroOrMore>
-         </group>
+         <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="ANTONOMAZ-p-abstractModel-structure-p-constraint-report-5">
             <rule context="tei:p">
@@ -2922,30 +2896,15 @@ Elements]</a:documentation>
    <define name="tei_l">
       <element name="l">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(verse line) contains a single, possibly incomplete, line of verse. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.5. Speech Contents]</a:documentation>
-         <group>
-            <zeroOrMore>
-               <ref name="tei_lb"/>
-            </zeroOrMore>
-            <text/>
-            <zeroOrMore>
-               <ref name="tei_imprimatur"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_pb"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_choice"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_corr"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_sic"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="tei_fw"/>
-            </zeroOrMore>
-         </group>
+         <zeroOrMore>
+            <choice>
+               <text/>
+               <ref name="tei_model.gLike"/>
+               <ref name="tei_model.phrase"/>
+               <ref name="tei_model.inter"/>
+               <ref name="tei_model.global"/>
+            </choice>
+         </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-8">
             <rule context="tei:l">
@@ -3596,14 +3555,6 @@ Elements]</a:documentation>
          </group>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declaring.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tei_imprimatur">
-      <element name="imprimatur">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(imprimatur) contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso. [4.6. Title Pages]</a:documentation>
-         <ref name="tei_macro.paraContent"/>
-         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>
