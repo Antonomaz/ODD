@@ -23,8 +23,8 @@
                 </availability>
             </publicationStmt>
             <sourceDesc>
-                <p>Créé en
-                    <date when="2021-04">avril 2021</date> par <name>Camille Roblin</name></p>
+                <p>Créé en <date when="2021-04">avril 2021</date> par <name>Camille
+                    Roblin</name></p>
             </sourceDesc>
         </fileDesc>
         <revisionDesc>
@@ -59,6 +59,7 @@
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
                     <moduleRef key="transcr" include="fw space"/>
+                    <moduleRef key="figures" include="figure"/>
                     <moduleRef key="namesdates"
                         include="affiliation forename orgName persName roleName settlement surname"/>
                     <moduleRef key="corpus" include="setting settingDesc"/>
@@ -132,6 +133,12 @@
                                     <valItem ident="sub"/>
                                 </valList>
                             </attDef>
+                            <attDef ident="source" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="Moreau"/>
+                                    <valItem ident="Mazarine"></valItem>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="respStmt" mode="change">
@@ -155,6 +162,7 @@
                                 <valList mode="change" type="closed">
                                     <valItem ident="Moreau"/>
                                     <valItem ident="Carrier"/>
+                                    <valItem ident="Antonomaz"/>
                                 </valList>
                             </attDef>
                             <attDef ident="when" mode="change" usage="rec"/>
@@ -199,17 +207,18 @@
                         </attList>
                     </elementSpec>
                     <elementSpec ident="author" mode="change">
-                        <attList>
-                            <attDef ident="ref" mode="change" usage="rec"/>
-                        </attList>
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
-                                        >Ajouter un identifiant isni.</sch:assert>
+                                    <sch:assert test="./@ref/starts-with(.,'isni:|viaf:')"
+                                        role="error">Ajouter un identifiant isni ou
+                                        viaf.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <attList>
+                            <attDef ident="ref" mode="change" usage="rec"/>
+                        </attList>
                     </elementSpec>
                     <elementSpec ident="persName" mode="change">
                         <attList>
@@ -218,17 +227,18 @@
                         </attList>
                     </elementSpec>
                     <elementSpec ident="publisher" mode="change">
-                        <attList>
-                            <attDef ident="ref" mode="change" usage="rec"/>
-                        </attList>
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:')" role="error"
-                                        >Ajouter un identifiant isni.</sch:assert>
+                                    <sch:assert test="./@ref/starts-with(.,'isni:|viaf:')"
+                                        role="error">Ajouter un identifiant isni ou
+                                        viaf.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <attList>
+                            <attDef ident="ref" mode="change" usage="rec"/>
+                        </attList>
                     </elementSpec>
                     <elementSpec ident="forename" mode="change">
                         <attList>
@@ -241,9 +251,6 @@
                         </attList>
                     </elementSpec>
                     <elementSpec ident="pubPlace" mode="change">
-                        <attList>
-                            <attDef ident="ref" mode="change" usage="rec"/>
-                        </attList>
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:pubPlace[@ref]">
@@ -252,6 +259,9 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <attList>
+                            <attDef ident="ref" mode="change" usage="rec"/>
+                        </attList>
                     </elementSpec>
                     <elementSpec ident="measure" mode="change">
                         <attList>
@@ -358,6 +368,15 @@
                                     <valItem ident="genre"/>
                                     <valItem ident="subgenre"/>
                                     <valItem ident="subject"/>
+                                    <valItem ident="handwritten_note"/>
+                                    <valItem ident="table_of_content"/>
+                                    <valItem ident="illustration"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="subtype" mode="change">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="yes"/>
+                                    <valItem ident="no"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -401,12 +420,22 @@
                             <attDef ident="facs" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
+                    <elementSpec ident="figure" mode="change">
+                        <attList>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="decoration"/>
+                                </valList>
+                            </attDef>
+                        </attList>
+                    </elementSpec>
                     <elementSpec ident="p" mode="change">
                         <content>
                             <sequence preserveOrder="false">
                                 <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
                                 <textNode/>
                                 <elementRef key="imprimatur" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="figure" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="choice" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
