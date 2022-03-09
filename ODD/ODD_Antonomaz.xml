@@ -54,7 +54,7 @@
                         teiHeader textClass titleStmt"/>
                     <moduleRef key="textstructure" include="body TEI text imprimatur"/>
                     <moduleRef key="core"
-                        include="author bibl biblStruct cb choice corr date editor foreign head hi imprint l lb lg measure monogr 
+                        include="author bibl biblStruct cb choice corr date editor foreign gap head hi imprint l lb lg measure monogr 
                         name note p pb publisher pubPlace ref resp respStmt sic term title unclear"/>
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
@@ -211,7 +211,7 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:') or starts-with(.,'viaf:')"
+                                    <sch:assert test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
                                         role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
                                 </sch:rule>
@@ -231,7 +231,7 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:') or starts-with(.,'viaf:')"
+                                    <sch:assert test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
                                         role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
                                 </sch:rule>
