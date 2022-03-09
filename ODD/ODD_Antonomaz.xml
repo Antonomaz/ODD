@@ -133,10 +133,10 @@
                                     <valItem ident="sub"/>
                                 </valList>
                             </attDef>
-                            <attDef ident="source" mode="change" usage="req">
+                            <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="Moreau"/>
-                                    <valItem ident="Mazarine"></valItem>
+                                    <valItem ident="Mazarine"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -161,6 +161,7 @@
                             <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="change" type="closed">
                                     <valItem ident="Moreau"/>
+                                    <valItem ident="Mazarine"/>
                                     <valItem ident="Carrier"/>
                                     <valItem ident="Antonomaz"/>
                                 </valList>
@@ -210,7 +211,7 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:|viaf:')"
+                                    <sch:assert test="./@ref/starts-with(.,'isni:') or starts-with(.,'viaf:')"
                                         role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
                                 </sch:rule>
@@ -230,7 +231,7 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:|viaf:')"
+                                    <sch:assert test="./@ref/starts-with(.,'isni:') or starts-with(.,'viaf:')"
                                         role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
                                 </sch:rule>

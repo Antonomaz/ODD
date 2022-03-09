@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-09T15:31:24Z. .
+Schema generated from ODD source 2022-03-09T15:36:54Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2318,6 +2318,8 @@ Measures]</a:documentation>
                      <choice>
                         <value>Moreau</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>Mazarine</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>Carrier</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>Antonomaz</value>
@@ -2611,7 +2613,8 @@ Elements]</a:documentation>
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:author[@ref]">
-               <sch:assert test="./@ref/starts-with(.,'isni:|viaf:')" role="error">Ajouter un identifiant isni ou
+               <sch:assert test="./@ref/starts-with(.,'isni:') or starts-with(.,'viaf:')"
+                           role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
             </sch:rule>
          </pattern>
@@ -2716,19 +2719,21 @@ Elements]</a:documentation>
          <ref name="tei_att.typed.attribute.subtype"/>
          <ref name="tei_att.canonical.attributes"/>
          <ref name="tei_att.datable.attributes"/>
-         <attribute name="source">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
-            <list>
-               <oneOrMore>
-                  <choice>
-                     <value>Moreau</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                     <value>Mazarine</value>
-                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-                  </choice>
-               </oneOrMore>
-            </list>
-         </attribute>
+         <optional>
+            <attribute name="source">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>Moreau</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>Mazarine</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the title according to some convenient typology.</a:documentation>
@@ -2797,7 +2802,8 @@ Elements]</a:documentation>
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@ref]">
-               <sch:assert test="./@ref/starts-with(.,'isni:|viaf:')" role="error">Ajouter un identifiant isni ou
+               <sch:assert test="./@ref/starts-with(.,'isni:') or starts-with(.,'viaf:')"
+                           role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
             </sch:rule>
          </pattern>
