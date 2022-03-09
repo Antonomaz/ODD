@@ -164,6 +164,7 @@
                                     <valItem ident="Mazarine"/>
                                     <valItem ident="Carrier"/>
                                     <valItem ident="Antonomaz"/>
+                                    <valItem ident="BM_Lyon"/>
                                 </valList>
                             </attDef>
                             <attDef ident="when" mode="change" usage="rec"/>
@@ -430,7 +431,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                   <!-- <elementSpec ident="p" mode="change">
+                  <!-- <elementSpec ident="p" mode="change">
                         <content>
                             <sequence preserveOrder="false">
                                 <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
