@@ -54,7 +54,7 @@
                         include="abstract availability change editorialDecl encodingDesc extent fileDesc idno 
                         keywords language langUsage licence profileDesc projectDesc publicationStmt revisionDesc sourceDesc 
                         teiHeader textClass titleStmt"/>
-                    <moduleRef key="textstructure" include="body TEI text imprimatur"/>
+                    <moduleRef key="textstructure" include="body TEI text"/>
                     <moduleRef key="core"
                         include="author bibl biblStruct cb choice corr date editor foreign gap head hi imprint l lb lg measure monogr 
                         name note p pb publisher pubPlace ref resp respStmt sic term title unclear"/>
