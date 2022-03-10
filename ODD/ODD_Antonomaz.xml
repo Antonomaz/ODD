@@ -35,6 +35,8 @@
                 mazarinades (un <gi>setting</gi> par évènement).</change>
             <change when="2021-11-05" who="orcid:0000-0003-0850-8266">Ajout de <gi>imprimatur</gi>
                 pour encoder les autorisations d'impression.</change>
+            <change when="2022-03-09" who="orcid:0000-0003-0850-8266">Reprise de l'ODD : ajout de
+                valeurs d'attributs, corrections d'erreurs.</change>
         </revisionDesc>
     </teiHeader>
     <!--
@@ -137,6 +139,8 @@
                                 <valList mode="add" type="closed">
                                     <valItem ident="Moreau"/>
                                     <valItem ident="Mazarine"/>
+                                    <valItem ident="Socard"/>
+                                    <valItem ident="Labadie"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -165,6 +169,8 @@
                                     <valItem ident="Carrier"/>
                                     <valItem ident="Antonomaz"/>
                                     <valItem ident="BM_Lyon"/>
+                                    <valItem ident="Labadie"/>
+                                    <valItem ident="Socard"/>
                                 </valList>
                             </attDef>
                             <attDef ident="when" mode="change" usage="rec"/>
@@ -212,7 +218,8 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
+                                    <sch:assert
+                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
                                         role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
                                 </sch:rule>
@@ -232,7 +239,8 @@
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
+                                    <sch:assert
+                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
                                         role="error">Ajouter un identifiant isni ou
                                         viaf.</sch:assert>
                                 </sch:rule>
@@ -347,6 +355,7 @@
                                     <valItem ident="lat"/>
                                     <valItem ident="oci"/>
                                     <valItem ident="ita"/>
+                                    <valItem ident="ger"/>
                                     <valItem ident="other"/>
                                 </valList>
                             </attDef>
@@ -431,7 +440,14 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                  <!-- <elementSpec ident="p" mode="change">
+                    <elementSpec ident="imprimatur" module="textstructure" mode="change">
+                        <classes mode="replace">
+                            <memberOf key="model.pLike" mode="add"/>
+                            <memberOf key="att.global"/>
+                            <memberOf key="model.titlepagePart" mode="delete"/>
+                        </classes>
+                    </elementSpec>
+                    <!-- <elementSpec ident="p" mode="change">
                         <content>
                             <sequence preserveOrder="false">
                                 <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
