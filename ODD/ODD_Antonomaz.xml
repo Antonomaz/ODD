@@ -199,15 +199,6 @@
                         </content>
                     </elementSpec>
                     <elementSpec ident="bibl" mode="change">
-                        <constraintSpec ident="sourceDoc" scheme="schematron">
-                            <constraint>
-                                <sch:rule
-                                    context="./tei:date">
-                                    <sch:assert test="./tei:date/@source"
-                                        role="error">Il manque un attribut @source.</sch:assert>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
                         <content>
                             <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
