@@ -459,6 +459,10 @@
                             <alternate minOccurs="1" maxOccurs="unbounded">
                                 <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="l" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="unclear" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="gap" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="title" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="hi" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="imprimatur" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="figure" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
