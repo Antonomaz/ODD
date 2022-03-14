@@ -231,6 +231,17 @@
                         </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="rec"/>
+                            <attDef ident="source" mode="change" usage="rec">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="Carrier"/>
+                                    <valItem ident="Moreau"/>
+                                    <valItem ident="Mazarine"/>
+                                    <valItem ident="Artois"/>
+                                    <valItem ident="Labadie"/>
+                                    <valItem ident="Socard"/>
+                                    <valItem ident="Antonomaz"/>
+                                </valList>
+                            </attDef>
                             <attDef ident="role" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="speaker"/>
