@@ -87,7 +87,7 @@
                             <attDef ident="xml:id" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- Règles concernant le header -->
                     <elementSpec ident="fileDesc" mode="change">
                         <content>
@@ -96,7 +96,7 @@
                             <elementRef key="sourceDesc"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- titleStmt -->
                     <elementSpec ident="titleStmt" mode="change">
                         <content>
@@ -154,7 +154,7 @@
                             <elementRef key="persName" minOccurs="1" maxOccurs="unbounded"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- publicationStmt -->
                     <elementSpec ident="publicationStmt" mode="change">
                         <content>
@@ -190,7 +190,7 @@
                             <attDef ident="target" mode="change" usage="req"/>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- sourceDesc -->
                     <elementSpec ident="sourceDesc" mode="change">
                         <content>
@@ -231,6 +231,13 @@
                         </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="rec"/>
+                            <attDef ident="role" mode="change" usage="rec">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="speaker"/>
+                                    <valItem ident="alleged_author"/>
+                                    <valItem ident="dubious_author"/>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="persName" mode="change">
@@ -335,7 +342,7 @@
                             <elementRef key="bibl"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- encodingDesc-->
                     <elementSpec ident="encodingDesc" mode="change">
                         <content>
@@ -343,7 +350,7 @@
                             <elementRef key="editorialDecl"/>
                         </content>
                     </elementSpec>
-                    
+
                     <!-- profileDesc-->
                     <elementSpec ident="profileDesc" mode="change">
                         <content>
@@ -430,7 +437,7 @@
                             <attDef ident="who" mode="change" usage="rec"/>
                         </attList>
                     </elementSpec>
-                    
+
                     <!-- Règles concernant le texte -->
                     <elementSpec ident="pb" mode="change">
                         <attList>
@@ -447,11 +454,11 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    <!-- <elementSpec ident="p" mode="change">
+                    <elementSpec ident="p" mode="change">
                         <content>
-                            <sequence preserveOrder="false">
+                            <alternate minOccurs="1" maxOccurs="unbounded">
                                 <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
-                                <textNode/>
+                                <elementRef key="l" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="imprimatur" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="figure" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
@@ -459,9 +466,11 @@
                                 <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="sic" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
-                            </sequence>
+                                <textNode/>
+                            </alternate>
                         </content>
                     </elementSpec>
+                    <!--
                     <elementSpec ident="l" mode="change">
                         <content>
                             <sequence preserveOrder="false">
@@ -536,8 +545,7 @@
                     <elementSpec ident="imprimatur" mode="change" module="textstructure">
                         <classes mode="replace">
                             <memberOf key="model.pLike" mode="add"/>
-                            <memberOf key="att.global"/>
-                            <memberOf key="model.titlepagePart" mode="delete"/>
+                            <memberOf key="att.global"/>                    
                         </classes>
                     </elementSpec>
                 </schemaSpec>
