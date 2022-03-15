@@ -223,9 +223,8 @@
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
                                     <sch:assert
-                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
-                                        role="error">Ajouter un identifiant isni ou
-                                        viaf.</sch:assert>
+                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:') or ./@ref/starts-with(.,'FRBNF:')"
+                                        role="error">Ajouter un identifiant valide.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -240,6 +239,8 @@
                                     <valItem ident="Labadie"/>
                                     <valItem ident="Socard"/>
                                     <valItem ident="Antonomaz"/>
+                                    <valItem ident="BnF"/>
+                                    <valItem ident="BM_Lyon"/>
                                 </valList>
                             </attDef>
                             <attDef ident="role" mode="change" usage="rec">
@@ -262,9 +263,8 @@
                             <constraint>
                                 <sch:rule context="tei:publisher[@ref]">
                                     <sch:assert
-                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:')"
-                                        role="error">Ajouter un identifiant isni ou
-                                        viaf.</sch:assert>
+                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:') or ./@ref/starts-with(.,'FRBNF:')"
+                                        role="error">Ajouter un identifiant valide.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -481,6 +481,8 @@
                                 <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="sic" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="lg" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="note" minOccurs="0" maxOccurs="unbounded"/>
                                 <textNode/>
                             </alternate>
                         </content>
@@ -520,6 +522,7 @@
                                     <valItem ident="pageNum"/>
                                     <valItem ident="catch"/>
                                     <valItem ident="sig"/>
+                                    <valItem ident="head"/>
                                 </valList>
                             </attDef>
                         </attList>
