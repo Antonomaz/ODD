@@ -231,7 +231,7 @@
                         <attList>
                             <attDef ident="ref" mode="change" usage="rec"/>
                             <attDef ident="source" mode="change" usage="rec">
-                                <valList mode="add" type="closed">
+                                <valList mode="add" type="semi">
                                     <valItem ident="Carrier"/>
                                     <valItem ident="Moreau"/>
                                     <valItem ident="Mazarine"/>
@@ -245,9 +245,17 @@
                             </attDef>
                             <attDef ident="role" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
-                                    <valItem ident="speaker"/>
-                                    <valItem ident="alleged_author"/>
-                                    <valItem ident="dubious_author"/>
+                                    <valItem ident="speaker">
+                                        <desc>Utilisé pour les faux locuteurs/locuteurs-marionnettes.</desc>
+                                    </valItem>
+                                    <valItem ident="alleged_author">
+                                        <desc>Utilisé pour les auteurs dits présumés.</desc>
+                                    </valItem>
+                                    <valItem ident="dubious_author">
+                                        <desc>Utilisé pour les auteurs douteux (qui se prétendent
+                                            auteurs, ou bien auteurs présumés autrefois, mais remis
+                                            en cause : Mézeray pour le Sieur de Sandricourt).</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                         </attList>
@@ -563,7 +571,7 @@
                     <elementSpec ident="imprimatur" mode="change" module="textstructure">
                         <classes mode="replace">
                             <memberOf key="model.pLike" mode="add"/>
-                            <memberOf key="att.global"/>                    
+                            <memberOf key="att.global"/>
                         </classes>
                     </elementSpec>
                 </schemaSpec>
