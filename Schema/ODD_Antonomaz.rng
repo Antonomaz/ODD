@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-15T14:22:11Z. .
+Schema generated from ODD source 2022-03-17T15:51:38Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2718,7 +2718,8 @@ Elements]</a:documentation>
          <ref name="tei_att.datable.attributes"/>
          <optional>
             <attribute name="source">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.
+Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Labadie; 6] Socard; 7] Antonomaz; 8] BnF; 9] BM_Lyon</a:documentation>
                <list>
                   <oneOrMore>
                      <choice>
@@ -2740,6 +2741,7 @@ Elements]</a:documentation>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>BM_Lyon</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <data type="anyURI"/>
                      </choice>
                   </oneOrMore>
                </list>
@@ -2752,11 +2754,11 @@ Elements]</a:documentation>
                   <oneOrMore>
                      <choice>
                         <value>speaker</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Utilisé pour les faux locuteurs/locuteurs-marionnettes.</a:documentation>
                         <value>alleged_author</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Utilisé pour les auteurs dits présumés.</a:documentation>
                         <value>dubious_author</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Utilisé pour les auteurs douteux (qui se prétendent auteurs, ou bien auteurs présumés autrefois, mais remis en cause : Mézeray pour le Sieur de Sandricourt).</a:documentation>
                      </choice>
                   </oneOrMore>
                </list>
