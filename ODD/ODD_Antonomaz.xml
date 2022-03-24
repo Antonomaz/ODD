@@ -468,7 +468,12 @@
                         <attList>
                             <attDef ident="type" mode="change" usage="req">
                                 <valList mode="add" type="closed">
-                                    <valItem ident="decoration"/>
+                                    <valItem ident="decoration">
+                                        <desc>Marques d'imprimeurs.</desc>
+                                    </valItem>
+                                    <valItem ident="illustration">
+                                        <desc>Illustrations (portraits par exemple).</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                         </attList>
