@@ -453,7 +453,25 @@
                                 </valList>
                             </attDef>
                             <attDef ident="when" mode="change" usage="rec"/>
-                            <attDef ident="who" mode="change" usage="rec"/>
+                            <attDef ident="who" mode="change" usage="rec">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="AB">
+                                        <desc>Alexandre Bartz</desc>
+                                    </valItem>
+                                    <valItem ident="GL">
+                                        <desc>Gaël Lejeune</desc>
+                                    </valItem>
+                                    <valItem ident="KA">
+                                        <desc>Karine Abiven</desc>
+                                    </valItem>
+                                    <valItem ident="MF">
+                                        <desc>Margaux Faure</desc>
+                                    </valItem>
+                                    <valItem ident="ZC">
+                                        <desc>Zoé Cappe</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
 
