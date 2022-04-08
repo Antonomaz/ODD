@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-03-24T15:12:36Z. .
+Schema generated from ODD source 2022-04-08T11:43:07Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2386,23 +2386,33 @@ Measures]</a:documentation>
                <ref name="tei_model.global"/>
             </choice>
          </zeroOrMore>
-         <ref name="tei_att.global.attribute.xmlid"/>
-         <ref name="tei_att.global.attribute.n"/>
-         <ref name="tei_att.global.attribute.xmllang"/>
-         <ref name="tei_att.global.attribute.xmlbase"/>
-         <ref name="tei_att.global.attribute.xmlspace"/>
-         <ref name="tei_att.global.rendition.attribute.rend"/>
-         <ref name="tei_att.global.rendition.attribute.style"/>
-         <ref name="tei_att.global.rendition.attribute.rendition"/>
-         <ref name="tei_att.global.facs.attribute.facs"/>
-         <ref name="tei_att.global.change.attribute.change"/>
-         <ref name="tei_att.global.responsibility.attribute.cert"/>
-         <ref name="tei_att.global.responsibility.attribute.resp"/>
-         <ref name="tei_att.canonical.attributes"/>
-         <ref name="tei_att.datable.attributes"/>
-         <ref name="tei_att.editLike.attributes"/>
-         <ref name="tei_att.dimensions.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-date-type-constraint-rule-9">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:sourceDesc/tei:bibl/tei:date">
+               <sch:report test="@type" role="error">La date de l'impression ne peut contenir l'attribut type.</sch:report>
+            </sch:rule>
+         </pattern>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-date-texte-constraint-rule-10">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:bibl/tei:date">
+               <sch:assert test="./text()">
+                                        La date doit également être indiquée en contenu. La balise ne peut pas être auto-fermante.
+                                    </sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tei_att.datable.w3c.attribute.when"/>
+         <ref name="tei_att.datable.w3c.attribute.notBefore"/>
+         <ref name="tei_att.datable.w3c.attribute.notAfter"/>
+         <ref name="tei_att.editLike.attribute.instant"/>
+         <ref name="tei_att.typed.attribute.type"/>
          <optional>
             <attribute name="source">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.</a:documentation>
@@ -2436,7 +2446,7 @@ Measures]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) defines a reference to another location, possibly modified by additional text or comment. [3.7. Simple Links and Cross-References 16.1. Links]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-ref-refAtts-constraint-report-7">
+                  id="ANTONOMAZ-ref-refAtts-constraint-report-8">
             <rule context="tei:ref">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2691,7 +2701,7 @@ Elements]</a:documentation>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(author) in a bibliographic reference, contains the name(s) of an author, personal or corporate, of a work; for example in the same form as that provided by a recognized bibliographic name authority. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-author-ref-constraint-rule-9">
+                  id="ANTONOMAZ-author-ref-constraint-rule-11">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2701,21 +2711,6 @@ Elements]</a:documentation>
                            role="error">Ajouter un identifiant valide.</sch:assert>
             </sch:rule>
          </pattern>
-         <ref name="tei_att.global.attribute.xmlid"/>
-         <ref name="tei_att.global.attribute.n"/>
-         <ref name="tei_att.global.attribute.xmllang"/>
-         <ref name="tei_att.global.attribute.xmlbase"/>
-         <ref name="tei_att.global.attribute.xmlspace"/>
-         <ref name="tei_att.global.rendition.attribute.rend"/>
-         <ref name="tei_att.global.rendition.attribute.style"/>
-         <ref name="tei_att.global.rendition.attribute.rendition"/>
-         <ref name="tei_att.global.facs.attribute.facs"/>
-         <ref name="tei_att.global.change.attribute.change"/>
-         <ref name="tei_att.global.responsibility.attribute.cert"/>
-         <ref name="tei_att.global.responsibility.attribute.resp"/>
-         <ref name="tei_att.naming.attribute.nymRef"/>
-         <ref name="tei_att.canonical.attribute.key"/>
-         <ref name="tei_att.datable.attributes"/>
          <optional>
             <attribute name="source">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.
@@ -2814,7 +2809,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(title) contains a title for any kind of work. [3.12.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-title-titleType-constraint-rule-10">
+                  id="ANTONOMAZ-title-titleType-constraint-rule-12">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2825,7 +2820,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-title-guillemet-constraint-rule-11">
+                  id="ANTONOMAZ-title-guillemet-constraint-rule-13">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2835,7 +2830,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-title-editionType-constraint-rule-12">
+                  id="ANTONOMAZ-title-editionType-constraint-rule-14">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2941,7 +2936,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publisher) provides the name of the organization responsible for the publication or distribution of a bibliographic item. [3.12.2.4. Imprint, Size of a Document, and Reprint Information 2.2.4. Publication, Distribution, Licensing, etc.]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-publisher-ref-constraint-rule-13">
+                  id="ANTONOMAZ-publisher-ref-constraint-rule-15">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -2951,8 +2946,17 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                            role="error">Ajouter un identifiant valide.</sch:assert>
             </sch:rule>
          </pattern>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.canonical.attribute.key"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-publisher-publisherContent-constraint-rule-16">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:publisher">
+               <sch:assert test="text()|child::tei:persName" role="error">L'élément publisher doit contenir du texte ou un élément enfant persName.</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tei_att.global.source.attribute.source"/>
          <optional>
             <attribute name="ref">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
@@ -2971,7 +2975,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(publication place) contains the name of the place where a bibliographic item was published. [3.12.2.4. Imprint, Size of a Document, and Reprint Information]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-pubPlace-ref-constraint-rule-14">
+                  id="ANTONOMAZ-pubPlace-ref-constraint-rule-17">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3008,6 +3012,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          </oneOrMore>
          <zeroOrMore>
             <ref name="tei_persName"/>
+         </zeroOrMore>
+         <zeroOrMore>
+            <ref name="tei_addName"/>
          </zeroOrMore>
          <zeroOrMore>
             <ref name="tei_editor"/>
@@ -3076,7 +3083,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-8">
+                  id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-9">
             <rule context="tei:l">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3126,7 +3133,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-lg-atleast1oflggapl-constraint-assert-11">
+                  id="ANTONOMAZ-lg-atleast1oflggapl-constraint-assert-13">
             <rule context="tei:lg">
                <sch:assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -3137,7 +3144,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-lg-abstractModel-structure-l-constraint-report-9">
+                  id="ANTONOMAZ-lg-abstractModel-structure-l-constraint-report-10">
             <rule context="tei:lg">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3556,7 +3563,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </choice>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-15">
+                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-18">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3780,7 +3787,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <ref name="tei_repository"/>
          <ref name="tei_idno"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-10">
+                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-11">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -4095,6 +4102,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
       <choice>
          <ref name="tei_surname"/>
          <ref name="tei_forename"/>
+         <ref name="tei_addName"/>
          <ref name="tei_roleName"/>
       </choice>
    </define>
@@ -4102,12 +4110,14 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
       <choice>
          <ref name="tei_surname"/>
          <ref name="tei_forename"/>
+         <ref name="tei_addName"/>
          <ref name="tei_roleName"/>
       </choice>
    </define>
    <define name="tei_model.persNamePart_sequence">
       <ref name="tei_surname"/>
       <ref name="tei_forename"/>
+      <ref name="tei_addName"/>
       <ref name="tei_roleName"/>
    </define>
    <define name="tei_model.persNamePart_sequenceOptional">
@@ -4116,6 +4126,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
       </optional>
       <optional>
          <ref name="tei_forename"/>
+      </optional>
+      <optional>
+         <ref name="tei_addName"/>
       </optional>
       <optional>
          <ref name="tei_roleName"/>
@@ -4129,6 +4142,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <ref name="tei_forename"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tei_addName"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_roleName"/>
       </zeroOrMore>
    </define>
@@ -4138,6 +4154,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_forename"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_addName"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_roleName"/>
@@ -4327,6 +4346,37 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <empty/>
       </element>
    </define>
+   <define name="tei_addName">
+      <element name="addName">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(additional name) contains an additional name component, such as a nickname, epithet, or alias, or any other descriptive phrase used within a personal name. [13.2.1. Personal Names]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-19">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:addName">
+               <sch:assert test="parent::tei:persName" role="error"> L'élément addName doit être contenu dans une balise persName.</sch:assert>
+            </sch:rule>
+         </pattern>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.personal.attribute.full"/>
+         <ref name="tei_att.personal.attribute.sort"/>
+         <ref name="tei_att.naming.attribute.role"/>
+         <ref name="tei_att.naming.attribute.nymRef"/>
+         <ref name="tei_att.canonical.attribute.key"/>
+         <ref name="tei_att.typed.attribute.subtype"/>
+         <attribute name="type">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">characterizes the element in some sense, using any convenient classification scheme or typology.</a:documentation>
+            <choice>
+               <value>pseudonyme</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Utilisé pour un auteur publiant sous pseudonyme ou un faux nom d'imprimeur.</a:documentation>
+            </choice>
+         </attribute>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_roleName">
       <element name="roleName">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(role name) contains a name component which indicates that the referent has a particular role or position in society, such as an official title or rank. [13.2.1. Personal Names]</a:documentation>
@@ -4341,10 +4391,30 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
       <element name="settlement">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(settlement) contains the name of a settlement such as a city, town, or village identified as a single geo-political or administrative unit. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-settlement-ref-constraint-rule-20">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:settlement[@ref]">
+               <sch:assert test="./@ref/starts-with(.,'geonames:')" role="error">Ajouter un identifiant geonames.</sch:assert>
+            </sch:rule>
+         </pattern>
          <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.naming.attributes"/>
+         <ref name="tei_att.naming.attribute.role"/>
+         <ref name="tei_att.naming.attribute.nymRef"/>
+         <ref name="tei_att.canonical.attribute.key"/>
          <ref name="tei_att.typed.attributes"/>
          <ref name="tei_att.datable.attributes"/>
+         <attribute name="ref">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
+            <list>
+               <oneOrMore>
+                  <data type="anyURI"/>
+               </oneOrMore>
+            </list>
+         </attribute>
          <empty/>
       </element>
    </define>

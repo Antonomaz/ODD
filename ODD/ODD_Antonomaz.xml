@@ -15,6 +15,10 @@
                     <name>Alexandre Bartz</name>
                     <idno type="ORCID" n="0000-0003-0850-8266"/>
                 </author>
+                <author>
+                    <name>Margaux Faure</name>
+                    <idno type="ORCID" n="0000-0001-5815-9506"/>
+                </author>
             </titleStmt>
             <publicationStmt>
                 <publisher>Projet ANTONOMAZ / Sorbonne Université</publisher>
@@ -37,6 +41,9 @@
                 pour encoder les autorisations d'impression.</change>
             <change when="2022-03-09" who="orcid:0000-0003-0850-8266">Reprise de l'ODD : ajout de
                 valeurs d'attributs, corrections d'erreurs.</change>
+            <change when="2022-04-08" who="orcid:0000-0001-5815-9506">Reprise de l'ODD : restriction
+                des attributs pour <gi>date</gi>, <gi>author</gi> et <gi>publisher</gi>, ajout du
+                    <gi>addName</gi>, ajout de contraintes schematron.</change>
         </revisionDesc>
     </teiHeader>
     <!--
@@ -63,7 +70,7 @@
                     <moduleRef key="transcr" include="fw space"/>
                     <moduleRef key="figures" include="figure"/>
                     <moduleRef key="namesdates"
-                        include="affiliation forename orgName persName roleName settlement surname"/>
+                        include="affiliation forename orgName persName roleName settlement surname addName"/>
                     <moduleRef key="corpus" include="setting settingDesc"/>
 
                     <!-- Règles d'encodage à appliquer au corpus -->
@@ -165,6 +172,25 @@
                         </content>
                     </elementSpec>
                     <elementSpec ident="date" mode="change">
+                        <!-- restriction sur l'utilisation de type dans bibl/date -->
+                        <constraintSpec ident="type" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:sourceDesc/tei:bibl/tei:date">
+                                    <sch:report test="@type" role="error">La date de l'impression ne
+                                        peut contenir l'attribut type.</sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <!-- règle pour contraindre la présence de texte lors d'un ajout de date -->
+                        <constraintSpec ident="texte" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:bibl/tei:date">
+                                    <sch:assert test="./text()"> La date doit également être
+                                        indiquée en contenu. La balise ne peut pas être
+                                        auto-fermante. </sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="change" type="closed">
@@ -177,6 +203,51 @@
                                     <valItem ident="Socard"/>
                                 </valList>
                             </attDef>
+                            <!-- suppression des attributs non utilisés -->
+                            <attDef ident="atLeast" mode="delete"/>
+                            <attDef ident="atMost" mode="delete"/>
+                            <attDef ident="calendar" mode="delete"/>
+                            <attDef ident="cert" mode="delete"/>
+                            <attDef ident="change" mode="delete"/>
+                            <attDef ident="confidence" mode="delete"/>
+                            <attDef ident="datingMethod" mode="delete"/>
+                            <attDef ident="datingPoint" mode="delete"/>
+                            <attDef ident="evidence" mode="delete"/>
+                            <attDef ident="extent" mode="delete"/>
+                            <attDef ident="facs" mode="delete"/>
+                            <attDef ident="from" mode="delete"/>
+                            <attDef ident="from-custom" mode="delete"/>
+                            <attDef ident="from-iso" mode="delete"/>
+                            <!--<attDef ident="instant" mode="delete"/>-->
+                            <!-- l'ODD crée des erreurs de validation dans le XML si je le passe en delete -->
+                            <attDef ident="key" mode="delete"/>
+                            <attDef ident="max" mode="delete"/>
+                            <attDef ident="min" mode="delete"/>
+                            <attDef ident="n" mode="delete"/>
+                            <attDef ident="notAfter-custom" mode="delete"/>
+                            <attDef ident="notAfter-iso" mode="delete"/>
+                            <attDef ident="notBefore-custom" mode="delete"/>
+                            <attDef ident="notBefore-iso" mode="delete"/>
+                            <attDef ident="period" mode="delete"/>
+                            <attDef ident="precision" mode="delete"/>
+                            <attDef ident="quantity" mode="delete"/>
+                            <attDef ident="ref" mode="delete"/>
+                            <attDef ident="rend" mode="delete"/>
+                            <attDef ident="rendition" mode="delete"/>
+                            <attDef ident="resp" mode="delete"/>
+                            <attDef ident="scope" mode="delete"/>
+                            <attDef ident="style" mode="delete"/>
+                            <attDef ident="subtype" mode="delete"/>
+                            <attDef ident="to" mode="delete"/>
+                            <attDef ident="to-custom" mode="delete"/>
+                            <attDef ident="to-iso" mode="delete"/>
+                            <attDef ident="unit" mode="delete"/>
+                            <attDef ident="when-custom" mode="delete"/>
+                            <attDef ident="when-iso" mode="delete"/>
+                            <attDef ident="xml:base" mode="delete"/>
+                            <attDef ident="xml:id" mode="delete"/>
+                            <attDef ident="xml:lang" mode="delete"/>
+                            <attDef ident="xml:space" mode="delete"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="availability" mode="change">
@@ -203,6 +274,7 @@
                             <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="persName" minOccurs="0" maxOccurs="unbounded"/>
+                            <elementRef key="addName" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="editor" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="title" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="pubPlace" minOccurs="1" maxOccurs="unbounded"/>
@@ -246,7 +318,8 @@
                             <attDef ident="role" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="speaker">
-                                        <desc>Utilisé pour les faux locuteurs/locuteurs-marionnettes.</desc>
+                                        <desc>Utilisé pour les faux
+                                            locuteurs/locuteurs-marionnettes.</desc>
                                     </valItem>
                                     <valItem ident="alleged_author">
                                         <desc>Utilisé pour les auteurs dits présumés.</desc>
@@ -258,6 +331,40 @@
                                     </valItem>
                                 </valList>
                             </attDef>
+                            <!-- suppression des attributs non utilisés -->
+                            <attDef ident="calendar" mode="delete"/>
+                            <attDef ident="cert" mode="delete"/>
+                            <attDef ident="change" mode="delete"/>
+                            <attDef ident="datingMethod" mode="delete"/>
+                            <attDef ident="datingPoint" mode="delete"/>
+                            <attDef ident="facs" mode="delete"/>
+                            <attDef ident="from" mode="delete"/>
+                            <attDef ident="from-custom" mode="delete"/>
+                            <attDef ident="from-iso" mode="delete"/>
+                            <attDef ident="key" mode="delete"/>
+                            <attDef ident="n" mode="delete"/>
+                            <attDef ident="notAfter" mode="delete"/>
+                            <attDef ident="notAfter-custom" mode="delete"/>
+                            <attDef ident="notAfter-iso" mode="delete"/>
+                            <attDef ident="notBefore" mode="delete"/>
+                            <attDef ident="notBefore-custom" mode="delete"/>
+                            <attDef ident="notBefore-iso" mode="delete"/>
+                            <attDef ident="nymRef" mode="delete"/>
+                            <attDef ident="period" mode="delete"/>
+                            <attDef ident="rend" mode="delete"/>
+                            <attDef ident="rendition" mode="delete"/>
+                            <attDef ident="resp" mode="delete"/>
+                            <attDef ident="style" mode="delete"/>
+                            <attDef ident="to" mode="delete"/>
+                            <attDef ident="to-custom" mode="delete"/>
+                            <attDef ident="to-iso" mode="delete"/>
+                            <attDef ident="when" mode="delete"/>
+                            <attDef ident="when-custom" mode="delete"/>
+                            <attDef ident="when-iso" mode="delete"/>
+                            <attDef ident="xml:base" mode="delete"/>
+                            <attDef ident="xml:id" mode="delete"/>
+                            <attDef ident="xml:lang" mode="delete"/>
+                            <attDef ident="xml:space" mode="delete"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="persName" mode="change">
@@ -276,8 +383,32 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <!-- le publisher doit contenir du texte ou des éléments enfants -->
+                        <constraintSpec ident="publisherContent" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher">
+                                    <sch:assert test="text()|child::tei:persName" role="error"
+                                        >L'élément publisher doit contenir du texte ou un élément
+                                        enfant persName.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="rec"/>
+                            <!-- suppression d'attributs non utilisés -->
+                            <attDef ident="cert" mode="delete"/>
+                            <attDef ident="change" mode="delete"/>
+                            <attDef ident="facs" mode="delete"/>
+                            <attDef ident="key" mode="delete"/>
+                            <attDef ident="n" mode="delete"/>
+                            <attDef ident="rend" mode="delete"/>
+                            <attDef ident="rendition" mode="delete"/>
+                            <attDef ident="resp" mode="delete"/>
+                            <attDef ident="style" mode="delete"/>
+                            <attDef ident="xml:base" mode="delete"/>
+                            <attDef ident="xml:id" mode="delete"/>
+                            <attDef ident="xml:lang" mode="delete"/>
+                            <attDef ident="xml:space" mode="delete"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="forename" mode="change">
@@ -288,6 +419,30 @@
                     <elementSpec ident="surname" mode="change">
                         <attList>
                             <attDef ident="ref" mode="delete"/>
+                        </attList>
+                    </elementSpec>
+                    <!-- ajout de l'élément addName pour les pseudos d'auteurs et imprimeurs -->
+                    <!-- le addName doit être contenu dans un persName -->
+                    <elementSpec ident="addName" mode="change">
+                        <constraintSpec scheme="schematron" ident="addNameParent">
+                            <constraint>
+                                <sch:rule context="tei:addName">
+                                    <sch:assert test="parent::tei:persName" role="error"> L'élément
+                                        addName doit être contenu dans une balise
+                                        persName.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="ref" mode="delete"/>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="pseudonyme">
+                                        <desc>Utilisé pour un auteur publiant sous pseudonyme ou un
+                                            faux nom d'imprimeur.</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="pubPlace" mode="change">
@@ -341,6 +496,21 @@
                             <elementRef key="repository"/>
                             <elementRef key="idno"/>
                         </content>
+                    </elementSpec>
+                    <!-- ajout d'un geonames pour les villes où sont conservés les documents -->
+                    <elementSpec ident="settlement" mode="change">
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:settlement[@ref]">
+                                    <sch:assert test="./@ref/starts-with(.,'geonames:')"
+                                        role="error">Ajouter un identifiant geonames.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="ref" mode="change" usage="req"/>
+                            <!-- req ou rec ? -->
+                        </attList>
                     </elementSpec>
                     <elementSpec ident="idno" mode="change">
                         <attList>
@@ -477,6 +647,19 @@
 
                     <!-- Règles concernant le texte -->
                     <elementSpec ident="pb" mode="change">
+                        <!-- pour faire de la numérotation continue dans les numéros de page, qui commence bien à 1 -->
+                        <!--<constraintSpec scheme="schematron" ident="pbnum">
+                            <constraint>
+                                <sch:rule context="tei:body//tei:pb[position() != 1]">
+                                    <sch:assert
+                                        test="number(@n) = number(preceding-sibling::tei:pb[1]/@n) + 1"> La numérotation doit être continue. </sch:assert>
+                                </sch:rule>
+                                <sch:rule context="tei:body//tei:pb[position() = 1]">
+                                    <sch:assert
+                                        test="number(@n) = 1">La numérotation doit débuter à 1. </sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>-->
                         <attList>
                             <attDef ident="n" mode="change" usage="req"/>
                             <attDef ident="facs" mode="change" usage="rec"/>
