@@ -172,7 +172,6 @@
                         </content>
                     </elementSpec>
                     <elementSpec ident="date" mode="change">
-                        <!-- restriction sur l'utilisation de type dans bibl/date -->
                         <constraintSpec ident="type" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:sourceDesc/tei:bibl/tei:date">
@@ -181,7 +180,6 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
-                        <!-- règle pour contraindre la présence de texte lors d'un ajout de date -->
                         <constraintSpec ident="texte" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:bibl/tei:date">
@@ -203,7 +201,6 @@
                                     <valItem ident="Socard"/>
                                 </valList>
                             </attDef>
-                            <!-- suppression des attributs non utilisés -->
                             <attDef ident="atLeast" mode="delete"/>
                             <attDef ident="atMost" mode="delete"/>
                             <attDef ident="calendar" mode="delete"/>
@@ -331,7 +328,6 @@
                                     </valItem>
                                 </valList>
                             </attDef>
-                            <!-- suppression des attributs non utilisés -->
                             <attDef ident="calendar" mode="delete"/>
                             <attDef ident="cert" mode="delete"/>
                             <attDef ident="change" mode="delete"/>
@@ -383,7 +379,6 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
-                        <!-- le publisher doit contenir du texte ou des éléments enfants -->
                         <constraintSpec ident="publisherContent" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher">
@@ -395,7 +390,6 @@
                         </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="rec"/>
-                            <!-- suppression d'attributs non utilisés -->
                             <attDef ident="cert" mode="delete"/>
                             <attDef ident="change" mode="delete"/>
                             <attDef ident="facs" mode="delete"/>
@@ -421,8 +415,6 @@
                             <attDef ident="ref" mode="delete"/>
                         </attList>
                     </elementSpec>
-                    <!-- ajout de l'élément addName pour les pseudos d'auteurs et imprimeurs -->
-                    <!-- le addName doit être contenu dans un persName -->
                     <elementSpec ident="addName" mode="change">
                         <constraintSpec scheme="schematron" ident="addNameParent">
                             <constraint>
@@ -497,7 +489,6 @@
                             <elementRef key="idno"/>
                         </content>
                     </elementSpec>
-                    <!-- ajout d'un geonames pour les villes où sont conservés les documents -->
                     <elementSpec ident="settlement" mode="change">
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
@@ -509,7 +500,6 @@
                         </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="req"/>
-                            <!-- req ou rec ? -->
                         </attList>
                     </elementSpec>
                     <elementSpec ident="idno" mode="change">
@@ -648,6 +638,7 @@
                     <!-- Règles concernant le texte -->
                     <elementSpec ident="pb" mode="change">
                         <!-- pour faire de la numérotation continue dans les numéros de page, qui commence bien à 1 -->
+                        <!-- à ajouter plus tard -->
                         <!--<constraintSpec scheme="schematron" ident="pbnum">
                             <constraint>
                                 <sch:rule context="tei:body//tei:pb[position() != 1]">
