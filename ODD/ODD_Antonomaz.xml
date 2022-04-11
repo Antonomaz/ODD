@@ -193,6 +193,7 @@
                             <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="change" type="closed">
                                     <valItem ident="Moreau"/>
+                                    <valItem ident="BnF"/>
                                     <valItem ident="Mazarine"/>
                                     <valItem ident="Carrier"/>
                                     <valItem ident="Antonomaz"/>
@@ -549,6 +550,7 @@
                                     <valItem ident="oci"/>
                                     <valItem ident="ita"/>
                                     <valItem ident="ger"/>
+                                    <valItem ident="nld"/>
                                     <valItem ident="other"/>
                                 </valList>
                             </attDef>
