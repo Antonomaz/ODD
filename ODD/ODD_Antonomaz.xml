@@ -686,6 +686,7 @@
                                 <elementRef key="figure" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="choice" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="cb" minOccurs="0" maxOccurs="0"/>
                                 <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="sic" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
