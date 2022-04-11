@@ -489,6 +489,7 @@
                             <elementRef key="idno"/>
                         </content>
                     </elementSpec>
+                    <!--
                     <elementSpec ident="settlement" mode="change">
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
@@ -501,7 +502,7 @@
                         <attList>
                             <attDef ident="ref" mode="change" usage="req"/>
                         </attList>
-                    </elementSpec>
+                    </elementSpec> -->
                     <elementSpec ident="idno" mode="change">
                         <attList>
                             <attDef ident="type" mode="change" usage="req">
