@@ -500,7 +500,46 @@
                             </constraint>
                         </constraintSpec>
                         <attList>
-                            <attDef ident="ref" mode="change" usage="req"/>
+                            <attDef ident="ref" mode="change" usage="req">
+                                <valList>
+                                    <valItem ident="geonames:2759794">
+                                        <desc>Amsterdam</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:3031582">
+                                        <desc>Bordeaux</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:5332921">
+                                        <desc>Californie</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:3176959">
+                                        <desc>Florence</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2797656">
+                                        <desc>Gand</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2659994">
+                                        <desc>Lausanne</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2643743">
+                                        <desc>Londres</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2996944">
+                                        <desc>Lyon</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2867714">
+                                        <desc>Munich</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2988507">
+                                        <desc>Paris</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:3067696">
+                                        <desc>Prague</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2761369">
+                                        <desc>Vienne</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="idno" mode="change">
