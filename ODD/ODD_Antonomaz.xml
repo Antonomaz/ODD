@@ -501,7 +501,7 @@
                         </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="req">
-                                <valList>
+                                <valList mode="add" type="closed">
                                     <valItem ident="geonames:2759794">
                                         <desc>Amsterdam</desc>
                                     </valItem>
