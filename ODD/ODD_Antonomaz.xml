@@ -434,6 +434,10 @@
                                         <desc>Utilisé pour un auteur publiant sous pseudonyme ou un
                                             faux nom d'imprimeur.</desc>
                                     </valItem>
+                                    <valItem ident="initiales">
+                                        <desc>Utilisé lorsque l'identité de l'auteur est indiquée
+                                            par ses initiales.</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                         </attList>
@@ -594,6 +598,19 @@
                             </attDef>
                         </attList>
                     </elementSpec>
+                    <elementSpec ident="abstract" mode="change">
+                        <content>
+                            <elementRef key="p" minOccurs="0" maxOccurs="unbounded"/>
+                        </content>
+                        <constraintSpec ident="pnotes" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:abstract/tei:p">
+                                    <sch:assert test="@source"> La source de l'information doit être
+                                        précisée. </sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
                     <elementSpec ident="textClass" mode="change">
                         <content>
                             <elementRef key="keywords"/>
@@ -733,6 +750,21 @@
                                 <textNode/>
                             </alternate>
                         </content>
+                        <!--                <attList>
+                            <attDef ident="source" mode="change">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="Carrier"/>
+                                    <valItem ident="Moreau"/>
+                                    <valItem ident="Mazarine"/>
+                                    <valItem ident="Artois"/>
+                                    <valItem ident="Labadie"/>
+                                    <valItem ident="Socard"/>
+                                    <valItem ident="Antonomaz"/>
+                                    <valItem ident="BnF"/>
+                                    <valItem ident="BM_Lyon"/>
+                                </valList>
+                            </attDef>
+                        </attList>-->
                     </elementSpec>
                     <!--
                     <elementSpec ident="l" mode="change">

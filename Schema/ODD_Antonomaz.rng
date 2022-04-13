@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-12T13:05:44Z. .
+Schema generated from ODD source 2022-04-13T14:38:01Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3372,12 +3372,20 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
    <define name="tei_abstract">
       <element name="abstract">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a summary or formal abstract prefixed to an existing source document by the encoder. [2.4.4. Abstracts]</a:documentation>
-         <oneOrMore>
-            <choice>
-               <ref name="tei_model.pLike"/>
-               <ref name="tei_model.listLike"/>
-            </choice>
-         </oneOrMore>
+         <zeroOrMore>
+            <ref name="tei_p"/>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-abstract-pnotes-constraint-rule-18">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:abstract/tei:p">
+               <sch:assert test="@source"> La source de l'information doit être
+                                        précisée. </sch:assert>
+            </sch:rule>
+         </pattern>
          <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
@@ -3572,7 +3580,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </choice>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-18">
+                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-19">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -4360,7 +4368,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(additional name) contains an additional name component, such as a nickname, epithet, or alias, or any other descriptive phrase used within a personal name. [13.2.1. Personal Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-19">
+                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-20">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -4383,6 +4391,8 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             <choice>
                <value>pseudonyme</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Utilisé pour un auteur publiant sous pseudonyme ou un faux nom d'imprimeur.</a:documentation>
+               <value>initiales</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Utilisé lorsque l'identité de l'auteur est indiquée par ses initiales.</a:documentation>
             </choice>
          </attribute>
          <empty/>
@@ -4403,7 +4413,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(settlement) contains the name of a settlement such as a city, town, or village identified as a single geo-political or administrative unit. [13.2.3. Place Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-settlement-ref-constraint-rule-20">
+                  id="ANTONOMAZ-settlement-ref-constraint-rule-21">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
