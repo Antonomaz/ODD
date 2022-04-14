@@ -750,8 +750,8 @@
                                 <textNode/>
                             </alternate>
                         </content>
-                        <!--                <attList>
-                            <attDef ident="source" mode="change">
+                        <attList>
+                            <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
                                     <valItem ident="Carrier"/>
                                     <valItem ident="Moreau"/>
@@ -764,7 +764,7 @@
                                     <valItem ident="BM_Lyon"/>
                                 </valList>
                             </attDef>
-                        </attList>-->
+                        </attList>
                     </elementSpec>
                     <!--
                     <elementSpec ident="l" mode="change">
