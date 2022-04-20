@@ -874,18 +874,8 @@
                             <constraint>
                                 <sch:rule context="tei:body/tei:p/tei:l">
                                     <sch:report
-                                        test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., 'prose')]"
+                                        test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., '^prose$')]"
                                         > Un texte en prose ne contient pas de balise l.
-                                    </sch:report>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
-                        <constraintSpec ident="form-vers" scheme="schematron">
-                            <constraint>
-                                <sch:rule context="tei:body/tei:p/text()[normalize-space()]">
-                                    <sch:report
-                                        test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., 'vers')]"
-                                        > Un texte en vers doit être balisé par des éléments l.
                                     </sch:report>
                                 </sch:rule>
                             </constraint>

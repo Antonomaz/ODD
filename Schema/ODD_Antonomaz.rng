@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-20T14:16:25Z. .
+Schema generated from ODD source 2022-04-20T14:27:53Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3252,23 +3252,12 @@ relatedItem element must be empty</sch:report>
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:body/tei:p/tei:l">
-               <sch:report test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., 'prose')]"> Un texte en prose ne contient pas de balise l.
+               <sch:report test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., '^prose$')]"> Un texte en prose ne contient pas de balise l.
                                     </sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-l-form-vers-constraint-rule-25">
-            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:xi="http://www.w3.org/2001/XInclude"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:body/tei:p/text()[normalize-space()]">
-               <sch:report test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., 'vers')]"> Un texte en vers doit être balisé par des éléments l.
-                                    </sch:report>
-            </sch:rule>
-         </pattern>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-13">
+                  id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-12">
             <rule context="tei:l">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3329,7 +3318,7 @@ relatedItem element must be empty</sch:report>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-lg-abstractModel-structure-l-constraint-report-14">
+                  id="ANTONOMAZ-lg-abstractModel-structure-l-constraint-report-13">
             <rule context="tei:lg">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3554,7 +3543,7 @@ relatedItem element must be empty</sch:report>
             <ref name="tei_p"/>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-abstract-pnotes-constraint-rule-26">
+                  id="ANTONOMAZ-abstract-pnotes-constraint-rule-25">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3758,7 +3747,7 @@ relatedItem element must be empty</sch:report>
             </choice>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-27">
+                  id="ANTONOMAZ-TEI-xmlid-constraint-rule-26">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3982,7 +3971,7 @@ relatedItem element must be empty</sch:report>
          <ref name="tei_repository"/>
          <ref name="tei_idno"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-15">
+                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-14">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -4546,7 +4535,7 @@ relatedItem element must be empty</sch:report>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(additional name) contains an additional name component, such as a nickname, epithet, or alias, or any other descriptive phrase used within a personal name. [13.2.1. Personal Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-28">
+                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-27">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
