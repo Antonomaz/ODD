@@ -64,7 +64,7 @@
                     <moduleRef key="textstructure" include="body TEI text imprimatur"/>
                     <moduleRef key="core"
                         include="author bibl biblStruct cb choice corr date editor foreign gap head hi imprint l lb lg measure monogr 
-                        name note p pb publisher pubPlace ref resp respStmt sic term title unclear"/>
+                        name note p pb publisher pubPlace ref relatedItem resp respStmt sic term title unclear"/>
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
                     <moduleRef key="transcr" include="fw space"/>
@@ -189,6 +189,16 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule
+                                    context="tei:bibl//tei:date[text()[not(matches(., 'Sans Date'))]]">
+                                    <sch:assert test="@when | @notBefore | @notAfter" role="error"
+                                        >La date doit être indiquée en attribut soit par un @when,
+                                        soit par un @notBefore et/ou @notAfter.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="change" type="closed">
@@ -279,8 +289,10 @@
                             <elementRef key="publisher" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="extent" minOccurs="1" maxOccurs="1"/>
+                            <elementRef key="note" minOccurs="1" maxOccurs="1"/>
                             <elementRef key="note" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="ref" minOccurs="0"/>
+                            <!--<elementRef key="relatedItem" minOccurs="1"/>-->
                         </content>
                     </elementSpec>
                     <elementSpec ident="ref" mode="change">
@@ -295,6 +307,24 @@
                                     <sch:assert
                                         test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:') or ./@ref/starts-with(.,'FRBNF:')"
                                         role="error">Ajouter un identifiant valide.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="authorDescendants" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:author//*">
+                                    <sch:assert test=".[text()[normalize-space()]] | descendant::*"
+                                        >Si l'auteur est inconnu, la balise author doit être
+                                        auto-fermante.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="authorContent" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:author">
+                                    <sch:assert test=".[not(text()[normalize-space()])]"
+                                        role="error">L'auteur doit être renseigné dans un élément
+                                        persName ou orgName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -380,12 +410,29 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="publisherDescendants" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher//*">
+                                    <sch:assert test=".[text()[normalize-space()]] | descendant::*"
+                                        >Si l'éditeur est inconnu, la balise publisher doit être
+                                        auto-fermante.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <constraintSpec ident="publisherContent" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:publisher">
-                                    <sch:assert test="text()|child::tei:persName" role="error"
-                                        >L'élément publisher doit contenir du texte ou un élément
-                                        enfant persName.</sch:assert>
+                                <sch:rule context="tei:publisher[text()]">
+                                    <sch:assert test=".[normalize-space()]"
+                                        role="error">Si l'éditeur est connu, il doit être renseigné, sinon la balise doit être auto-fermante.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherRef" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher/@ref">
+                                    <sch:report test="./matches(., 'isni:[0-9]{7,7}$')">
+                                        Le référentiel doit être renseigné si l'imprimeur est connu. Sinon, le @ref doit être supprimé.
+                                    </sch:report>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -445,14 +492,44 @@
                     <elementSpec ident="pubPlace" mode="change">
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
+                                <!--  
                                 <sch:rule context="tei:pubPlace[@ref]">
                                     <sch:assert test="./@ref/starts-with(.,'geonames:')"
                                         role="error">Ajouter un identifiant geonames.</sch:assert>
+                                </sch:rule>-->
+                                <sch:rule
+                                    context="tei:pubPlace[text()[not(matches(., 'Sans Lieu'))]]">
+                                    <sch:assert test="@ref" role="error">Le geonames du lieu doit
+                                        être renseigné dans un @ref.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="geonames" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:pubPlace/@ref">
+                                    <sch:assert test="./matches(., 'geonames:[0-9]{7,7}$')">le @ref
+                                        doit contenir 'geonames:' suivi de 7 chiffres.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <!-- à adapter selon les lieux de publication -->
                         <attList>
-                            <attDef ident="ref" mode="change" usage="rec"/>
+                            <attDef ident="ref" mode="change" usage="rec">
+                                <valList mode="add" type="semi">
+                                    <valItem ident="geonames:2759794">
+                                        <desc>Amsterdam</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2643743">
+                                        <desc>Londres</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2800866">
+                                        <desc>Bruxelles</desc>
+                                    </valItem>
+                                    <valItem ident="geonames:2988507">
+                                        <desc>Paris</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="measure" mode="change">
@@ -470,13 +547,43 @@
                         <attList>
                             <attDef ident="type" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
-                                    <valItem ident="BM_identifier"/>
                                     <valItem ident="format"/>
-                                    <valItem ident="edition"/>
+                                    <valItem ident="BM_identifier"/>
                                 </valList>
                             </attDef>
                         </attList>
                     </elementSpec>
+                    <!--<elementSpec ident="relatedItem" mode="change">
+                        <constraintSpec ident="identifierMazarine" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:relatedItem[@subtype != 'sans_identifiant']/@subtype">
+                                    <sch:assert test="./matches(., 'BM[0-9]{5,5}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
+                                        de 5 chiffres. S'il n'existe pas d'identifiant, renseignez 'sans_identifiant'.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <attList>
+                            <attDef ident="source" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="Mazarine"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="type" mode="change" usage="req">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="identifier"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="subtype" mode="change" usage="rec">
+                                <desc>Contient l'identifiant attribué par la bibliothèque
+                                    Mazarine.</desc>
+                                <valList mode="add" type="semi">
+                                    <valItem ident="sans_identifiant"/>
+                                </valList>
+                            </attDef>
+                            <attDef ident="target" mode="change" usage="req"/>
+                            <attDef ident="cert" mode="change" usage="req"/>
+                        </attList>
+                    </elementSpec>-->
                     <elementSpec ident="msDesc" mode="change">
                         <content>
                             <elementRef key="msIdentifier"/>
@@ -495,14 +602,6 @@
                         </content>
                     </elementSpec>
                     <elementSpec ident="settlement" mode="change">
-                        <constraintSpec ident="ref" scheme="schematron">
-                            <constraint>
-                                <sch:rule context="tei:settlement[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'geonames:')"
-                                        role="error">Ajouter un identifiant geonames.</sch:assert>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
                         <attList>
                             <attDef ident="ref" mode="change" usage="req">
                                 <valList mode="add" type="closed">
@@ -541,6 +640,9 @@
                                     </valItem>
                                     <valItem ident="geonames:2761369">
                                         <desc>Vienne</desc>
+                                    </valItem>
+                                    <valItem ident="genonames:2747373">
+                                        <desc>La Haye</desc>
                                     </valItem>
                                 </valList>
                             </attDef>
@@ -750,6 +852,7 @@
                                 <textNode/>
                             </alternate>
                         </content>
+
                         <attList>
                             <attDef ident="source" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
@@ -766,21 +869,28 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    <!--
                     <elementSpec ident="l" mode="change">
-                        <content>
-                            <sequence preserveOrder="false">
-                                <elementRef key="lb" minOccurs="0" maxOccurs="unbounded"/>
-                                <textNode/>
-                                <elementRef key="imprimatur" minOccurs="0" maxOccurs="unbounded"/>
-                                <elementRef key="pb" minOccurs="0" maxOccurs="unbounded"/>
-                                <elementRef key="choice" minOccurs="0" maxOccurs="unbounded"/>
-                                <elementRef key="corr" minOccurs="0" maxOccurs="unbounded"/>
-                                <elementRef key="sic" minOccurs="0" maxOccurs="unbounded"/>
-                                <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
-                            </sequence>
-                        </content>
-                    </elementSpec> -->
+                        <constraintSpec ident="form" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:body/tei:p/tei:l">
+                                    <sch:report
+                                        test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., 'prose')]"
+                                        > Un texte en prose ne contient pas de balise l.
+                                    </sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="form-vers" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:body/tei:p/text()[normalize-space()]">
+                                    <sch:report
+                                        test="ancestor::tei:TEI//tei:term[@type='form']/text()[matches(., 'vers')]"
+                                        > Un texte en vers doit être balisé par des éléments l.
+                                    </sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
                     <elementSpec ident="fw" mode="change">
                         <attList>
                             <attDef ident="place" mode="change" usage="rec">
