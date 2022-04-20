@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-20T14:27:53Z. .
+Schema generated from ODD source 2022-04-20T14:40:35Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3030,8 +3030,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher//*">
-               <sch:assert test=".[text()[normalize-space()]] | descendant::*">Si l'éditeur est inconnu, la balise publisher doit être
-                                        auto-fermante.</sch:assert>
+               <sch:assert test=".[text()[normalize-space()]] | descendant::*">Le persName doit contenir le nom de l'éditeur ou 'Sans Nom'.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3040,8 +3039,8 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:publisher[text()]">
-               <sch:assert test=".[normalize-space()]" role="error">Si l'éditeur est connu, il doit être renseigné, sinon la balise doit être auto-fermante.</sch:assert>
+                      context="tei:publisher">
+               <sch:assert test="./text() | child::tei:persName" role="error">La balise ne doit pas être auto-fermante. Elle doit contenir du texte ou un persName.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"

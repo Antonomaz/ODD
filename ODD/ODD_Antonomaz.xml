@@ -414,16 +414,15 @@
                             <constraint>
                                 <sch:rule context="tei:publisher//*">
                                     <sch:assert test=".[text()[normalize-space()]] | descendant::*"
-                                        >Si l'éditeur est inconnu, la balise publisher doit être
-                                        auto-fermante.</sch:assert>
+                                        >Le persName doit contenir le nom de l'éditeur ou 'Sans Nom'.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherContent" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:publisher[text()]">
-                                    <sch:assert test=".[normalize-space()]"
-                                        role="error">Si l'éditeur est connu, il doit être renseigné, sinon la balise doit être auto-fermante.</sch:assert>
+                                <sch:rule context="tei:publisher">
+                                    <sch:assert test="./text() | child::tei:persName"
+                                        role="error">La balise ne doit pas être auto-fermante. Elle doit contenir du texte ou un persName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
