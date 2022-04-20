@@ -548,6 +548,7 @@
                                 <valList mode="add" type="closed">
                                     <valItem ident="format"/>
                                     <valItem ident="BM_identifier"/>
+                                    <valItem ident="edition"/>
                                 </valList>
                             </attDef>
                         </attList>
