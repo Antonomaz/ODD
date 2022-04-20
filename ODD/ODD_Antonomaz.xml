@@ -491,11 +491,6 @@
                     <elementSpec ident="pubPlace" mode="change">
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
-                                <!--  
-                                <sch:rule context="tei:pubPlace[@ref]">
-                                    <sch:assert test="./@ref/starts-with(.,'geonames:')"
-                                        role="error">Ajouter un identifiant geonames.</sch:assert>
-                                </sch:rule>-->
                                 <sch:rule
                                     context="tei:pubPlace[text()[not(matches(., 'Sans Lieu'))]]">
                                     <sch:assert test="@ref" role="error">Le geonames du lieu doit
@@ -527,6 +522,11 @@
                                     <valItem ident="geonames:2988507">
                                         <desc>Paris</desc>
                                     </valItem>
+                                </valList>
+                            </attDef>
+                            <attDef ident="role" mode="change" usage="opt">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="dubious"/>
                                 </valList>
                             </attDef>
                         </attList>

@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-20T14:53:16Z. .
+Schema generated from ODD source 2022-04-20T15:40:29Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3098,9 +3098,21 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.naming.attribute.role"/>
          <ref name="tei_att.naming.attribute.nymRef"/>
          <ref name="tei_att.canonical.attribute.key"/>
+         <optional>
+            <attribute name="role">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">may be used to specify further information about the entity referenced by this name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>dubious</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="ref">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.
