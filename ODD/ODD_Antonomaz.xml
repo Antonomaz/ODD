@@ -543,6 +543,13 @@
                         </attList>
                     </elementSpec>
                     <elementSpec ident="note" mode="change">
+                        <constraintSpec ident="format" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:note[@type='format']">
+                                    <sch:assert test="string(.)">Le format doit être précisé ou renseigné comme inconnu.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="type" mode="change" usage="rec">
                                 <valList mode="add" type="closed">
@@ -849,6 +856,7 @@
                                 <elementRef key="fw" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="lg" minOccurs="0" maxOccurs="unbounded"/>
                                 <elementRef key="note" minOccurs="0" maxOccurs="unbounded"/>
+                                <elementRef key="ref" minOccurs="0" maxOccurs="unbounded"/>
                                 <textNode/>
                             </alternate>
                         </content>
