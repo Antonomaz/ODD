@@ -664,6 +664,25 @@
                             </attDef>
                         </attList>
                     </elementSpec>
+                    <elementSpec ident="history" mode="change">
+                        <content>
+                            <elementRef key="provenance"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="provenance" mode="change">
+                        <content>
+                            <elementRef key="stamp"/>
+                        </content>
+                    </elementSpec>
+                    <elementSpec ident="stamp" mode="change">
+                        <constraintSpec ident="stamp" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:stamp/text()">
+                                    <sch:report test="./matches(., 'True/False')" role="error">La présence d'une estampille doit être précisée.</sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                    </elementSpec>
                     <elementSpec ident="additional" mode="change">
                         <content>
                             <elementRef key="surrogates"/>

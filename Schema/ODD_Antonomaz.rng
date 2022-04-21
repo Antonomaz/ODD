@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-21T13:04:45Z. .
+Schema generated from ODD source 2022-04-21T13:57:58Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3983,6 +3983,16 @@ relatedItem element must be empty</sch:report>
       <element name="stamp">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(stamp) contains a word or phrase describing a stamp or similar device. [10.3.3. Watermarks and Stamps]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="ANTONOMAZ-stamp-stamp-constraint-rule-28">
+            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                      xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:stamp/text()">
+               <sch:report test="./matches(., 'True/False')" role="error">La présence d'une estampille doit être précisée.</sch:report>
+            </sch:rule>
+         </pattern>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.typed.attributes"/>
          <ref name="tei_att.datable.attributes"/>
@@ -3997,7 +4007,7 @@ relatedItem element must be empty</sch:report>
          <ref name="tei_repository"/>
          <ref name="tei_idno"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-14">
+                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-15">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -4030,16 +4040,7 @@ relatedItem element must be empty</sch:report>
    <define name="tei_history">
       <element name="history">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(history) groups elements describing the full history of a manuscript, manuscript part, or other object. [10.8. History]</a:documentation>
-         <choice>
-            <oneOrMore>
-               <ref name="tei_model.pLike"/>
-            </oneOrMore>
-            <group>
-               <zeroOrMore>
-                  <ref name="tei_provenance"/>
-               </zeroOrMore>
-            </group>
-         </choice>
+         <ref name="tei_provenance"/>
          <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
@@ -4047,7 +4048,7 @@ relatedItem element must be empty</sch:report>
    <define name="tei_provenance">
       <element name="provenance">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(provenance) contains any descriptive or other information concerning a single identifiable episode during the history of a manuscript, manuscript part, or other object after its creation but before its acquisition. [10.8. History]</a:documentation>
-         <ref name="tei_macro.specialPara"/>
+         <ref name="tei_stamp"/>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.datable.attributes"/>
          <ref name="tei_att.typed.attributes"/>
@@ -4561,7 +4562,7 @@ relatedItem element must be empty</sch:report>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(additional name) contains an additional name component, such as a nickname, epithet, or alias, or any other descriptive phrase used within a personal name. [13.2.1. Personal Names]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-28">
+                  id="ANTONOMAZ-addName-addNameParent-constraint-rule-29">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
