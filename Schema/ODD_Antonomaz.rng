@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-21T13:57:58Z. .
+Schema generated from ODD source 2022-04-22T08:28:05Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -4641,7 +4641,7 @@ relatedItem element must be empty</sch:report>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Prague</a:documentation>
                      <value>geonames:2761369</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Vienne</a:documentation>
-                     <value>genonames:2747373</value>
+                     <value>geonames:2747373</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">La Haye</a:documentation>
                   </choice>
                </oneOrMore>
