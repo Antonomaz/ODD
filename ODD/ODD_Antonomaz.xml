@@ -305,7 +305,7 @@
                             <constraint>
                                 <sch:rule context="tei:author[@ref]">
                                     <sch:assert
-                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:') or ./@ref/starts-with(.,'FRBNF:')"
+                                        test="./@ref/starts-with(.,'isni:') or ./@ref/starts-with(.,'viaf:') or ./@ref/starts-with(.,'FRBNF:') or ./@ref/starts-with(.,'idref:')"
                                         role="error">Ajouter un identifiant valide.</sch:assert>
                                 </sch:rule>
                             </constraint>
