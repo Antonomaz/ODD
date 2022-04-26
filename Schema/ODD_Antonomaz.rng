@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-04-22T08:51:07Z. .
+Schema generated from ODD source 2022-04-26T15:29:19Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2806,7 +2806,7 @@ Elements]</a:documentation>
          <optional>
             <attribute name="source">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.
-Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Labadie; 6] Socard; 7] Antonomaz; 8] BnF; 9] BM_Lyon</a:documentation>
+Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Labadie; 6] Socard; 7] Antonomaz; 8] BnF; 9] BM_Lyon; 10] British_Library</a:documentation>
                <list>
                   <oneOrMore>
                      <choice>
@@ -2827,6 +2827,8 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                         <value>BnF</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>BM_Lyon</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>British_Library</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <data type="anyURI"/>
                      </choice>

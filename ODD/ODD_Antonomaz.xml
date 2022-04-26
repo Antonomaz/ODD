@@ -341,6 +341,7 @@
                                     <valItem ident="Antonomaz"/>
                                     <valItem ident="BnF"/>
                                     <valItem ident="BM_Lyon"/>
+                                    <valItem ident="British_Library"/>
                                 </valList>
                             </attDef>
                             <attDef ident="role" mode="change" usage="rec">
