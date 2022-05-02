@@ -282,7 +282,6 @@
                             <elementRef key="ref" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="author" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="persName" minOccurs="0" maxOccurs="unbounded"/>
-                            <elementRef key="addName" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="editor" minOccurs="0" maxOccurs="unbounded"/>
                             <elementRef key="title" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="pubPlace" minOccurs="1" maxOccurs="unbounded"/>
@@ -396,9 +395,35 @@
                         </attList>
                     </elementSpec>
                     <elementSpec ident="persName" mode="change">
+                        <constraintSpec ident="role" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:author/tei:persName">
+                                    <sch:report
+                                        test="./@role"
+                                        role="error">Le persName ne peut contenir un attribut @role. Il doit être mis sur l'élément author.</sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="ref" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:author/tei:persName">
+                                    <sch:report
+                                        test="./@ref"
+                                        role="error">Le persName ne peut contenir un attribut @ref. Il doit être mis sur l'élément author.</sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="role" mode="change" usage="rec"/>
                             <attDef ident="ref" mode="change" usage="rec"/>
+                            <attDef ident="source" mode="delete"/>
+                        </attList>
+                    </elementSpec>
+                    <elementSpec ident="orgName" mode="change">
+                        <attList>
+                            <attDef ident="role" mode="delete"/>
+                            <attDef ident="ref" mode="delete"/>
+                            <attDef ident="source" mode="delete"/>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="publisher" mode="change">
@@ -467,9 +492,9 @@
                         <constraintSpec scheme="schematron" ident="addNameParent">
                             <constraint>
                                 <sch:rule context="tei:addName">
-                                    <sch:assert test="parent::tei:persName" role="error"> L'élément
+                                    <sch:assert test="parent::tei:persName | parent::tei:orgName" role="error"> L'élément
                                         addName doit être contenu dans une balise
-                                        persName.</sch:assert>
+                                        persName ou orgName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
