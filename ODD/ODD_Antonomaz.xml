@@ -64,7 +64,7 @@
                     <moduleRef key="textstructure" include="body TEI text imprimatur"/>
                     <moduleRef key="core"
                         include="author bibl biblStruct cb choice corr date editor foreign gap head hi imprint l lb lg measure monogr 
-                        name note p pb publisher pubPlace ref relatedItem resp respStmt sic term title unclear"/>
+                        note p pb publisher pubPlace ref relatedItem resp respStmt sic term title unclear"/>
                     <moduleRef key="msdescription"
                         include="history institution msDesc msIdentifier provenance repository stamp"/>
                     <moduleRef key="transcr" include="fw space"/>
