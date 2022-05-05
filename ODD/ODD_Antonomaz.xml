@@ -289,9 +289,7 @@
                             <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
                             <elementRef key="extent" minOccurs="1" maxOccurs="1"/>
                             <elementRef key="note" minOccurs="1" maxOccurs="1"/>
-                            <elementRef key="note" minOccurs="1" maxOccurs="unbounded"/>
-                            <elementRef key="ref" minOccurs="0"/>
-                            <!--<elementRef key="relatedItem" minOccurs="1"/>-->
+                            <elementRef key="relatedItem" minOccurs="1"/>
                         </content>
                     </elementSpec>
                     <elementSpec ident="ref" mode="change">
@@ -586,7 +584,7 @@
                             </attDef>
                         </attList>
                     </elementSpec>
-                    <!--<elementSpec ident="relatedItem" mode="change">
+                    <elementSpec ident="relatedItem" mode="change">
                         <constraintSpec ident="identifierMazarine" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:relatedItem[@subtype != 'sans_identifiant']/@subtype">
@@ -616,7 +614,7 @@
                             <attDef ident="target" mode="change" usage="req"/>
                             <attDef ident="cert" mode="change" usage="req"/>
                         </attList>
-                    </elementSpec>-->
+                    </elementSpec>
                     <elementSpec ident="msDesc" mode="change">
                         <content>
                             <elementRef key="msIdentifier"/>
