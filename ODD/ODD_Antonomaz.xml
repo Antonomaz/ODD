@@ -588,8 +588,8 @@
                         <constraintSpec ident="identifierMazarine" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:relatedItem[@subtype != 'none']/@subtype">
-                                    <sch:assert test="./matches(., 'BM[0-9]{5,5}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
-                                        de 5 chiffres. S'il n'existe pas d'identifiant, renseignez 'none'.</sch:assert>
+                                    <sch:assert test="./matches(., 'BM[0-9]{5,6}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
+                                        de 5 ou 6 chiffres. S'il n'existe pas d'identifiant, renseignez 'none'.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -608,7 +608,7 @@
                                 <desc>Contient l'identifiant attribué par la bibliothèque
                                     Mazarine.</desc>
                                 <valList mode="add" type="semi">
-                                    <valItem ident="sans_identifiant"/>
+                                    <valItem ident="none"/>
                                 </valList>
                             </attDef>
                             <attDef ident="target" mode="change" usage="req"/>

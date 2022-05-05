@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-05-05T09:28:07Z. .
+Schema generated from ODD source 2022-05-05T09:38:14Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3207,8 +3207,8 @@ Suggested values include: 1] geonames:2759794; 2] geonames:2643743; 3] geonames:
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:relatedItem[@subtype != 'none']/@subtype">
-               <sch:assert test="./matches(., 'BM[0-9]{5,5}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
-                                        de 5 chiffres. S'il n'existe pas d'identifiant, renseignez 'none'.</sch:assert>
+               <sch:assert test="./matches(., 'BM[0-9]{5,6}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
+                                        de 5 ou 6 chiffres. S'il n'existe pas d'identifiant, renseignez 'none'.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3270,9 +3270,9 @@ relatedItem element must be empty</sch:report>
          <optional>
             <attribute name="subtype">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(subtype) Contient l'identifiant attribué par la bibliothèque Mazarine.
-Suggested values include: 1] sans_identifiant</a:documentation>
+Suggested values include: 1] none</a:documentation>
                <choice>
-                  <value>sans_identifiant</value>
+                  <value>none</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                   <data type="token">
                      <param name="pattern">[^\p{C}\p{Z}]+</param>
