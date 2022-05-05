@@ -587,9 +587,9 @@
                     <elementSpec ident="relatedItem" mode="change">
                         <constraintSpec ident="identifierMazarine" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:relatedItem[@subtype != 'sans_identifiant']/@subtype">
+                                <sch:rule context="tei:relatedItem[@subtype != 'none']/@subtype">
                                     <sch:assert test="./matches(., 'BM[0-9]{5,5}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
-                                        de 5 chiffres. S'il n'existe pas d'identifiant, renseignez 'sans_identifiant'.</sch:assert>
+                                        de 5 chiffres. S'il n'existe pas d'identifiant, renseignez 'none'.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
