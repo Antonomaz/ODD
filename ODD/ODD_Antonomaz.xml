@@ -687,6 +687,9 @@
                                     <valItem ident="geonames:2747373">
                                         <desc>La Haye</desc>
                                     </valItem>
+                                    <valItem ident="geonames:3128760">
+                                        <desc>Barcelone</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                         </attList>
