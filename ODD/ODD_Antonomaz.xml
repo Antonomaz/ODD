@@ -434,11 +434,12 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
-                        <constraintSpec ident="publisherDescendants" scheme="schematron">
+                        <constraintSpec ident="publisherContent" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:publisher//*">
-                                    <sch:assert test=".[text()[normalize-space()]] | descendant::*"
-                                        >Le persName doit contenir le nom de l'éditeur ou 'Sans Nom'.</sch:assert>
+                                <sch:rule context="tei:publisher">
+                                    <sch:assert test=".[not(text()[normalize-space()])]"
+                                        role="error">L'auteur doit être renseigné dans un élément
+                                        persName ou orgName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
