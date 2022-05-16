@@ -436,7 +436,7 @@
                         </constraintSpec>
                         <constraintSpec ident="publisherContent" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:publisher">
+                                <sch:rule context="tei:bibl/tei:publisher">
                                     <sch:assert test=".[not(text()[normalize-space()])]"
                                         role="error">L'auteur doit être renseigné dans un élément
                                         persName ou orgName.</sch:assert>
