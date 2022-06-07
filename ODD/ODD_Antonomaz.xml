@@ -691,6 +691,9 @@
                                     <valItem ident="geonames:3128760">
                                         <desc>Barcelone</desc>
                                     </valItem>
+                                    <valItem ident="geonames:3116235">
+                                        <desc>Montserrat (abbaye)</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                         </attList>
