@@ -791,10 +791,43 @@
                         <content>
                             <elementRef key="term" maxOccurs="unbounded"/>
                         </content>
-                        <constraintSpec ident="termvalues" scheme="schematron">
+                        <constraintSpec ident="termform" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:keywords/tei:term">
-                                    <sch:assert test="./[@type='form']">Un élément term avec un attribut @type="form" doit être ajouté.</sch:assert>
+                                <sch:rule context="tei:keywords">
+                                    <sch:assert
+                                        test="count(./tei:term[@type='form'])=1"
+                                        >Un élément term avec un attribut @type="form" doit être
+                                        ajouté.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="termhandwritten" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:keywords">
+                                    <sch:assert
+                                        test="count(./tei:term[@type='handwritten_note'])=1"
+                                        >Un élément term avec un attribut @type="handwritten_note" doit être
+                                        ajouté.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="termtable" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:keywords">
+                                    <sch:assert
+                                        test="count(./tei:term[@type='table_of_content'])=1"
+                                        >Un élément term avec un attribut @type="table_of_content" doit être
+                                        ajouté.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="termillustration" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:keywords">
+                                    <sch:assert
+                                        test="count(./tei:term[@type='illustration'])=1"
+                                        >Un élément term avec un attribut @type="illustration" doit être
+                                        ajouté.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
