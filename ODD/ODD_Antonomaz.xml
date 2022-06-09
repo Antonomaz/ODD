@@ -794,7 +794,7 @@
                         <constraintSpec ident="termvalues" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:keywords/tei:term">
-                                    <sch:assert assert="./[@type='form']">Un élément term avec un attribut @type="form" doit être ajouté.</sch:assert>
+                                    <sch:assert test="./[@type='form']">Un élément term avec un attribut @type="form" doit être ajouté.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
