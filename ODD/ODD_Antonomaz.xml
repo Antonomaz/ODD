@@ -776,7 +776,7 @@
                         <constraintSpec ident="pnotes" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:abstract/tei:p">
-                                    <sch:assert test="@source"> La source de l'information doit être
+                                    <sch:assert test="@source">La source de l'information doit être
                                         précisée. </sch:assert>
                                 </sch:rule>
                             </constraint>
@@ -791,6 +791,13 @@
                         <content>
                             <elementRef key="term" maxOccurs="unbounded"/>
                         </content>
+                        <constraintSpec ident="termvalues" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:keywords/tei:term">
+                                    <sch:assert assert="./[@type='form']">Un élément term avec un attribut @type="form" doit être ajouté.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                     </elementSpec>
                     <elementSpec ident="term" mode="change">
                         <attList>
