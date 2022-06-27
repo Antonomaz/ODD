@@ -396,18 +396,18 @@
                         <constraintSpec ident="role" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author/tei:persName">
-                                    <sch:report
-                                        test="./@role"
-                                        role="error">Le persName ne peut contenir un attribut @role. Il doit être mis sur l'élément author.</sch:report>
+                                    <sch:report test="./@role" role="error">Le persName ne peut
+                                        contenir un attribut @role. Il doit être mis sur l'élément
+                                        author.</sch:report>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="ref" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:author/tei:persName">
-                                    <sch:report
-                                        test="./@ref"
-                                        role="error">Le persName ne peut contenir un attribut @ref. Il doit être mis sur l'élément author.</sch:report>
+                                    <sch:report test="./@ref" role="error">Le persName ne peut
+                                        contenir un attribut @ref. Il doit être mis sur l'élément
+                                        author.</sch:report>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -446,17 +446,18 @@
                         <constraintSpec ident="publisherContent" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher">
-                                    <sch:assert test="./text() | child::tei:persName"
-                                        role="error">La balise ne doit pas être auto-fermante. Elle doit contenir du texte ou un persName.</sch:assert>
+                                    <sch:assert test="./text() | child::tei:persName" role="error"
+                                        >La balise ne doit pas être auto-fermante. Elle doit
+                                        contenir du texte ou un persName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherRef" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher/@ref">
-                                    <sch:report test="./matches(., 'isni:[0-9]{7,7}$')">
-                                        Le référentiel doit être renseigné si l'imprimeur est connu. Sinon, le @ref doit être supprimé.
-                                    </sch:report>
+                                    <sch:report test="./matches(., 'isni:[0-9]{7,7}$')"> Le
+                                        référentiel doit être renseigné si l'imprimeur est connu.
+                                        Sinon, le @ref doit être supprimé. </sch:report>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -470,6 +471,13 @@
                             <attDef ident="rend" mode="delete"/>
                             <attDef ident="rendition" mode="delete"/>
                             <attDef ident="resp" mode="delete"/>
+                            <attDef ident="role" mode="add" usage="opt">
+                                <valList type="closed">
+                                    <valItem ident="dubious">
+                                        <desc>Utilisé pour les faux noms d'imprimeur.</desc>
+                                    </valItem>
+                                </valList>
+                            </attDef>
                             <attDef ident="style" mode="delete"/>
                             <attDef ident="xml:base" mode="delete"/>
                             <attDef ident="xml:id" mode="delete"/>
@@ -491,9 +499,9 @@
                         <constraintSpec scheme="schematron" ident="addNameParent">
                             <constraint>
                                 <sch:rule context="tei:addName">
-                                    <sch:assert test="parent::tei:persName | parent::tei:orgName" role="error"> L'élément
-                                        addName doit être contenu dans une balise
-                                        persName ou orgName.</sch:assert>
+                                    <sch:assert test="parent::tei:persName | parent::tei:orgName"
+                                        role="error"> L'élément addName doit être contenu dans une
+                                        balise persName ou orgName.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -574,7 +582,8 @@
                         <constraintSpec ident="format" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:note[@type='format']">
-                                    <sch:assert test="string(.)">Le format doit être précisé ou renseigné comme inconnu.</sch:assert>
+                                    <sch:assert test="string(.)">Le format doit être précisé ou
+                                        renseigné comme inconnu.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -592,20 +601,21 @@
                         <constraintSpec ident="identifierMazarine" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:relatedItem[@subtype != 'none']/@subtype">
-                                    <sch:assert test="./matches(., 'BM[0-9]{5,6}$')">L'identifiant en 'subtype' doit commencer par 'BM', suivi
-                                        de 5 ou 6 chiffres. S'il n'existe pas d'identifiant, renseignez 'none'.</sch:assert>
+                                    <sch:assert test="./matches(., 'BM[0-9]{5,6}$')">L'identifiant
+                                        en 'subtype' doit commencer par 'BM', suivi de 5 ou 6
+                                        chiffres. S'il n'existe pas d'identifiant, renseignez
+                                        'none'.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="subtype" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:relatedItem[@target/starts-with(., 'https://mazarinades.bibliotheque-mazarine.fr/ark')]">
-                                    <sch:report
-                                        test=".[@subtype='none']"
-                                        >Si le @target contient un lien vers une notice de la
-                                        Bibliothèque Mazarine, l'identifiant de la notice doit être
-                                        indiquée dans le @subtype. Le @subtype ne peut pas être
-                                        'none'.</sch:report>
+                                <sch:rule
+                                    context="tei:relatedItem[@target/starts-with(., 'https://mazarinades.bibliotheque-mazarine.fr/ark')]">
+                                    <sch:report test=".[@subtype='none']">Si le @target contient un
+                                        lien vers une notice de la Bibliothèque Mazarine,
+                                        l'identifiant de la notice doit être indiquée dans le
+                                        @subtype. Le @subtype ne peut pas être 'none'.</sch:report>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -724,7 +734,8 @@
                         <constraintSpec ident="stamp" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:stamp/text()">
-                                    <sch:report test="./matches(., 'True/False')" role="error">La présence d'une estampille doit être précisée.</sch:report>
+                                    <sch:report test="./matches(., 'True/False')" role="error">La
+                                        présence d'une estampille doit être précisée.</sch:report>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -797,9 +808,8 @@
                         <constraintSpec ident="termform" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:keywords">
-                                    <sch:assert
-                                        test="count(./tei:term[@type='form'])=1"
-                                        >Un élément term avec un attribut @type="form" doit être
+                                    <sch:assert test="count(./tei:term[@type='form'])=1">Un élément
+                                        term avec un attribut @type="form" doit être
                                         ajouté.</sch:assert>
                                 </sch:rule>
                             </constraint>
@@ -807,29 +817,26 @@
                         <constraintSpec ident="termhandwritten" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:keywords">
-                                    <sch:assert
-                                        test="count(./tei:term[@type='handwritten_note'])=1"
-                                        >Un élément term avec un attribut @type="handwritten_note" doit être
-                                        ajouté.</sch:assert>
+                                    <sch:assert test="count(./tei:term[@type='handwritten_note'])=1"
+                                        >Un élément term avec un attribut @type="handwritten_note"
+                                        doit être ajouté.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="termtable" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:keywords">
-                                    <sch:assert
-                                        test="count(./tei:term[@type='table_of_content'])=1"
-                                        >Un élément term avec un attribut @type="table_of_content" doit être
-                                        ajouté.</sch:assert>
+                                    <sch:assert test="count(./tei:term[@type='table_of_content'])=1"
+                                        >Un élément term avec un attribut @type="table_of_content"
+                                        doit être ajouté.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="termillustration" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:keywords">
-                                    <sch:assert
-                                        test="count(./tei:term[@type='illustration'])=1"
-                                        >Un élément term avec un attribut @type="illustration" doit être
+                                    <sch:assert test="count(./tei:term[@type='illustration'])=1">Un
+                                        élément term avec un attribut @type="illustration" doit être
                                         ajouté.</sch:assert>
                                 </sch:rule>
                             </constraint>
