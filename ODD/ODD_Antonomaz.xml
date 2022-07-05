@@ -559,6 +559,9 @@
                                     <valItem ident="geonames: 2972191">
                                         <desc>Tours</desc>
                                     </valItem>
+                                    <valItem ident="geonames: 2982652">
+                                        <desc>Rouen</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                             <attDef ident="role" mode="change" usage="opt">
