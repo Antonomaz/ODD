@@ -462,6 +462,13 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="publisherID" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher/@xml:id">
+                                    <sch:report test=".[@xml:id/ends-with(., '.xml')]"> Le @xml:id doit renvoyer à un fichier .xml</sch:report>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <attList>
                             <attDef ident="xml:id" mode="change" usage="rec"/>
                             <attDef ident="ref" mode="change" usage="rec"/>
