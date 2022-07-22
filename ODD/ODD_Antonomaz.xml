@@ -465,7 +465,7 @@
                         <constraintSpec ident="publisherID" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:report test="tei:publisher/[@xml:id/ends-with(., '.xml')]">Le @xml:id doit renvoyer à un fichier .xml</sch:report>
+                                    <sch:assert test=".[@xml:id/ends-with(., '.xml')] and .[@xml:id/starts-with(., 'IL_')]">Le @xml:id doit renvoyer à un fichier .xml qui commence par 'IL_'.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>

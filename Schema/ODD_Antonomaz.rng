@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-07-22T14:00:49Z. .
+Schema generated from ODD source 2022-07-22T14:13:42Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3060,7 +3060,7 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:report test="tei:publisher/[@xml:id/ends-with(., '.xml')]">Le @xml:id doit renvoyer à un fichier .xml</sch:report>
+               <sch:assert test=".[@xml:id/ends-with(., '.xml')] and .[@xml:id/starts-with(., 'IL_')]">Le @xml:id doit renvoyer à un fichier .xml qui commence par 'IL_'.</sch:assert>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.source.attribute.source"/>
@@ -3261,7 +3261,7 @@ Suggested values include: 1] geonames:2759794; 2] geonames:2643743; 3] geonames:
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-relatedItem-targetorcontent1-constraint-report-12">
+                  id="ANTONOMAZ-relatedItem-targetorcontent1-constraint-report-11">
             <rule context="tei:relatedItem">
                <sch:report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                            test="@target and count( child::* ) &gt; 0">
@@ -3358,7 +3358,7 @@ Suggested values include: 1] none</a:documentation>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-14">
+                  id="ANTONOMAZ-l-abstractModel-structure-l-constraint-report-13">
             <rule context="tei:l">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -3408,7 +3408,7 @@ Suggested values include: 1] none</a:documentation>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-lg-atleast1oflggapl-constraint-assert-21">
+                  id="ANTONOMAZ-lg-atleast1oflggapl-constraint-assert-22">
             <rule context="tei:lg">
                <sch:assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -3419,7 +3419,7 @@ Suggested values include: 1] none</a:documentation>
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-lg-abstractModel-structure-l-constraint-report-15">
+                  id="ANTONOMAZ-lg-abstractModel-structure-l-constraint-report-14">
             <rule context="tei:lg">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -4129,7 +4129,7 @@ Suggested values include: 1] none</a:documentation>
          <ref name="tei_repository"/>
          <ref name="tei_idno"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-17">
+                  id="ANTONOMAZ-msIdentifier-msId_minimal-constraint-report-16">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
