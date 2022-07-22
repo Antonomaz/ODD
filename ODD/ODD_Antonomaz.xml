@@ -463,6 +463,7 @@
                             </constraint>
                         </constraintSpec>
                         <attList>
+                            <attDef ident="xml:id" mode="change" usage="rec"/>
                             <attDef ident="ref" mode="change" usage="rec"/>
                             <attDef ident="cert" mode="delete"/>
                             <attDef ident="change" mode="delete"/>
