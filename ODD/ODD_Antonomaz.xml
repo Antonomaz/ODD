@@ -462,6 +462,13 @@
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
+                        <constraintSpec ident="publisherRefandID" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@ref]">
+                                    <sch:assert test="@xml:id">Le @xml:id de l'imprimeur doit être renseigné.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
                         <constraintSpec ident="publisherID" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
