@@ -830,7 +830,7 @@
                         <constraintSpec ident="termform" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:keywords">
-                                    <sch:assert test="count(./tei:term[@type='form'])=1">Un élément
+                                    <sch:assert test="count(./tei:term[@type='form'])>0">Un élément
                                         term avec un attribut @type="form" doit être
                                         ajouté.</sch:assert>
                                 </sch:rule>
