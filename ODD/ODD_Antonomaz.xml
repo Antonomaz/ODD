@@ -465,21 +465,88 @@
                         <constraintSpec ident="publisherRefandID" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@ref]">
-                                    <sch:assert test="@xml:id">Le @xml:id de l'imprimeur doit être renseigné.</sch:assert>
+                                    <sch:assert test="@xml:id">Le @xml:id de l'imprimeur doit être
+                                        renseigné.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherID" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert test=".[@xml:id/ends-with(., '.xml')] and .[@xml:id/starts-with(., 'IL_')]">Le @xml:id doit renvoyer à un fichier .xml qui commence par 'IL_'.</sch:assert>
+                                    <sch:assert
+                                        test=".[@xml:id/ends-with(., '.xml')] and .[@xml:id/starts-with(., 'IL_')]"
+                                        >Le @xml:id doit renvoyer à un fichier .xml qui commence par
+                                        'IL_'.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
-                        <constraintSpec ident="publisherIDcheck" scheme="schematron">
+                        <constraintSpec ident="publisherIDcedille" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert test="not(./contains(@xml:id, 'é|è|ë|É|È|Ë|à|ç|-')">Le @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent, ni cédille.</sch:assert>
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., 'ç'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherIDgravemaj" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., 'È'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherIDaigumaj" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., 'É'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherIDgravemin" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., 'è'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherIDaigumin" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., 'é'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherIDtrema" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., 'ë'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
+                                </sch:rule>
+                            </constraint>
+                        </constraintSpec>
+                        <constraintSpec ident="publisherIDtiret" scheme="schematron">
+                            <constraint>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert
+                                        test=".[not(@xml:id/contains(., '-'))]">Le
+                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
+                                        ni cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
