@@ -478,8 +478,8 @@
                         </constraintSpec>
                         <constraintSpec ident="publisherIDcheck" scheme="schematron">
                             <constraint>
-                                <sch:rule context="tei:publisher/@xml:id">
-                                    <sch:assert test="not(./contains(., 'é|è|ë|É|È|Ë|à|ç|-')">Le @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent, ni cédille.</sch:assert>
+                                <sch:rule context="tei:publisher[@xml:id]">
+                                    <sch:assert test="not(./contains(@xml:id, 'é|è|ë|É|È|Ë|à|ç|-')">Le @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent, ni cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>

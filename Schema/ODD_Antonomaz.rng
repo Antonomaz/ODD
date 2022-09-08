@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-09-08T09:51:20Z. .
+Schema generated from ODD source 2022-09-08T09:54:24Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -3079,8 +3079,8 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:publisher/@xml:id">
-               <sch:assert test="not(./contains(., 'é|è|ë|É|È|Ë|à|ç|-')">Le @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent, ni cédille.</sch:assert>
+                      context="tei:publisher[@xml:id]">
+               <sch:assert test="not(./contains(@xml:id, 'é|è|ë|É|È|Ë|à|ç|-')">Le @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent, ni cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.source.attribute.source"/>
