@@ -957,6 +957,24 @@
                                     <valItem ident="no"/>
                                 </valList>
                             </attDef>
+                            <attDef ident="ref" mode="change">
+                                <valList mode="add" type="closed">
+                                    <valItem ident="institution/parlements.xml"/>
+                                    <valItem ident="institution/roi.xml"/>
+                                    <valItem ident="institution/fiscalite.xml"/>
+                                    <valItem ident="institution/parlement_de_paris.xml"/>
+                                    <valItem ident="personnes/mazarin.xml"/>
+                                    <valItem ident="personnes/dubosc_de_montandre.xml"/>
+                                    <valItem ident="personnes/imprimeurs.xml"/>
+                                    <valItem ident="histoire/journee_des_barricades.xml"/>
+                                    <valItem ident="histoire/guerre_de_trente_ans.xml"/>
+                                    <valItem ident="histoire/ormee.xml"/>
+                                    <valItem ident="forme-livre/circulation_libelles.xml"/>
+                                    <valItem ident="forme-livre/formats_libelles.xml"/>
+                                    <valItem ident="litterature/libelles_pro_mazarin.xml"/>
+                                    <valItem ident="litterature/chansons.xml"/>
+                                </valList>
+                            </attDef>
                         </attList>
                     </elementSpec>
                     <elementSpec ident="settingDesc" mode="change">

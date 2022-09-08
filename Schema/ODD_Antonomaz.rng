@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-09-08T10:09:20Z. .
+Schema generated from ODD source 2022-09-08T12:50:41Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2197,7 +2197,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.declaring.attributes"/>
          <ref name="tei_att.pointing.attributes"/>
-         <ref name="tei_att.canonical.attributes"/>
+         <ref name="tei_att.canonical.attribute.key"/>
          <ref name="tei_att.sortable.attributes"/>
          <ref name="tei_att.cReferencing.attributes"/>
          <attribute name="type">
@@ -2228,6 +2228,45 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                   <value>no</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                </choice>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="ref">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>institution/parlements.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>institution/roi.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>institution/fiscalite.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>institution/parlement_de_paris.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>personnes/mazarin.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>personnes/dubosc_de_montandre.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>personnes/imprimeurs.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>histoire/journee_des_barricades.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>histoire/guerre_de_trente_ans.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>histoire/ormee.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>forme-livre/circulation_libelles.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>forme-livre/formats_libelles.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>litterature/libelles_pro_mazarin.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>litterature/chansons.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
             </attribute>
          </optional>
          <empty/>
