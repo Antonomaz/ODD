@@ -566,6 +566,9 @@
                                     <valItem ident="dubious">
                                         <desc>Utilisé pour les faux noms d'imprimeur.</desc>
                                     </valItem>
+                                    <valItem ident="alleged">
+                                        <desc>Utilisé pour les attributions qui ne sont pas certaines.</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                             <attDef ident="style" mode="delete"/>
