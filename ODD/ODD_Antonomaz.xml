@@ -967,16 +967,22 @@
                                     <valItem ident="institution/roi.xml"/>
                                     <valItem ident="institution/fiscalite.xml"/>
                                     <valItem ident="institution/parlement_de_paris.xml"/>
-                                    <valItem ident="personnes/mazarin.xml"/>
-                                    <valItem ident="personnes/dubosc_de_montandre.xml"/>
-                                    <valItem ident="personnes/imprimeurs.xml"/>
+                                    <valItem ident="personnes/Mazarin.xml"/>
+                                    <valItem ident="personnes/Cyrano.xml"/>
+                                    <valItem ident="personnes/Marigny.xml"/>
+                                    <valItem ident="personnes/Scarron.xml"/>
+                                    <valItem ident="personnes/Dubosc_de_Montandre.xml"/>
                                     <valItem ident="histoire/journees_des_barricades.xml"/>
                                     <valItem ident="histoire/guerre_de_trente_ans.xml"/>
                                     <valItem ident="histoire/ormee.xml"/>
-                                    <valItem ident="forme-livre/circulation_libelles.xml"/>
-                                    <valItem ident="forme-livre/formats_libelles.xml"/>
-                                    <valItem ident="litterature/libelles_pro_mazarin.xml"/>
+                                    <valItem ident="librairie/circulation_libelles.xml"/>
+                                    <valItem ident="librairie/formats_libelles.xml"/>
+                                    <valItem ident="librairie/illustrations.xml"/>
+                                    <valItem ident="librairie/imprimeurs.xml"/>
+                                    <valItem ident="librairie/libelles_pro_mazarin.xml"/>
+                                    <valItem ident="librairie/representation_librairie_mazarinades.xml"/>
                                     <valItem ident="litterature/chansons.xml"/>
+                                    <valItem ident="litterature/burlesque.xml"/>
                                 </valList>
                             </attDef>
                         </attList>
