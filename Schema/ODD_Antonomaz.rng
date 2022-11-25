@@ -5,7 +5,7 @@
          xmlns="http://relaxng.org/ns/structure/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-11-18T09:11:49Z. .
+Schema generated from ODD source 2022-11-25T11:07:20Z. .
 TEI Edition: Version 4.3.0. Last updated on
         31st August 2021, revision b4f72b1ff
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.3.0/
@@ -2260,6 +2260,8 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>histoire/ormee.xml</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+                        <value>histoire/soupe_renard.xml</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>librairie/circulation_libelles.xml</value>
                         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
                         <value>librairie/formats_libelles.xml</value>
@@ -3135,9 +3137,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., 'ç'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., 'ç'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3147,9 +3149,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., 'È'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., 'È'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3159,9 +3161,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., 'É'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., 'É'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3171,9 +3173,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., 'è'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., 'è'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3183,9 +3185,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., 'é'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., 'é'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3195,9 +3197,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., 'ë'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., 'ë'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
@@ -3207,9 +3209,9 @@ Suggested values include: 1] Carrier; 2] Moreau; 3] Mazarine; 4] Artois; 5] Laba
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:publisher[@xml:id]">
-               <sch:assert test=".[not(@xml:id/contains(., '-'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+               <sch:assert test=".[not(@xml:id/contains(., '-'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.source.attribute.source"/>

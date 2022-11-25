@@ -484,70 +484,63 @@
                         <constraintSpec ident="publisherIDcedille" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., 'ç'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., 'ç'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherIDgravemaj" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., 'È'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., 'È'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherIDaigumaj" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., 'É'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., 'É'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherIDgravemin" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., 'è'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., 'è'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherIDaigumin" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., 'é'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., 'é'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherIDtrema" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., 'ë'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., 'ë'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
                         <constraintSpec ident="publisherIDtiret" scheme="schematron">
                             <constraint>
                                 <sch:rule context="tei:publisher[@xml:id]">
-                                    <sch:assert
-                                        test=".[not(@xml:id/contains(., '-'))]">Le
-                                        @xml:id de l'imprimeur ne doit contenir ni tiret, ni accent,
-                                        ni cédille.</sch:assert>
+                                    <sch:assert test=".[not(@xml:id/contains(., '-'))]">Le @xml:id
+                                        de l'imprimeur ne doit contenir ni tiret, ni accent, ni
+                                        cédille.</sch:assert>
                                 </sch:rule>
                             </constraint>
                         </constraintSpec>
@@ -568,7 +561,8 @@
                                         <desc>Utilisé pour les faux noms d'imprimeur.</desc>
                                     </valItem>
                                     <valItem ident="alleged">
-                                        <desc>Utilisé pour les attributions qui ne sont pas certaines.</desc>
+                                        <desc>Utilisé pour les attributions qui ne sont pas
+                                            certaines.</desc>
                                     </valItem>
                                 </valList>
                             </attDef>
@@ -975,12 +969,14 @@
                                     <valItem ident="histoire/journees_des_barricades.xml"/>
                                     <valItem ident="histoire/guerre_de_trente_ans.xml"/>
                                     <valItem ident="histoire/ormee.xml"/>
+                                    <valItem ident="histoire/soupe_renard.xml"/>
                                     <valItem ident="librairie/circulation_libelles.xml"/>
                                     <valItem ident="librairie/formats_libelles.xml"/>
                                     <valItem ident="librairie/illustrations.xml"/>
                                     <valItem ident="librairie/imprimeurs.xml"/>
                                     <valItem ident="librairie/libelles_pro_mazarin.xml"/>
-                                    <valItem ident="librairie/representation_librairie_mazarinades.xml"/>
+                                    <valItem
+                                        ident="librairie/representation_librairie_mazarinades.xml"/>
                                     <valItem ident="litterature/chansons.xml"/>
                                     <valItem ident="litterature/burlesque.xml"/>
                                 </valList>
