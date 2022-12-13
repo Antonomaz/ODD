@@ -1070,6 +1070,13 @@
                             </attDef>
                         </attList>
                     </elementSpec>
+                    
+                    <elementSpec ident="body" mode="change">
+                        <content>
+                           <elementRef key="p" minOccurs="1" maxOccurs="1"/>
+                        </content>
+                    </elementSpec>
+                    
                     <elementSpec ident="p" mode="change">
                         <content>
                             <alternate minOccurs="1" maxOccurs="unbounded">
