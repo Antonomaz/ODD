@@ -965,6 +965,8 @@
                                     <valItem ident="personnes/Cyrano.xml"/>
                                     <valItem ident="personnes/Marigny.xml"/>
                                     <valItem ident="personnes/Scarron.xml"/>
+                                    <valItem ident="personnes/moreau.xml"/>
+                                    <valItem ident="personnes/naude.xml"/>
                                     <valItem ident="personnes/Dubosc_de_Montandre.xml"/>
                                     <valItem ident="histoire/journees_des_barricades.xml"/>
                                     <valItem ident="histoire/guerre_de_trente_ans.xml"/>
