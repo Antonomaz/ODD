@@ -2870,19 +2870,22 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
          <ref name="tei_att.edition.attributes" />
          <ref name="tei_att.spanning.attributes" />
          <ref name="tei_att.breaking.attributes" />
-         <attribute name="n">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number)
-               gives a number (or other label) for an element, which is not necessarily unique
-               within the document.</a:documentation>
-            <data type="string" />
-         </attribute>
-         <attribute name="vue">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number)
-               gives a number (or other label) for an element, which is not necessarily unique
-               within the document. Correspond aux vues dans le document numérisé, pas aux pages du
-               texte.</a:documentation>
-            <data type="string"></data>
-         </attribute>
+         <optional>
+            <attribute name="n">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number)
+                  gives a number (or other label) for an element, which is not necessarily unique
+                  within the document.</a:documentation>
+               <data type="string" />
+            </attribute>
+            <attribute name="vue">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number)
+                  gives a number (or other label) for an element, which is not necessarily unique
+                  within the document. Corresponds to the views in the digitised document, not to
+                  the
+                  pages in it (i.e the title cover may count as one view, but as one page).</a:documentation>
+               <data type="string"></data>
+            </attribute>
+         </optional>
          <optional>
             <attribute name="facs">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(facsimile)
