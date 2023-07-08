@@ -2877,6 +2877,8 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                   within the document.</a:documentation>
                <data type="string" />
             </attribute>
+         </optional>
+         <optional>
             <attribute name="vue">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number)
                   gives a number (or other label) for an element, which is not necessarily unique
