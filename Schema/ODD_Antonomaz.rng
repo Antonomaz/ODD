@@ -3735,7 +3735,7 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                xmlns="http://www.tei-c.org/ns/1.0"
                xmlns:xi="http://www.w3.org/2001/XInclude"
                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-               context="tei:relatedItem[@subtype != 'none']/@subtype">
+               context="tei:relatedItem[@subtype != 'none' and source = 'Mazarine']/@subtype">
                <sch:assert test="./matches(., 'BM[0-9]{5,6}$')">L'identifiant
                   en 'subtype' doit commencer par 'BM', suivi de 5 ou 6
                   chiffres. S'il n'existe pas d'identifiant, renseignez
@@ -3754,6 +3754,19 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                   l'identifiant de la notice doit être indiquée dans le
                   @subtype. Le @subtype ne peut pas être 'none'.</sch:report>
             </sch:rule>
+            <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+               id="ANTONOMAZ-relatedItem-identifierBM_Lyon-constraint-rule-34">
+               <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  xmlns="http://www.tei-c.org/ns/1.0"
+                  xmlns:xi="http://www.w3.org/2001/XInclude"
+                  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                  context="tei:relatedItem[@subtype != 'none' and source = 'BM_Lyon']/@subtype">
+                  <sch:assert test="./matches(., 'ark.*$')">L'identifiant
+                     en 'subtype' doit être un identifiant ark. S'il n'existe pas d'identifiant,
+                     renseignez
+                     'none'.</sch:assert>
+               </sch:rule>
+            </pattern>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="ANTONOMAZ-relatedItem-targetorcontent1-constraint-report-11">
