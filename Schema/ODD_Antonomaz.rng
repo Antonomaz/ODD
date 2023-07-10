@@ -3803,6 +3803,10 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                   <choice>
                      <value>Mazarine</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
+                     <value>BM_Lyon</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
+                     <value>ib_Montserrat</value>
+                     <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
                   </choice>
                </oneOrMore>
             </list>
