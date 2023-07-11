@@ -3679,7 +3679,9 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
          </oneOrMore>
          <ref name="tei_extent" />
          <ref name="tei_note" />
-         <ref name="tei_relatedItem" />
+         <oneOrMore>
+            <ref name="tei_relatedItem" />
+         </oneOrMore>
          <ref name="tei_att.global.attributes" />
          <ref name="tei_att.declarable.attributes" />
          <ref name="tei_att.typed.attributes" />
@@ -3729,14 +3731,13 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                <ref name="tei_model.ptrLike" />
             </choice>
          </optional>
-         <!--
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="ANTONOMAZ-relatedItem-identifierMazarine-constraint-rule-34">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
                xmlns="http://www.tei-c.org/ns/1.0"
                xmlns:xi="http://www.w3.org/2001/XInclude"
                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-               context="tei:relatedItem[@subtype != 'none' and source = 'Mazarine']/@subtype">
+               context="tei:relatedItem[@subtype != 'none' and @source = 'Mazarine']/@subtype">
                <sch:assert test="./matches(., 'BM[0-9]{5,6}$')">L'identifiant
                   en 'subtype' doit commencer par 'BM', suivi de 5 ou 6
                   chiffres. S'il n'existe pas d'identifiant, renseignez
@@ -3749,36 +3750,12 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                xmlns="http://www.tei-c.org/ns/1.0"
                xmlns:xi="http://www.w3.org/2001/XInclude"
                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-               context="tei:relatedItem[@target/starts-with(.,
-         'https://mazarinades.bibliotheque-mazarine.fr/ark')]">
+               context="tei:relatedItem[@target/starts-with(., 'https://mazarinades.bibliotheque-mazarine.fr/ark')]">
                <sch:report test=".[@subtype='none']">Si le @target contient un
                   lien vers une notice de la Bibliothèque Mazarine,
                   l'identifiant de la notice doit être indiquée dans le
                   @subtype. Le @subtype ne peut pas être 'none'.</sch:report>
             </sch:rule>
-            <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
-               xmlns="http://www.tei-c.org/ns/1.0"
-               xmlns:xi="http://www.w3.org/2001/XInclude"
-               xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-               context="tei:relatedItem[@target/starts-with(., 'https://catalogue.bm-lyon.fr')]">
-               <sch:report test=".[@subtype='none']">Si le @target contient un
-                  lien vers une notice de la BM de Lyon,
-                  l'identifiant ark doit être indiquée dans le
-                  @subtype. Le @subtype ne peut pas être 'none'.</sch:report>
-            </sch:rule>
-            <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-               id="ANTONOMAZ-relatedItem-identifierBM_Lyon-constraint-rule-34">
-               <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  xmlns="http://www.tei-c.org/ns/1.0"
-                  xmlns:xi="http://www.w3.org/2001/XInclude"
-                  xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                  context="tei:relatedItem[@subtype != 'none' and source = 'BM_Lyon']/@subtype">
-                  <sch:assert test="./matches(., 'ark.*$')">L'identifiant
-                     en 'subtype' doit être un identifiant ark. S'il n'existe pas d'identifiant,
-                     renseignez
-                     'none'.</sch:assert>
-               </sch:rule>
-            </pattern>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="ANTONOMAZ-relatedItem-targetorcontent1-constraint-report-11">
@@ -3792,7 +3769,6 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                   or a child element to indicate the related bibliographic item</sch:assert>
             </rule>
          </pattern>
-      -->
          <ref name="tei_att.global.attribute.xmlid" />
          <ref name="tei_att.global.attribute.n" />
          <ref name="tei_att.global.attribute.xmllang" />
@@ -3831,7 +3807,7 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
                      <value>BM_Lyon</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
-                     <value>Bib_Montserrat</value>
+                     <value>ib_Montserrat</value>
                      <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
                   </choice>
                </oneOrMore>
