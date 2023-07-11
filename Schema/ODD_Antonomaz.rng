@@ -3729,6 +3729,7 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                <ref name="tei_model.ptrLike" />
             </choice>
          </optional>
+         <!--
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
             id="ANTONOMAZ-relatedItem-identifierMazarine-constraint-rule-34">
             <sch:rule xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -3748,7 +3749,8 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                xmlns="http://www.tei-c.org/ns/1.0"
                xmlns:xi="http://www.w3.org/2001/XInclude"
                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-               context="tei:relatedItem[@target/starts-with(., 'https://mazarinades.bibliotheque-mazarine.fr/ark')]">
+               context="tei:relatedItem[@target/starts-with(.,
+         'https://mazarinades.bibliotheque-mazarine.fr/ark')]">
                <sch:report test=".[@subtype='none']">Si le @target contient un
                   lien vers une notice de la Bibliothèque Mazarine,
                   l'identifiant de la notice doit être indiquée dans le
@@ -3790,6 +3792,7 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
                   or a child element to indicate the related bibliographic item</sch:assert>
             </rule>
          </pattern>
+      -->
          <ref name="tei_att.global.attribute.xmlid" />
          <ref name="tei_att.global.attribute.n" />
          <ref name="tei_att.global.attribute.xmllang" />
