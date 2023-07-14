@@ -2,6 +2,8 @@
 
 Ce répertoire contient les schémas de validation XML des fichiers encodés ainsi que la documentation de l'ensemble de l'encodage. 
 
+/!\ L'ODD n'est plus à jour depuis juin 2023: se fier au schéma RNG. 
+
 ## Schéma de validation
 
 Le schéma RNG produit à partir de l'ODD est utilisé pour s'assurer de la conformité de l'encodage de chaque fichier du corpus aux règles d'encodage préalablement définies.
