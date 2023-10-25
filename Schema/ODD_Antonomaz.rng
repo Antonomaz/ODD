@@ -2874,6 +2874,24 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.1.0/
          <ref name="tei_att.spanning.attributes" />
          <ref name="tei_att.breaking.attributes" />
          <optional>
+            <attribute name="manual_correction">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(bool)
+                  indicates whether the page has been manually reviewed/corrected or not.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>yes</value>
+                        <a:documentation
+                           xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
+                        <value>no</value>
+                        <a:documentation
+                           xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" />
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
             <attribute name="n">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number)
                   gives a number (or other label) for an element, which is not necessarily unique
